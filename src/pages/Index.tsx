@@ -1,12 +1,558 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  ResponsiveContainer,
+} from 'recharts';
+
+// ============== DADOS DO TESTE ==============
+const CATEGORIAS = [
+  'Naturalista', 'Musical', 'Lógico-matemático', 'Existencial',
+  'Interpessoal', 'Corporal', 'Linguística', 'Intrapessoal', 'Espacial'
+];
+
+// Apenas as 8 categorias usadas no teste (removendo Existencial que não tem perguntas)
+const CATEGORIAS_TESTE = [
+  'Lógico-matemático', 'Naturalista', 'Musical', 'Interpessoal',
+  'Linguística', 'Intrapessoal', 'Corporal', 'Espacial'
+];
+
+const PERGUNTAS: Record<string, string[]> = {
+  'Lógico-matemático': [
+    "Usar números e símbolos numéricos é fácil para mim",
+    "Costumo desenvolver equações para descrever relacionamentos",
+    "Muitas vezes vejo sentidos matemáticos no mundo ao meu redor",
+    "Matemática sempre foi uma das minhas aulas favoritas"
+  ],
+  'Naturalista': [
+    "O mundo de plantas e animais é importante para mim",
+    "Eu gosto de animais de estimação",
+    "Eu gosto de aprender sobre a natureza",
+    "Gosto de cuidar das minhas plantas em casa"
+  ],
+  'Musical': [
+    "Minha educação musical começou quando eu era mais jovem",
+    "Eu sou bom em tocar um instrumento e cantar",
+    "Lembro-me a melodia de uma canção quando perguntado",
+    "Orgulho-me de minhas realizações musicais"
+  ],
+  'Interpessoal': [
+    "Eu sinto que as pessoas de todas as idades gostam de mim",
+    "Eu gosto de estar com todos os diferentes tipos de pessoas",
+    "Eu respondo a todas as pessoas com entusiasmo",
+    "Gosto de situações sociais novas ou únicas"
+  ],
+  'Linguística': [
+    "Gosto de ouvir discursos",
+    "Eu gosto de manter um diário de minhas experiências",
+    "Eu leio e aprecio a poesia",
+    "Eu falo muito e gosto de contar histórias"
+  ],
+  'Intrapessoal': [
+    "Eu tento não perder meu tempo com perseguições triviais",
+    "Penso sobre os problemas em minha comunidade",
+    "Eu sou sempre totalmente honesto comigo mesmo",
+    "Eu gosto de estar sozinho e pensar sobre a minha vida"
+  ],
+  'Corporal': [
+    "Minha coordenação me destaca em atividades de alta velocidade",
+    "Gosto de estar ao ar livre e praticar diferentes esportes",
+    "Eu gosto da emoção da competição pessoal e da equipe",
+    "Eu gosto de me movimentar muito"
+  ],
+  'Espacial': [
+    "Eu tenho a capacidade de representar o que eu vejo pelo desenho",
+    "Minha capacidade de desenhar é reconhecida por outros",
+    "Eu posso facilmente reproduzir cor, forma e textura em desenhos",
+    "Ver as coisas em três dimensões é fácil para mim"
+  ]
+};
+
+const CURSOS = [
+  { nome: 'Administração', vetor: [1.7,1.7,7.9,1.7,8.9,1.6,7.3,6.4,2.2] },
+  { nome: 'Pedagogia', vetor: [6.3,1.7,6.3,7.4,10.0,1.5,8.9,7.4,5.7] },
+  { nome: 'Ciências Contábeis', vetor: [1.7,1.7,8.7,1.7,7.1,1.6,6.5,2.6,2.2] },
+  { nome: 'Direito', vetor: [1.7,1.7,7.9,1.7,8.9,1.6,8.8,6.4,2.2] },
+  { nome: 'Educação Física', vetor: [2.8,5.4,5.2,1.5,6.5,8.8,6.4,2.6,8.1] },
+  { nome: 'Enfermagem', vetor: [9.6,1.7,4.0,1.5,6.5,2.1,4.9,2.6,2.1] },
+  { nome: 'Engenharia Civil', vetor: [1.8,1.5,8.1,1.5,4.0,1.5,2.4,1.5,9.5] },
+  { nome: 'Agronomia', vetor: [9.8,1.5,7.2,2.1,6.5,2.5,5.4,3.2,4.8] },
+  { nome: 'Criminologia', vetor: [1.7,1.6,6.8,3.5,8.4,2.8,7.6,7.2,3.1] },
+  { nome: 'Energias Renováveis', vetor: [7.3,1.5,8.5,2.2,6.2,1.8,4.9,4.1,7.9] },
+  { nome: 'Engenharia de Software', vetor: [1.6,1.6,9.8,1.5,5.4,1.5,7.3,2.1,3.2] },
+  { nome: 'Estética e Cosmética', vetor: [4.2,1.7,5.6,2.1,7.1,7.8,5.2,3.4,6.5] },
+  { nome: 'Gestão de Recursos Humanos', vetor: [1.7,1.7,6.4,3.2,9.6,1.6,6.8,6.9,1.9] },
+  { nome: 'Gestão Hospitalar', vetor: [3.8,1.6,7.1,4.5,8.7,2.4,6.5,5.8,2.6] },
+  { nome: 'Investigação Forense', vetor: [2.1,1.5,8.2,3.8,7.4,3.5,7.9,6.7,5.4] },
+  { nome: 'Produção Audiovisual', vetor: [1.8,6.8,5.9,2.4,6.3,2.2,7.2,4.1,8.9] },
+  { nome: 'Segurança do Trabalho', vetor: [4.1,1.6,6.7,3.1,7.5,5.8,5.3,4.9,4.2] },
+  { nome: 'Segurança Pública', vetor: [2.5,1.7,5.4,4.2,9.2,6.4,6.1,5.6,3.8] },
+  { nome: 'Terapia Ocupacional', vetor: [5.6,2.1,4.8,4.9,8.9,7.2,6.4,6.3,4.7] }
+];
+
+// ============== COMPONENTES ==============
+
+const Header = () => (
+  <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+    <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 className="text-xl md:text-2xl font-bold text-primary">
+        <span className="text-accent">UFBRA</span> Teste Vocacional
+      </h1>
+      <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
+        <span className="inline-block w-2 h-2 bg-success rounded-full animate-pulse"></span>
+        Teste Online Gratuito
+      </div>
+    </div>
+  </header>
+);
+
+const Hero = ({ onStart }: { onStart: () => void }) => (
+  <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+    {/* Background gradient */}
+    <div className="absolute inset-0 bg-gradient-hero"></div>
+    
+    {/* Floating shapes */}
+    <div className="absolute top-20 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float"></div>
+    <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float-delayed"></div>
+    
+    <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="inline-block mb-6 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full">
+        <span className="text-accent text-sm font-medium">🎓 Baseado na Teoria das Inteligências Múltiplas</span>
+      </div>
+      
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+        Descubra seu <br />
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+          curso ideal
+        </span>
+        <br /> em 3 minutos
+      </h1>
+      
+      <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+        Responda 32 perguntas rápidas baseadas em suas habilidades e preferências 
+        e receba seu ranking personalizado de cursos universitários.
+      </p>
+      
+      <Button 
+        onClick={onStart} 
+        size="lg" 
+        className="text-lg px-10 py-7 rounded-full shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
+      >
+        Começar Teste Gratuito →
+      </Button>
+      
+      <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2">
+          <span className="text-accent">✓</span> 100% Gratuito
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-accent">✓</span> Resultado Imediato
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-accent">✓</span> 19 Cursos Analisados
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+interface StepProps {
+  step: number;
+  categoria: string;
+  perguntas: string[];
+  respostas: Record<string, number[]>;
+  onSelect: (categoria: string, index: number, valor: number) => void;
+  onNext: () => void;
+  onPrev: () => void;
+}
+
+const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, onPrev }: StepProps) => {
+  const progress = (step / 8) * 100;
+  const currentRespostas = respostas[categoria] || [];
+  const allAnswered = currentRespostas.filter(r => r !== undefined).length === 4;
+
+  return (
+    <section className="min-h-screen bg-muted/30 py-12">
+      <div className="container mx-auto px-4 max-w-3xl">
+        {/* Progress Header */}
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm font-medium text-muted-foreground">
+              Passo {step} de 8
+            </span>
+            <span className="text-sm font-medium text-accent">
+              {categoria}
+            </span>
+          </div>
+          <Progress value={progress} className="h-3" />
+        </div>
+
+        {/* Category Title */}
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            Inteligência {categoria}
+          </h2>
+          <p className="text-muted-foreground">
+            Avalie de 1 a 5 o quanto cada afirmação descreve você
+          </p>
+        </div>
+
+        {/* Questions */}
+        <div className="space-y-4">
+          {perguntas.map((texto, i) => (
+            <Card key={i} className="border-border/50 bg-card/80 backdrop-blur transition-all duration-300 hover:shadow-card">
+              <CardContent className="p-6">
+                <p className="text-foreground mb-4 font-medium">
+                  {i + 1}. {texto}
+                </p>
+                <div className="flex justify-center gap-2 md:gap-4">
+                  {[1, 2, 3, 4, 5].map((v) => (
+                    <button
+                      key={v}
+                      onClick={() => onSelect(categoria, i, v)}
+                      className={`w-12 h-12 md:w-14 md:h-14 rounded-xl font-bold text-lg transition-all duration-200 
+                        ${currentRespostas[i] === v 
+                          ? 'bg-primary text-primary-foreground shadow-glow scale-110' 
+                          : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                        }`}
+                    >
+                      {v}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex justify-between mt-3 text-xs text-muted-foreground">
+                  <span>Discordo</span>
+                  <span>Concordo</span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Navigation */}
+        <div className="flex justify-between mt-10 gap-4">
+          <Button 
+            variant="outline" 
+            onClick={onPrev}
+            disabled={step === 1}
+            className="px-8"
+          >
+            ← Voltar
+          </Button>
+          <Button 
+            onClick={onNext}
+            disabled={!allAnswered}
+            className="px-8"
+          >
+            {step === 8 ? 'Ver Resultado' : 'Próxima →'}
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+interface ResultadoProps {
+  resultado: { nome: string; aderencia: string }[];
+  respostas: Record<string, number[]>;
+  onRestart: () => void;
+}
+
+const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
+  const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
+
+  // Calculate radar data
+  const radarData = CATEGORIAS.map(cat => {
+    const catRespostas = respostas[cat] || [0, 0, 0, 0];
+    const score = catRespostas.reduce((a, b) => a + (b || 0), 0);
+    return {
+      categoria: cat.length > 10 ? cat.slice(0, 10) + '...' : cat,
+      fullCategoria: cat,
+      score: score,
+    };
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success('Resultado enviado para seu WhatsApp!', {
+      description: 'Em breve você receberá os detalhes completos.'
+    });
+    setFormData({ nome: '', email: '', whatsapp: '' });
+  };
+
+  return (
+    <section className="min-h-screen bg-gradient-result py-12">
+      <div className="container mx-auto px-4 max-w-5xl">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-block mb-4 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
+            <span className="text-success text-sm font-medium">✓ Teste Concluído</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Seu Resultado Personalizado
+          </h2>
+          <p className="text-muted-foreground">
+            Baseado nas suas respostas, identificamos os cursos mais compatíveis com seu perfil
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Radar Chart */}
+          <Card className="bg-card/80 backdrop-blur border-border/50">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold text-foreground mb-4 text-center">
+                Seu Perfil de Inteligências
+              </h3>
+              <div className="h-[350px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart data={radarData}>
+                    <PolarGrid stroke="hsl(var(--border))" />
+                    <PolarAngleAxis 
+                      dataKey="categoria" 
+                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }}
+                    />
+                    <PolarRadiusAxis 
+                      angle={30} 
+                      domain={[0, 20]} 
+                      tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                    />
+                    <Radar
+                      name="Seu Perfil"
+                      dataKey="score"
+                      stroke="hsl(var(--primary))"
+                      fill="hsl(var(--primary))"
+                      fillOpacity={0.4}
+                      strokeWidth={2}
+                    />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Top 6 Courses */}
+          <Card className="bg-card/80 backdrop-blur border-border/50">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold text-foreground mb-6 text-center">
+                🏆 Top 6 Cursos Recomendados
+              </h3>
+              <div className="space-y-3">
+                {resultado.map((curso, i) => (
+                  <div 
+                    key={i}
+                    className={`flex items-center justify-between p-4 rounded-xl transition-all
+                      ${i === 0 
+                        ? 'bg-gradient-to-r from-primary/20 to-accent/20 border-2 border-primary/30' 
+                        : 'bg-muted/50 border border-border/50'
+                      }`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm
+                        ${i === 0 
+                          ? 'bg-primary text-primary-foreground' 
+                          : 'bg-muted-foreground/20 text-muted-foreground'
+                        }`}>
+                        {i + 1}
+                      </span>
+                      <span className={`font-medium ${i === 0 ? 'text-foreground' : 'text-foreground/80'}`}>
+                        {curso.nome}
+                      </span>
+                    </div>
+                    <div className={`font-bold ${i === 0 ? 'text-primary text-lg' : 'text-muted-foreground'}`}>
+                      {curso.aderencia}%
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Lead Form */}
+        <Card className="mt-8 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
+              📱 Receba os detalhes no seu WhatsApp
+            </h3>
+            <p className="text-muted-foreground text-center mb-6">
+              Enviaremos informações completas sobre os cursos recomendados
+            </p>
+            
+            <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
+              <Input
+                placeholder="Seu nome"
+                value={formData.nome}
+                onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
+                required
+                className="h-12"
+              />
+              <Input
+                type="email"
+                placeholder="Seu e-mail"
+                value={formData.email}
+                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                required
+                className="h-12"
+              />
+              <Input
+                placeholder="WhatsApp (com DDD)"
+                value={formData.whatsapp}
+                onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: e.target.value }))}
+                required
+                className="h-12"
+              />
+              <Button type="submit" className="w-full h-12 text-lg">
+                Enviar Resultado →
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
+        {/* Restart Button */}
+        <div className="text-center mt-8">
+          <Button variant="ghost" onClick={onRestart} className="text-muted-foreground">
+            ↻ Refazer o teste
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Footer = () => (
+  <footer className="bg-foreground text-background py-12">
+    <div className="container mx-auto px-4 text-center">
+      <p className="text-lg font-medium mb-2">UFBRA</p>
+      <p className="text-background/60 text-sm">
+        Universidade Federal do Brasil — Todos os direitos reservados
+      </p>
+      <p className="text-background/40 text-xs mt-4">
+        © {new Date().getFullYear()} — Teste Vocacional baseado na Teoria das Inteligências Múltiplas
+      </p>
+    </div>
+  </footer>
+);
+
+// ============== PÁGINA PRINCIPAL ==============
 
 const Index = () => {
+  const [step, setStep] = useState(0); // 0 = hero, 1-8 = steps, 9 = resultado
+  const [respostas, setRespostas] = useState<Record<string, number[]>>({});
+  const [resultado, setResultado] = useState<{ nome: string; aderencia: string }[]>([]);
+
+  const handleStart = () => {
+    setStep(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelect = (categoria: string, index: number, valor: number) => {
+    setRespostas(prev => {
+      const catRespostas = [...(prev[categoria] || [])];
+      catRespostas[index] = valor;
+      return { ...prev, [categoria]: catRespostas };
+    });
+  };
+
+  const calcularResultado = () => {
+    const scores = CATEGORIAS.map(cat => {
+      const catRespostas = respostas[cat] || [0, 0, 0, 0];
+      return catRespostas.reduce((a, b) => a + (b || 0), 0);
+    });
+
+    const norma = Math.sqrt(scores.reduce((a, b) => a + b * b, 0));
+    const vetorUsuario = scores.map(s => (s * 100) / norma);
+
+    const rankings = CURSOS.map(curso => {
+      const erro = Math.sqrt(
+        vetorUsuario.reduce(
+          (soma, val, i) => soma + Math.pow(val - curso.vetor[i], 2),
+          0
+        )
+      );
+      return {
+        nome: curso.nome,
+        aderencia: (100 - erro).toFixed(1)
+      };
+    })
+    .sort((a, b) => parseFloat(b.aderencia) - parseFloat(a.aderencia))
+    .slice(0, 6);
+
+    return rankings;
+  };
+
+  const handleNext = () => {
+    const categoria = CATEGORIAS_TESTE[step - 1];
+    const currentRespostas = respostas[categoria] || [];
+    
+    if (currentRespostas.filter(r => r !== undefined).length < 4) {
+      toast.error('Responda todas as perguntas antes de avançar.');
+      return;
+    }
+
+    if (step < 8) {
+      setStep(step + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const rankings = calcularResultado();
+      setResultado(rankings);
+      setStep(9);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handlePrev = () => {
+    if (step > 1) {
+      setStep(step - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleRestart = () => {
+    setStep(0);
+    setRespostas({});
+    setResultado([]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    document.title = 'Teste Vocacional UFBRA - Descubra seu curso ideal';
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      {step === 0 && <Hero onStart={handleStart} />}
+      
+      {step >= 1 && step <= 8 && (
+        <StepSection
+          step={step}
+          categoria={CATEGORIAS_TESTE[step - 1]}
+          perguntas={PERGUNTAS[CATEGORIAS_TESTE[step - 1]]}
+          respostas={respostas}
+          onSelect={handleSelect}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      )}
+      
+      {step === 9 && (
+        <ResultadoSection
+          resultado={resultado}
+          respostas={respostas}
+          onRestart={handleRestart}
+        />
+      )}
+      
+      <Footer />
     </div>
   );
 };
