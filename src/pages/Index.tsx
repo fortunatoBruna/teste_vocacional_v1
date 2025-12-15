@@ -122,7 +122,7 @@ const Header = () => (
 );
 
 const Hero = ({ onStart }: { onStart: () => void }) => (
-  <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-24">
+  <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-24 pb-16">
     {/* Background gradient */}
     <div className="absolute inset-0 bg-gradient-hero"></div>
     
@@ -188,7 +188,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
   const allAnswered = currentRespostas.filter(r => r !== undefined).length === 4;
 
   return (
-    <section className="min-h-screen bg-muted/30 py-12 pt-24">
+    <section className="min-h-screen bg-muted/30 py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Progress Header */}
         <div className="mb-8">
@@ -297,7 +297,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
   };
 
   return (
-    <section className="min-h-screen bg-gradient-result py-12 pt-24">
+    <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
         <div className="text-center mb-12">
@@ -436,7 +436,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 };
 
 const Footer = () => (
-  <footer className="bg-foreground text-background py-12 mt-16">
+  <footer className="bg-foreground text-background py-12">
     <div className="container mx-auto px-4 text-center">
       <div className="flex items-center justify-center gap-2 mb-4">
         <div className="w-8 h-8 bg-gradient-tricolor rounded-lg flex items-center justify-center">
