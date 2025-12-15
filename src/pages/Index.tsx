@@ -190,7 +190,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
     
     <div className="relative z-10 container mx-auto px-4 text-center">
       <div className="inline-block mb-6 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-        <span className="text-primary text-sm font-semibold">🎓 Teste vocacional baseado na Teoria das Inteligências Múltiplas de Howard Gardner</span>
+        <span className="text-primary text-sm font-semibold">🎓 Teste vocacional baseado na teoria das Inteligências Múltiplas de Howard Gardner</span>
       </div>
       
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
@@ -211,7 +211,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
         size="lg" 
         className="text-lg px-10 py-7 rounded-full bg-gradient-blue hover:opacity-90 shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
       >
-        Começar teste gratuito →
+        Começar agora →
       </Button>
       
       <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
@@ -222,7 +222,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
           <span className="text-success font-bold">✓</span> Resultado Imediato
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-success font-bold">✓</span> 44 Cursos Analisados
+          <span className="text-success font-bold">✓</span> + de 40 Cursos Analisados
         </div>
       </div>
     </div>
@@ -495,14 +495,54 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 const Footer = () => (
   <footer className="bg-foreground text-background py-12">
     <div className="container mx-auto px-4 text-center">
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <div className="w-8 h-8 bg-gradient-tricolor rounded-lg flex items-center justify-center">
-          <span className="text-white font-bold text-xs">UF</span>
-        </div>
-        <span className="text-xl font-bold">UFBRA</span>
+      
+      {/* Seção das Redes Sociais (Substituindo o Logo/Texto UFBRA) */}
+      <div className="flex items-center justify-center gap-6 mb-6">
+        {/* Facebook */}
+        <a 
+          href="https://www.facebook.com/ufbra.oficial" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition-opacity"
+        >
+          <img 
+            src="https://d375w6nzl58bw0.cloudfront.net/uploads/e85a7300c4fa63e6cc4b9d2e688918fc81394819c725e4ebf06e0d68283d2817407eaca52ec2eb471f739d1c7d61136ae8e3ccbde25b712dd41d1ecaad20c19e.png" 
+            alt="Facebook" 
+            className="w-8 h-8 object-contain"
+          />
+        </a>
+
+        {/* Instagram */}
+        <a 
+          href="https://www.instagram.com/ufbra.oficial/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition-opacity"
+        >
+          <img 
+            src="https://d375w6nzl58bw0.cloudfront.net/uploads/4631bb4169e92ecf685f4cb18beca5156fa4e0693a7033064c371d7fed01565e1879cd6c89075ae44e29f6b6d6e9ce201bfa8875149c8cc979ea61cfbdb4fe3b.png" 
+            alt="Instagram" 
+            className="w-8 h-8 object-contain"
+          />
+        </a>
+
+        {/* YouTube */}
+        <a 
+          href="https://www.youtube.com/channel/UCRhEKT5tvrJxM8PgT54vyPQ" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition-opacity"
+        >
+          <img 
+            src="https://d375w6nzl58bw0.cloudfront.net/uploads/54999ad5cc1f5542c1d3fed472320e7f02659917bbfcc8fab7fb458e1513a8edc871ddd9d1f82f828355accac972471d07cee8b7df756621a6823c56c3d6c1d3.png" 
+            alt="Youtube" 
+            className="w-8 h-8 object-contain"
+          />
+        </a>
       </div>
+
       <p className="text-background/60 text-sm">
-        Universidade Federal do Brasil — Todos os direitos reservados
+        UFBRA • R. Dolzani Ricardo, 335 • São José dos Campos • SP
       </p>
       <p className="text-background/40 text-xs mt-4">
         © {new Date().getFullYear()} — Teste Vocacional baseado na Teoria das Inteligências Múltiplas
