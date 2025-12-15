@@ -301,10 +301,11 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             </Card>
           ))}
         </div>
-
+        
         {/* Navigation */}
         <div className="flex justify-between mt-10 gap-4">
           <Button 
+            type="button"
             variant="outline" 
             onClick={onPrev}
             disabled={step === 1}
@@ -312,7 +313,9 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
           >
             ← Voltar
           </Button>
+        
           <Button 
+            type="button"
             onClick={onNext}
             disabled={!allAnswered}
             className="px-8 bg-gradient-blue hover:opacity-90"
