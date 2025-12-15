@@ -16,63 +16,87 @@ import {
 // ============== DADOS DO TESTE ==============
 const CATEGORIAS = [
   'Naturalista', 'Musical', 'Lógico-matemático', 'Existencial',
-  'Interpessoal', 'Corporal', 'Linguística', 'Intrapessoal', 'Espacial'
+  'Interpessoal', 'Corporal-Cinestésica', 'Linguística', 'Intrapessoal', 'Espacial'
 ];
 
-// Apenas as 8 categorias usadas no teste (removendo Existencial que não tem perguntas)
+// Apenas as 8 categorias usadas no teste (nao tem a existencial)
 const CATEGORIAS_TESTE = [
-  'Lógico-matemático', 'Naturalista', 'Musical', 'Interpessoal',
-  'Linguística', 'Intrapessoal', 'Corporal', 'Espacial'
+  'Naturalista', 'Musical', 'Lógico-matemático', 'Interpessoal', 'Corporal-Cinestésica', 'Linguística', 'Intrapessoal', 'Espacial'
 ];
 
 const PERGUNTAS: Record<string, string[]> = {
   'Lógico-matemático': [
     "Usar números e símbolos numéricos é fácil para mim",
-    "Costumo desenvolver equações para descrever relacionamentos",
+    "Costumo desenvolver equações para descrever relacionamentos e / ou para explicar minhas observações",
     "Muitas vezes vejo sentidos matemáticos no mundo ao meu redor",
-    "Matemática sempre foi uma das minhas aulas favoritas"
+    "Matemática sempre foi uma das minhas aulas favoritas",
+    "Eu gosto de pensar sobre questões numéricas e examinar as estatísticas",
+    "Eu costumo entender as coisas ao meu redor através de um sentido matemático",
+    "Gosto de solucionar quebra-cabeças"
   ],
   'Naturalista': [
     "O mundo de plantas e animais é importante para mim",
     "Eu gosto de animais de estimação",
     "Eu gosto de aprender sobre a natureza",
-    "Gosto de cuidar das minhas plantas em casa"
+    "Gosto de cuidar das minhas plantas em casa",
+    "Gosto de caça e pesca",
+    "Gosto de caminhar em lugares naturais",
+    "Fico ansioso ao visitar o zoológico"
   ],
   'Musical': [
-    "Minha educação musical começou quando eu era mais jovem",
+    "Minha educação musical começou quando eu era mais jovem e continua ainda hoje",
     "Eu sou bom em tocar um instrumento e cantar",
     "Lembro-me a melodia de uma canção quando perguntado",
-    "Orgulho-me de minhas realizações musicais"
+    "Orgulho-me de minhas realizações musicais",
+    "A música é muito importante para mim na vida diária",
+    "Tenho amplos e variados interesses musicais, incluindo clássicos e contemporâneos",
+    "Eu tenho um bom senso de afinação, tempo e ritmo"
+    
   ],
   'Interpessoal': [
     "Eu sinto que as pessoas de todas as idades gostam de mim",
     "Eu gosto de estar com todos os diferentes tipos de pessoas",
-    "Eu respondo a todas as pessoas com entusiasmo",
-    "Gosto de situações sociais novas ou únicas"
+    "Eu respondo a todas as pessoas com entusiasmo, livre de viés ou preconceito",
+    "Gosto de situações sociais novas ou únicas",
+    "Gosto de elogiar os outros quando eles fizeram bem",
+    "Sou rápido para sentir nos outros desonestidade e desejo de me manipular",
+    "Sinto-me seguro quando estou com estranhos"
   ],
   'Linguística': [
     "Gosto de ouvir discursos",
     "Eu gosto de manter um diário de minhas experiências",
-    "Eu leio e aprecio a poesia",
-    "Eu falo muito e gosto de contar histórias"
+    "Eu leio e aprecio a poesia e, ocasionalmente, escrevo a minha própria",
+    "Eu falo muito e gosto de contar histórias",
+    "Eu me orgulho de ter um grande vocabulário",
+    "Eu gosto de aprender novas palavras e faço isso facilmente",
+    "Gosto de ler e leio diariamente"
   ],
   'Intrapessoal': [
-    "Eu tento não perder meu tempo com perseguições triviais",
-    "Penso sobre os problemas em minha comunidade",
+    "Eu tento não perder meu tempo com perseguições sem importância",
+    "Muitas vezes penso sobre os problemas em minha comunidade, estado e / ou mundo e que eu posso fazer para ajudar a corrigir qualquer um deles",
     "Eu sou sempre totalmente honesto comigo mesmo",
-    "Eu gosto de estar sozinho e pensar sobre a minha vida"
+    "Eu gosto de estar sozinho e pensar sobre a minha vida",
+    "Costumo procurar fraquezas em mim que eu vejo nos outros",
+    "Muitas vezes penso sobre a influência que tenho sobre os outros",
+    "Eu acredito que eu sou responsável por meus atos e quem eu sou"
   ],
-  'Corporal': [
+  'Corporal-Cinestésica': [
+    "Eu me considero um atleta",
+    "Eu gosto de estar fisicamente apto",
+    "Eu tenho um bom equilíbrio e coordenação olho-mão e me sinto confortável em esportes que usam uma bola",
     "Minha coordenação me destaca em atividades de alta velocidade",
-    "Gosto de estar ao ar livre e praticar diferentes esportes",
+    "Gosto de estar ao ar livre e praticar deferentes esportes",
     "Eu gosto da emoção da competição pessoal e da equipe",
     "Eu gosto de me movimentar muito"
   ],
   'Espacial': [
-    "Eu tenho a capacidade de representar o que eu vejo pelo desenho",
-    "Minha capacidade de desenhar é reconhecida por outros",
-    "Eu posso facilmente reproduzir cor, forma e textura em desenhos",
-    "Ver as coisas em três dimensões é fácil para mim"
+    "Eu sempre sei onde estou em relação à minha casa",
+    "Eu não me perco facilmente e posso me orientar tanto com mapas ou marcos",
+    "Sei direções com facilidade",
+    "Eu tenho a capacidade de representar o que eu vejo pelo desenho ou pintura",
+    "Minha capacidade de desenhar é reconhecida e elogiada por outros",
+    "Eu posso facilmente reproduzir cor, forma, sombreamento e textura em desenhos",
+    "Ver as coisas em três dimensões é fácil para mim, e eu gosto de fazer as coisas em três dimensões"
   ]
 };
 
@@ -80,7 +104,6 @@ const CURSOS = [
   { nome: 'Administração', vetor: [1.7,1.7,7.9,1.7,8.9,1.6,7.3,6.4,2.2] },
   { nome: 'Pedagogia', vetor: [6.3,1.7,6.3,7.4,10.0,1.5,8.9,7.4,5.7] },
   { nome: 'Ciências Contábeis', vetor: [1.7,1.7,8.7,1.7,7.1,1.6,6.5,2.6,2.2] },
-  { nome: 'Direito', vetor: [1.7,1.7,7.9,1.7,8.9,1.6,8.8,6.4,2.2] },
   { nome: 'Educação Física', vetor: [2.8,5.4,5.2,1.5,6.5,8.8,6.4,2.6,8.1] },
   { nome: 'Enfermagem', vetor: [9.6,1.7,4.0,1.5,6.5,2.1,4.9,2.6,2.1] },
   { nome: 'Engenharia Civil', vetor: [1.8,1.5,8.1,1.5,4.0,1.5,2.4,1.5,9.5] },
@@ -91,7 +114,7 @@ const CURSOS = [
   { nome: 'Estética e Cosmética', vetor: [4.2,1.7,5.6,2.1,7.1,7.8,5.2,3.4,6.5] },
   { nome: 'Gestão de Recursos Humanos', vetor: [1.7,1.7,6.4,3.2,9.6,1.6,6.8,6.9,1.9] },
   { nome: 'Gestão Hospitalar', vetor: [3.8,1.6,7.1,4.5,8.7,2.4,6.5,5.8,2.6] },
-  { nome: 'Investigação Forense', vetor: [2.1,1.5,8.2,3.8,7.4,3.5,7.9,6.7,5.4] },
+  { nome: 'Investigação Forense e Perícia Criminal', vetor: [2.1,1.5,8.2,3.8,7.4,3.5,7.9,6.7,5.4] },
   { nome: 'Produção Audiovisual', vetor: [1.8,6.8,5.9,2.4,6.3,2.2,7.2,4.1,8.9] },
   { nome: 'Segurança do Trabalho', vetor: [4.1,1.6,6.7,3.1,7.5,5.8,5.3,4.9,4.2] },
   { nome: 'Segurança Pública', vetor: [2.5,1.7,5.4,4.2,9.2,6.4,6.1,5.6,3.8] },
