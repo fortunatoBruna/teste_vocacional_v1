@@ -153,17 +153,24 @@ const Header = () => (
   <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
     <div className="container mx-auto px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <div className="w-10 h-10 bg-gradient-tricolor rounded-lg flex items-center justify-center">
-          <span className="text-white font-bold text-sm">UF</span>
+        {/* Container da imagem (mantive as dimensões e arredondamento) */}
+        <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+          <img 
+            src="http://cdn.mcauto-images-production.sendgrid.net/1f39d6e45c56e7d9/df9f1508-d98e-4e5e-840d-baff32ba42bd/4558x1200.png" 
+            alt="Logo" 
+            className="w-full h-full object-cover" 
+          />
         </div>
-        <span className="text-xl font-bold text-foreground">TESTE VOCACIONAL</span>
+        
+        {/* Texto "TESTE VOCACIONAL" removido daqui */}
+        
       </div>
       <div className="flex items-center gap-2 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
         </span>
-        <span className="text-success text-sm font-medium hidden sm:inline">Online gratuito</span>
+        <span className="text-success text-sm font-medium hidden sm:inline">Teste vocacional online e gratuito</span>
         <span className="text-success text-sm font-medium sm:hidden">Online</span>
       </div>
     </div>
