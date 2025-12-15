@@ -545,7 +545,7 @@ const Footer = () => (
         UFBRA • R. Dolzani Ricardo, 335 • São José dos Campos • SP
       </p>
       <p className="text-background/40 text-xs mt-4">
-        © {new Date().getFullYear()} — Teste Vocacional baseado na Teoria das Inteligências Múltiplas
+        © {new Date().getFullYear()} — Este teste é uma ferramenta de orientação inicial gratuita. Para decisões definitivas sobre sua carreira, consulte também um orientador vocacional profissional.
       </p>
     </div>
   </footer>
