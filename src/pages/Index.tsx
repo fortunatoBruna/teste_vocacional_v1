@@ -190,7 +190,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
     
     <div className="relative z-10 container mx-auto px-4 text-center">
       <div className="inline-block mb-6 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-        <span className="text-primary text-sm font-semibold">🎓 Teste vocacional baseado na teoria das Inteligências Múltiplas de Howard Gardner</span>
+        <span className="text-primary text-sm font-semibold">🎓 Baseado na teoria das Inteligências Múltiplas de Howard Gardner</span>
       </div>
       
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
@@ -211,7 +211,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
         size="lg" 
         className="text-lg px-10 py-7 rounded-full bg-gradient-blue hover:opacity-90 shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
       >
-        Começar agora →
+        Começar teste vocacional →
       </Button>
       
       <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
