@@ -122,7 +122,7 @@ const Header = () => (
 );
 
 const Hero = ({ onStart }: { onStart: () => void }) => (
-  <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-16">
+  <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-24">
     {/* Background gradient */}
     <div className="absolute inset-0 bg-gradient-hero"></div>
     
@@ -436,7 +436,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 };
 
 const Footer = () => (
-  <footer className="bg-foreground text-background py-12">
+  <footer className="bg-foreground text-background py-12 mt-16">
     <div className="container mx-auto px-4 text-center">
       <div className="flex items-center justify-center gap-2 mb-4">
         <div className="w-8 h-8 bg-gradient-tricolor rounded-lg flex items-center justify-center">
