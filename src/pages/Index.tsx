@@ -303,26 +303,24 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
         </div>
         
         {/* Navigation */}
+        {/* FORA do <form> */}
         <div className="flex justify-between mt-10 gap-4">
-          <Button 
-            type="button"
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={onPrev}
             disabled={step === 1}
-            className="px-8"
           >
             ← Voltar
           </Button>
         
-          <Button 
-            type="button"
+          <Button
             onClick={onNext}
             disabled={!allAnswered}
-            className="px-8 bg-gradient-blue hover:opacity-90"
           >
             {step === 8 ? 'Ver Resultado' : 'Próxima →'}
           </Button>
         </div>
+
       </div>
     </section>
   );
