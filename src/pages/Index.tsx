@@ -171,8 +171,8 @@ const Header = () => (
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
         </span>
-        <span className="text-success text-sm font-medium hidden sm:inline">Teste vocacional online e gratuito</span>
-        <span className="text-success text-sm font-medium sm:hidden">Online</span>
+        <span className="text-success text-sm font-medium hidden sm:inline">Online e gratuito</span>
+        <span className="text-success text-sm font-medium sm:hidden">Online e gratuito</span>
       </div>
     </div>
   </header>
@@ -190,7 +190,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
     
     <div className="relative z-10 container mx-auto px-4 text-center">
       <div className="inline-block mb-6 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-        <span className="text-primary text-sm font-semibold">🎓 Baseado na Teoria das Inteligências Múltiplas</span>
+        <span className="text-primary text-sm font-semibold">🎓 Teste vocacional baseado na Teoria das Inteligências Múltiplas de Howard Gardner</span>
       </div>
       
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
@@ -211,7 +211,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
         size="lg" 
         className="text-lg px-10 py-7 rounded-full bg-gradient-blue hover:opacity-90 shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
       >
-        Começar Teste Gratuito →
+        Começar teste gratuito →
       </Button>
       
       <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
@@ -222,7 +222,7 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
           <span className="text-success font-bold">✓</span> Resultado Imediato
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-success font-bold">✓</span> 19 Cursos Analisados
+          <span className="text-success font-bold">✓</span> 44 Cursos Analisados
         </div>
       </div>
     </div>
