@@ -101,42 +101,50 @@ const CURSOS = [
 // ============== COMPONENTES ==============
 
 const Header = () => (
-  <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
-    <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 className="text-xl md:text-2xl font-bold text-primary">
-        <span className="text-accent">UFBRA</span> Teste Vocacional
-      </h1>
-      <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
-        <span className="inline-block w-2 h-2 bg-success rounded-full animate-pulse"></span>
-        Teste Online Gratuito
+  <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <div className="w-10 h-10 bg-gradient-tricolor rounded-lg flex items-center justify-center">
+          <span className="text-white font-bold text-sm">UF</span>
+        </div>
+        <span className="text-xl font-bold text-foreground">UFBRA</span>
+      </div>
+      <div className="flex items-center gap-2 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+        </span>
+        <span className="text-success text-sm font-medium hidden sm:inline">Teste online gratuito</span>
+        <span className="text-success text-sm font-medium sm:hidden">Online</span>
       </div>
     </div>
   </header>
 );
 
 const Hero = ({ onStart }: { onStart: () => void }) => (
-  <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+  <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-16">
     {/* Background gradient */}
     <div className="absolute inset-0 bg-gradient-hero"></div>
     
-    {/* Floating shapes */}
-    <div className="absolute top-20 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float"></div>
-    <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float-delayed"></div>
+    {/* Floating shapes - UFBRA colors */}
+    <div className="absolute top-32 left-10 w-72 h-72 bg-primary/15 rounded-full blur-3xl animate-float"></div>
+    <div className="absolute bottom-20 right-10 w-96 h-96 bg-success/10 rounded-full blur-3xl animate-float-delayed"></div>
+    <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-accent/15 rounded-full blur-3xl animate-float"></div>
     
     <div className="relative z-10 container mx-auto px-4 text-center">
-      <div className="inline-block mb-6 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full">
-        <span className="text-accent text-sm font-medium">🎓 Baseado na Teoria das Inteligências Múltiplas</span>
+      <div className="inline-block mb-6 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
+        <span className="text-primary text-sm font-semibold">🎓 Baseado na Teoria das Inteligências Múltiplas</span>
       </div>
       
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
         Descubra seu <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+        <span className="text-gradient-ufbra">
           curso ideal
         </span>
         <br /> em 3 minutos
       </h1>
       
-      <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+      <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
         Responda 32 perguntas rápidas baseadas em suas habilidades e preferências 
         e receba seu ranking personalizado de cursos universitários.
       </p>
@@ -144,20 +152,20 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
       <Button 
         onClick={onStart} 
         size="lg" 
-        className="text-lg px-10 py-7 rounded-full shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
+        className="text-lg px-10 py-7 rounded-full bg-gradient-blue hover:opacity-90 shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
       >
         Começar Teste Gratuito →
       </Button>
       
       <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
-          <span className="text-accent">✓</span> 100% Gratuito
+          <span className="text-success font-bold">✓</span> 100% Gratuito
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-accent">✓</span> Resultado Imediato
+          <span className="text-success font-bold">✓</span> Resultado Imediato
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-accent">✓</span> 19 Cursos Analisados
+          <span className="text-success font-bold">✓</span> 19 Cursos Analisados
         </div>
       </div>
     </div>
@@ -180,7 +188,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
   const allAnswered = currentRespostas.filter(r => r !== undefined).length === 4;
 
   return (
-    <section className="min-h-screen bg-muted/30 py-12">
+    <section className="min-h-screen bg-muted/30 py-12 pt-24">
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Progress Header */}
         <div className="mb-8">
@@ -188,7 +196,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             <span className="text-sm font-medium text-muted-foreground">
               Passo {step} de 8
             </span>
-            <span className="text-sm font-medium text-accent">
+            <span className="text-sm font-semibold text-primary">
               {categoria}
             </span>
           </div>
@@ -208,7 +216,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
         {/* Questions */}
         <div className="space-y-4">
           {perguntas.map((texto, i) => (
-            <Card key={i} className="border-border/50 bg-card/80 backdrop-blur transition-all duration-300 hover:shadow-card">
+            <Card key={i} className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card">
               <CardContent className="p-6">
                 <p className="text-foreground mb-4 font-medium">
                   {i + 1}. {texto}
@@ -221,7 +229,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
                       className={`w-12 h-12 md:w-14 md:h-14 rounded-xl font-bold text-lg transition-all duration-200 
                         ${currentRespostas[i] === v 
                           ? 'bg-primary text-primary-foreground shadow-glow scale-110' 
-                          : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                          : 'bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary'
                         }`}
                     >
                       {v}
@@ -250,7 +258,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
           <Button 
             onClick={onNext}
             disabled={!allAnswered}
-            className="px-8"
+            className="px-8 bg-gradient-blue hover:opacity-90"
           >
             {step === 8 ? 'Ver Resultado' : 'Próxima →'}
           </Button>
@@ -289,12 +297,12 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
   };
 
   return (
-    <section className="min-h-screen bg-gradient-result py-12">
+    <section className="min-h-screen bg-gradient-result py-12 pt-24">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-block mb-4 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
-            <span className="text-success text-sm font-medium">✓ Teste Concluído</span>
+          <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
+            <span className="text-success text-sm font-semibold">✓ Teste Concluído</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Seu Resultado Personalizado
@@ -306,7 +314,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Radar Chart */}
-          <Card className="bg-card/80 backdrop-blur border-border/50">
+          <Card className="bg-card/90 backdrop-blur border-border/50">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-4 text-center">
                 Seu Perfil de Inteligências
@@ -327,8 +335,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                     <Radar
                       name="Seu Perfil"
                       dataKey="score"
-                      stroke="hsl(var(--primary))"
-                      fill="hsl(var(--primary))"
+                      stroke="hsl(204 76% 44%)"
+                      fill="hsl(204 76% 44%)"
                       fillOpacity={0.4}
                       strokeWidth={2}
                     />
@@ -339,7 +347,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           </Card>
 
           {/* Top 6 Courses */}
-          <Card className="bg-card/80 backdrop-blur border-border/50">
+          <Card className="bg-card/90 backdrop-blur border-border/50">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">
                 🏆 Top 6 Cursos Recomendados
@@ -350,7 +358,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                     key={i}
                     className={`flex items-center justify-between p-4 rounded-xl transition-all
                       ${i === 0 
-                        ? 'bg-gradient-to-r from-primary/20 to-accent/20 border-2 border-primary/30' 
+                        ? 'bg-gradient-to-r from-primary/15 to-success/15 border-2 border-primary/30' 
                         : 'bg-muted/50 border border-border/50'
                       }`}
                   >
@@ -377,7 +385,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         </div>
 
         {/* Lead Form */}
-        <Card className="mt-8 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+        <Card className="mt-8 bg-gradient-to-br from-primary/5 to-success/5 border-primary/20">
           <CardContent className="p-8">
             <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
               📱 Receba os detalhes no seu WhatsApp
@@ -409,7 +417,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                 required
                 className="h-12"
               />
-              <Button type="submit" className="w-full h-12 text-lg">
+              <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90">
                 Enviar Resultado →
               </Button>
             </form>
@@ -418,7 +426,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
         {/* Restart Button */}
         <div className="text-center mt-8">
-          <Button variant="ghost" onClick={onRestart} className="text-muted-foreground">
+          <Button variant="ghost" onClick={onRestart} className="text-muted-foreground hover:text-primary">
             ↻ Refazer o teste
           </Button>
         </div>
@@ -430,7 +438,12 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 const Footer = () => (
   <footer className="bg-foreground text-background py-12">
     <div className="container mx-auto px-4 text-center">
-      <p className="text-lg font-medium mb-2">UFBRA</p>
+      <div className="flex items-center justify-center gap-2 mb-4">
+        <div className="w-8 h-8 bg-gradient-tricolor rounded-lg flex items-center justify-center">
+          <span className="text-white font-bold text-xs">UF</span>
+        </div>
+        <span className="text-xl font-bold">UFBRA</span>
+      </div>
       <p className="text-background/60 text-sm">
         Universidade Federal do Brasil — Todos os direitos reservados
       </p>
