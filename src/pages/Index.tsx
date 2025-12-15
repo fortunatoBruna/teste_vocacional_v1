@@ -242,7 +242,7 @@ interface StepProps {
 const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, onPrev }: StepProps) => {
   const progress = (step / 8) * 100;
   const currentRespostas = respostas[categoria] || [];
-  const allAnswered =   currentRespostas.length === perguntas.length && currentRespostas.every(r => r !== undefined); 
+  const allAnswered =   perguntas.every((_, index) => currentRespostas[index] !== undefined);
    /* O botão Proxima e Voltar funciona quando todas as perguntas do step atual foram respondidas */
   
   return (
