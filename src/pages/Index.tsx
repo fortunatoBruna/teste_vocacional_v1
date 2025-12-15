@@ -118,7 +118,33 @@ const CURSOS = [
   { nome: 'Produção Audiovisual', vetor: [1.8,6.8,5.9,2.4,6.3,2.2,7.2,4.1,8.9] },
   { nome: 'Segurança do Trabalho', vetor: [4.1,1.6,6.7,3.1,7.5,5.8,5.3,4.9,4.2] },
   { nome: 'Segurança Pública', vetor: [2.5,1.7,5.4,4.2,9.2,6.4,6.1,5.6,3.8] },
-  { nome: 'Terapia Ocupacional', vetor: [5.6,2.1,4.8,4.9,8.9,7.2,6.4,6.3,4.7] }
+  { nome: 'Terapia Ocupacional', vetor: [5.6,2.1,4.8,4.9,8.9,7.2,6.4,6.3,4.7] },
+  { nome: 'Logística', vetor: [1.6,1.7,4.3,1.6,4.5,1.5,6.5,1.9,3.3] },
+  { nome: 'Fisioterapia', vetor: [7.3,1.7,3.2,1.5,4.2,7.3,6.4,2.6,4.4] },
+  { nome: 'Serviço Social', vetor: [1.7,1.7,1.9,5.4,7.6,1.6,6.5,2.6,2.2] },
+  { nome: 'Psicologia', vetor: [6.2,1.7,1.7,6.6,9.8,1.7,6.6,6.5,1.9] },
+  { nome: 'Nutrição', vetor: [8.8,1.7,4.7,1.5,7.2,2.1,6.4,4.8,2.1] },
+  { nome: 'Análise e Desenvolvimento de Sistemas', vetor: [1.6,1.5,8.4,1.5,2.2,1.5,7.2,1.5,2.3] },
+  { nome: 'Marketing', vetor: [1.6,3.9,6.5,1.6,9.8,1.5,6.5,4.9,1.8] },
+  { nome: 'Farmácia', vetor: [8.8,1.7,7.0,1.5,5.7,2.1,6.4,3.3,2.1] },
+  { nome: 'Gestão Financeira', vetor: [1.6,1.7,6.5,1.6,6.8,1.5,6.5,4.9,1.8] },
+  { nome: 'Processos Gerenciais', vetor: [1.6,1.7,7.3,1.6,8.3,1.5,6.5,1.9,1.8] },
+  { nome: 'Biomedicina', vetor: [8.4,1.6,7.1,1.5,6.5,1.7,5.6,1.6,1.8] },
+  { nome: 'Engenharia de Produção', vetor: [1.8,1.5,8.3,1.5,7.7,1.5,5.4,1.5,6.5] },
+  { nome: 'Sistemas de Informação', vetor: [1.6,1.6,7.5,1.5,2.4,1.5,6.4,1.7,2.3] },
+  { nome: 'Gestão Comercial', vetor: [1.6,1.7,6.5,1.6,8.3,1.5,6.5,1.9,1.8] },
+  { nome: 'Engenharia Mecânica', vetor: [1.8,1.5,9.3,1.5,5.5,1.5,5.4,1.5,8.0] },
+  { nome: 'Publicidade e Propaganda', vetor: [1.8,5.5,5.5,2.2,9.3,1.5,6.6,2.1,1.9] },
+  { nome: 'Ciência da Computação', vetor: [1.6,1.6,9.3,1.5,5.4,1.5,7.2,1.7,2.3] },
+  { nome: 'Gestão Ambiental', vetor: [7.3,1.6,6.3,1.6,6.7,1.6,5.6,1.7,6.2] },
+  { nome: 'Engenharia Elétrica', vetor: [1.8,1.5,10.3,1.5,5.5,1.5,5.4,1.5,5.8] },
+  { nome: 'Design Gráfico', vetor: [1.7,1.7,6.4,1.7,6.1,1.6,5.8,1.9,8.2] },
+  { nome: 'Gastronomia', vetor: [5.4,1.7,5.7,1.7,6.9,3.1,2.8,1.9,5.9] },
+  { nome: 'Redes de Computadores', vetor: [1.6,1.5,9.6,1.5,5.2,1.5,5.7,1.5,5.3] },
+  { nome: 'Gestão da Qualidade', vetor: [1.6,1.7,7.3,1.6,6.8,1.5,5.7,1.9,1.8] },
+  { nome: 'Automação Industrial', vetor: [1.6,1.5,8.4,1.5,5.5,1.5,2.3,1.5,6.9] },
+  { nome: 'Letras - Português e Inglês', vetor: [1.6,1.6,5.6,1.6,7.6,1.5,9.1,1.7,1.8] },
+  { nome: 'Gestão de Tecnologia da Informação', vetor: [1.6,1.6,8.3,1.5,6.2,1.5,7.2,1.7,2.3] }
 ];
 
 // ============== COMPONENTES ==============
@@ -130,14 +156,14 @@ const Header = () => (
         <div className="w-10 h-10 bg-gradient-tricolor rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-sm">UF</span>
         </div>
-        <span className="text-xl font-bold text-foreground">UFBRA</span>
+        <span className="text-xl font-bold text-foreground">TESTE VOCACIONAL</span>
       </div>
       <div className="flex items-center gap-2 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
         </span>
-        <span className="text-success text-sm font-medium hidden sm:inline">Teste online gratuito</span>
+        <span className="text-success text-sm font-medium hidden sm:inline">Online gratuito</span>
         <span className="text-success text-sm font-medium sm:hidden">Online</span>
       </div>
     </div>
