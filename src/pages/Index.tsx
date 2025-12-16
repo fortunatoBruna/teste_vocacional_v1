@@ -304,7 +304,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             onClick={onNext}
             disabled={!allAnswered}
           >
-            {step === 8 ? 'Ver Resultado' : 'Próxima →'}
+            {step === 8 ? 'Finalizar teste' : 'Próximo →'}
           </Button>
         </div>
 
@@ -364,20 +364,15 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
               Análise Concluída!
             </h2>
             <p className="text-muted-foreground">
-              Para liberar seu ranking exclusivo e o gráfico de competências, preencha seus dados de contato abaixo.
+              Para liberar seu ranking de cursos e o gráfico de competências, preencha seus dados de contato abaixo.
             </p>
           </div>
 
           {/* Card do Formulário (Sem alterações visuais internas, apenas layout) */}
           <Card className="bg-card/90 backdrop-blur border-primary/20 shadow-glow-lg">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
-                📱 Receba os detalhes no seu WhatsApp
-              </h3>
-              <p className="text-muted-foreground text-center mb-6">
-                Enviaremos informações completas sobre os cursos recomendados
-              </p>
               
+              {/* REMOVIDO: Título H3 e Parágrafo P que falavam do WhatsApp */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                   placeholder="Seu nome"
