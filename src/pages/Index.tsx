@@ -554,9 +554,13 @@ const Index = () => {
     return selecionadas;
   });
 
+  // Scroll automático sempre que mudar de etapa
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   const handleStart = () => {
     setStep(1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelect = (categoria: string, index: number, valor: number) => {
@@ -617,19 +621,16 @@ const Index = () => {
 
     if (step < 8) {
       setStep(step + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const rankings = calcularResultado();
       setResultado(rankings);
       setStep(9);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handlePrev = () => {
     if (step > 1) {
       setStep(step - 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
