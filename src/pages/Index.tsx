@@ -101,47 +101,287 @@ const PERGUNTAS: Record<string, string[]> = {
 };
 
 const CURSOS = [
-  { nome: 'Administração', vetor: [1.7,1.7,7.9,1.7,8.9,1.6,7.3,6.4,2.2] },
-  { nome: 'Pedagogia', vetor: [6.3,1.7,6.3,7.4,10.0,1.5,8.9,7.4,5.7] },
-  { nome: 'Ciências Contábeis', vetor: [1.7,1.7,8.7,1.7,7.1,1.6,6.5,2.6,2.2] },
-  { nome: 'Educação Física', vetor: [2.8,5.4,5.2,1.5,6.5,8.8,6.4,2.6,8.1] },
-  { nome: 'Enfermagem', vetor: [9.6,1.7,4.0,1.5,6.5,2.1,4.9,2.6,2.1] },
-  { nome: 'Engenharia Civil', vetor: [1.8,1.5,8.1,1.5,4.0,1.5,2.4,1.5,9.5] },
-  { nome: 'Agronomia', vetor: [9.8,1.5,7.2,2.1,6.5,2.5,5.4,3.2,4.8] },
-  { nome: 'Criminologia', vetor: [1.7,1.6,6.8,3.5,8.4,2.8,7.6,7.2,3.1] },
-  { nome: 'Energias Renováveis', vetor: [7.3,1.5,8.5,2.2,6.2,1.8,4.9,4.1,7.9] },
-  { nome: 'Engenharia de Software', vetor: [1.6,1.6,9.8,1.5,5.4,1.5,7.3,2.1,3.2] },
-  { nome: 'Gestão de Recursos Humanos', vetor: [1.7,1.7,6.4,3.2,9.6,1.6,6.8,6.9,1.9] },
-  { nome: 'Gestão Hospitalar', vetor: [3.8,1.6,7.1,4.5,8.7,2.4,6.5,5.8,2.6] },
-  { nome: 'Investigação Forense e Perícia Criminal', vetor: [2.1,1.5,8.2,3.8,7.4,3.5,7.9,6.7,5.4] },
-  { nome: 'Produção Audiovisual', vetor: [1.8,6.8,5.9,2.4,6.3,2.2,7.2,4.1,8.9] },
-  { nome: 'Segurança do Trabalho', vetor: [4.1,1.6,6.7,3.1,7.5,5.8,5.3,4.9,4.2] },
-  { nome: 'Segurança Pública', vetor: [2.5,1.7,5.4,4.2,9.2,6.4,6.1,5.6,3.8] },
-  { nome: 'Terapia Ocupacional', vetor: [5.6,2.1,4.8,4.9,8.9,7.2,6.4,6.3,4.7] },
-  { nome: 'Logística', vetor: [1.6,1.7,4.3,1.6,4.5,1.5,6.5,1.9,3.3] },
-  { nome: 'Fisioterapia', vetor: [7.3,1.7,3.2,1.5,4.2,7.3,6.4,2.6,4.4] },
-  { nome: 'Psicologia', vetor: [6.2,1.7,1.7,6.6,9.8,1.7,6.6,6.5,1.9] },
-  { nome: 'Nutrição', vetor: [8.8,1.7,4.7,1.5,7.2,2.1,6.4,4.8,2.1] },
-  { nome: 'Análise e Desenvolvimento de Sistemas', vetor: [1.6,1.5,8.4,1.5,2.2,1.5,7.2,1.5,2.3] },
-  { nome: 'Marketing', vetor: [1.6,3.9,6.5,1.6,9.8,1.5,6.5,4.9,1.8] },
-  { nome: 'Farmácia', vetor: [8.8,1.7,7.0,1.5,5.7,2.1,6.4,3.3,2.1] },
-  { nome: 'Gestão Financeira', vetor: [1.6,1.7,6.5,1.6,6.8,1.5,6.5,4.9,1.8] },
-  { nome: 'Processos Gerenciais', vetor: [1.6,1.7,7.3,1.6,8.3,1.5,6.5,1.9,1.8] },
-  { nome: 'Biomedicina', vetor: [8.4,1.6,7.1,1.5,6.5,1.7,5.6,1.6,1.8] },
-  { nome: 'Engenharia de Produção', vetor: [1.8,1.5,8.3,1.5,7.7,1.5,5.4,1.5,6.5] },
-  { nome: 'Sistemas de Informação', vetor: [1.6,1.6,7.5,1.5,2.4,1.5,6.4,1.7,2.3] },
-  { nome: 'Gestão Comercial', vetor: [1.6,1.7,6.5,1.6,8.3,1.5,6.5,1.9,1.8] },
-  { nome: 'Engenharia Mecânica', vetor: [1.8,1.5,9.3,1.5,5.5,1.5,5.4,1.5,8.0] },
-  { nome: 'Ciência da Computação', vetor: [1.6,1.6,9.3,1.5,5.4,1.5,7.2,1.7,2.3] },
-  { nome: 'Gestão Ambiental', vetor: [7.3,1.6,6.3,1.6,6.7,1.6,5.6,1.7,6.2] },
-  { nome: 'Engenharia Elétrica', vetor: [1.8,1.5,10.3,1.5,5.5,1.5,5.4,1.5,5.8] },
-  { nome: 'Design Gráfico', vetor: [1.7,1.7,6.4,1.7,6.1,1.6,5.8,1.9,8.2] },
-  { nome: 'Gastronomia', vetor: [5.4,1.7,5.7,1.7,6.9,3.1,2.8,1.9,5.9] },
-  { nome: 'Redes de Computadores', vetor: [1.6,1.5,9.6,1.5,5.2,1.5,5.7,1.5,5.3] },
-  { nome: 'Gestão da Qualidade', vetor: [1.6,1.7,7.3,1.6,6.8,1.5,5.7,1.9,1.8] },
-  { nome: 'Automação Industrial', vetor: [1.6,1.5,8.4,1.5,5.5,1.5,2.3,1.5,6.9] },
-  { nome: 'Gestão de Tecnologia da Informação', vetor: [1.6,1.6,8.3,1.5,6.2,1.5,7.2,1.7,2.3] }
-];
+  {
+    nome: 'Administração',
+    area: 'Ciências sociais aplicadas',
+    descricao: 'Este curso desenvolve competências essenciais para a gestão eficiente de organizações, integrando conhecimentos em finanças, estratégia, liderança, processos e sustentabilidade.',
+    link: 'https://ufbra.com.br/cursos/administracao',
+    vetor: [1.7, 1.7, 7.9, 1.7, 8.9, 1.6, 7.3, 6.4, 2.2]
+  },
+  {
+    nome: 'Pedagogia',
+    area: 'Ciências humanas',
+    descricao: 'O curso de Pedagogia prepara profissionais para atuar na gestão, planejamento e desenvolvimento de práticas educativas eficazes, contemplando desde fundamentos históricos e sociais até o uso de tecnologias e metodologias inclusivas.',
+    link: 'https://ufbra.com.br/cursos/pedagogia',
+    vetor: [6.3, 1.7, 6.3, 7.4, 10.0, 1.5, 8.9, 7.4, 5.7]
+  },
+  {
+    nome: 'Ciências Contábeis',
+    area: 'Ciências sociais aplicadas',
+    descricao: 'O curso de Ciências Contábeis capacita o profissional a atuar com domínio em contabilidade, finanças e gestão estratégica, integrando conhecimentos em sustentabilidade, tecnologia da informação e legislação empresarial.',
+    link: 'https://ufbra.com.br/cursos/ciencias-contabeis',
+    vetor: [1.7, 1.7, 8.7, 1.7, 7.1, 1.6, 6.5, 2.6, 2.2]
+  },
+  {
+    nome: 'Educação Física',
+    area: 'Ciências da saúde',
+    descricao: 'O curso de Educação Física prepara profissionais capacitados a atuar na promoção da saúde, desenvolvimento motor e inclusão social por meio do movimento corporal.',
+    link: 'https://ufbra.com.br/cursos/educacao-fisica',
+    vetor: [2.8, 5.4, 5.2, 1.5, 6.5, 8.8, 6.4, 2.6, 8.1]
+  },
+  {
+    nome: 'Enfermagem',
+    area: 'Ciências da saúde',
+    descricao: 'Este curso de Enfermagem desenvolve habilidades essenciais para a prática avançada, abrangendo desde o cuidado direto ao paciente até a gestão de serviços de saúde.',
+    link: 'https://ufbra.com.br/cursos/enfermagem',
+    vetor: [9.6, 1.7, 4.0, 1.5, 6.5, 2.1, 4.9, 2.6, 2.1]
+  },
+  {
+    nome: 'Engenharia Civil',
+    area: 'Engenharias',
+    descricao: 'Este curso de Engenharia Civil desenvolve competências técnicas essenciais, combinando fundamentos matemáticos, físicos e tecnológicos com práticas projetuais multidisciplinares.',
+    link: 'https://ufbra.com.br/cursos/engenharia-civil',
+    vetor: [1.8, 1.5, 8.1, 1.5, 4.0, 1.5, 2.4, 1.5, 9.5]
+  },
+  {
+    nome: 'Logística',
+    area: 'Gestão e Negócios',
+    descricao: 'Este curso de Logística capacita profissionais a planejar, implementar e otimizar operações de cadeias de suprimentos com foco em eficiência, sustentabilidade e inovação tecnológica.',
+    link: 'https://ufbra.com.br/cursos/logistica',
+    vetor: [1.6, 1.7, 4.3, 1.6, 4.5, 1.5, 6.5, 1.9, 3.3]
+  },
+  {
+    nome: 'Fisioterapia',
+    area: 'Ciências da saúde',
+    descricao: 'O curso de Fisioterapia proporciona uma formação sólida em ciências biológicas e de saúde, integrando conhecimentos de anatomia, fisiologia, patologia e técnicas de avaliação funcional.',
+    link: 'https://ufbra.com.br/cursos/fisioterapia',
+    vetor: [7.3, 1.7, 3.2, 1.5, 4.2, 7.3, 6.4, 2.6, 4.4]
+  },
+  {
+    nome: 'Psicologia',
+    area: 'Ciências humanas',
+    descricao: 'O curso de Psicologia oferece uma formação sólida que integra teoria e prática, capacitando o aluno a aplicar conhecimentos científicos na compreensão e intervenção sobre o comportamento humano.',
+    link: 'https://ufbra.com.br/cursos/psicologia',
+    vetor: [6.2, 1.7, 1.7, 6.6, 9.8, 1.7, 6.6, 6.5, 1.9]
+  },
+  {
+    nome: 'Nutrição',
+    area: 'Ciências da saúde',
+    descricao: 'Este curso proporciona uma formação sólida em nutrição, integrando conhecimentos de biociências, saúde pública e técnicas alimentares aplicadas. O aluno desenvolve competências para avaliar, planejar e orientar práticas nutricionais individuais e...',
+    link: 'https://ufbra.com.br/cursos/nutricao',
+    vetor: [8.8, 1.7, 4.7, 1.5, 7.2, 2.1, 6.4, 4.8, 2.1]
+  },
+  {
+    nome: 'Análise e Desenvolvimento de Sistemas',
+    area: 'Informação e Comunicação',
+    descricao: 'O curso de Análise e Desenvolvimento de Sistemas prepara profissionais capacitados a projetar, implementar e gerenciar soluções tecnológicas que atendem às demandas do mercado digital.',
+    link: 'https://ufbra.com.br/cursos/analise-e-desenvolvimento-de-sistemas',
+    vetor: [1.6, 1.5, 8.4, 1.5, 2.2, 1.5, 7.2, 1.5, 2.3]
+  },
+  {
+    nome: 'Marketing',
+    area: 'Gestão e Negócios',
+    descricao: 'Este curso de Marketing capacita o aluno a desenvolver estratégias eficazes que abrangem desde o comportamento do consumidor e marketing digital até o gerenciamento de marcas e comércio eletrônico.',
+    link: 'https://ufbra.com.br/cursos/marketing',
+    vetor: [1.6, 3.9, 6.5, 1.6, 9.8, 1.5, 6.5, 4.9, 1.8]
+  },
+  {
+    nome: 'Farmácia',
+    area: 'Ciências da saúde',
+    descricao: 'O curso de Farmácia proporciona uma formação sólida que integra conhecimentos em ciências biológicas, químicas e farmacológicas, capacitando o aluno a compreender e atuar em diferentes etapas do desenvolvimento, produção e controle de medicamentos.',
+    link: 'https://ufbra.com.br/cursos/farmacia',
+    vetor: [8.8, 1.7, 7.0, 1.5, 5.7, 2.1, 6.4, 3.3, 2.1]
+  },
+  {
+    nome: 'Gestão Financeira',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso em Gestão Financeira desenvolve competências essenciais para a análise, planejamento e controle dos recursos financeiros em organizações de diversos setores.',
+    link: 'https://ufbra.com.br/cursos/gestao-financeira',
+    vetor: [1.6, 1.7, 6.5, 1.6, 6.8, 1.5, 6.5, 4.9, 1.8]
+  },
+  {
+    nome: 'Processos Gerenciais',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso de Processos Gerenciais capacita o aluno a aplicar conhecimentos em economia, gestão, finanças e tecnologia para otimizar operações empresariais.',
+    link: 'https://ufbra.com.br/cursos/processos-gerenciais',
+    vetor: [1.6, 1.7, 7.3, 1.6, 8.3, 1.5, 6.5, 1.9, 1.8]
+  },
+  {
+    nome: 'Biomedicina',
+    area: 'Ciências biológicas',
+    descricao: 'O curso de Biomedicina oferece uma formação sólida nas ciências biológicas e da saúde, integrando fundamentos teóricos e práticas laboratoriais essenciais para a atuação profissional.',
+    link: 'https://ufbra.com.br/cursos/biomedicina',
+    vetor: [8.4, 1.6, 7.1, 1.5, 6.5, 1.7, 5.6, 1.6, 1.8]
+  },
+  {
+    nome: 'Engenharia de Produção',
+    area: 'Engenharias',
+    descricao: 'O curso de Engenharia de Produção desenvolve competências técnicas e analíticas essenciais para otimizar processos produtivos, integrar tecnologias e gerir projetos multidisciplinares.',
+    link: 'https://ufbra.com.br/cursos/engenharia-de-producao',
+    vetor: [1.8, 1.5, 8.3, 1.5, 7.7, 1.5, 5.4, 1.5, 6.5]
+  },
+  {
+    nome: 'Sistemas de Informação',
+    area: 'Ciências exatas e da terra',
+    descricao: 'Este curso desenvolve competências técnicas e analíticas essenciais para atuar na área de Sistemas de Informação, capacitando o aluno a planejar, desenvolver e gerenciar soluções de tecnologia que atendam às demandas organizacionais.',
+    link: 'https://ufbra.com.br/cursos/sistemas-de-informacao',
+    vetor: [1.6, 1.6, 7.5, 1.5, 2.4, 1.5, 6.4, 1.7, 2.3]
+  },
+  {
+    nome: 'Gestão Comercial',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso em Gestão Comercial prepara profissionais para atuar de forma estratégica na condução de processos comerciais, integrando conhecimentos em economia, administração e marketing com ferramentas tecnológicas atuais.',
+    link: 'https://ufbra.com.br/cursos/gestao-comercial',
+    vetor: [1.6, 1.7, 6.5, 1.6, 8.3, 1.5, 6.5, 1.9, 1.8]
+  },
+  {
+    nome: 'Engenharia Mecânica',
+    area: 'Engenharias',
+    descricao: 'O curso de Engenharia Mecânica oferece uma formação sólida que integra fundamentos matemáticos, físicos e tecnológicos aplicados ao desenvolvimento e gestão de projetos complexos.',
+    link: 'https://ufbra.com.br/cursos/engenharia-mecanica',
+    vetor: [1.8, 1.5, 9.3, 1.5, 5.5, 1.5, 5.4, 1.5, 8.0]
+  },
+  {
+    nome: 'Ciência da Computação',
+    area: 'Ciências Exatas e da Terra',
+    descricao: 'Este curso de Ciência da Computação desenvolve habilidades técnicas essenciais, desde lógica matemática e programação até o domínio de sistemas operacionais, redes e bancos de dados.',
+    link: 'https://ufbra.com.br/cursos/ciencia-da-computacao',
+    vetor: [1.6, 1.6, 9.3, 1.5, 5.4, 1.5, 7.2, 1.7, 2.3]
+  },
+  {
+    nome: 'Gestão Ambiental',
+    area: 'Ambiente e saúde',
+    descricao: 'Este curso prepara profissionais para atuar na gestão sustentável de recursos naturais e na implementação de práticas ambientais eficientes. Desenvolve habilidades em planejamento e controle ambiental, análise de impactos, recuperação de áreas...',
+    link: 'https://ufbra.com.br/cursos/gestao-ambiental',
+    vetor: [7.3, 1.6, 6.3, 1.6, 6.7, 1.6, 5.6, 1.7, 6.2]
+  },
+  {
+    nome: 'Engenharia Elétrica',
+    area: 'Engenharias',
+    descricao: 'Este curso de Engenharia Elétrica desenvolve competências técnicas fundamentais em matemática, física aplicada, programação e materiais, preparando o aluno para atuar em projetos complexos no setor elétrico e tecnológico.',
+    link: 'https://ufbra.com.br/cursos/engenharia-eletrica',
+    vetor: [1.8, 1.5, 10.3, 1.5, 5.5, 1.5, 5.4, 1.5, 5.8]
+  },
+  {
+    nome: 'Design Gráfico',
+    area: 'Ciências sociais aplicadas',
+    descricao: 'O curso de Design Gráfico desenvolve competências técnicas e criativas essenciais para atuação profissional em ambientes físicos e digitais. O aluno aprimora sua capacidade de criação visual, desde fundamentos filosóficos e culturais até a...',
+    link: 'https://ufbra.com.br/cursos/design-grafico',
+    vetor: [1.7, 1.7, 6.4, 1.7, 6.1, 1.6, 5.8, 1.9, 8.2]
+  },
+  {
+    nome: 'Gastronomia',
+    area: 'Ciências sociais aplicadas',
+    descricao: 'O curso de Gastronomia proporciona uma formação ampla que desenvolve competências técnicas e gerenciais essenciais para o mercado gastronômico. O aluno aprende desde fundamentos históricos e culturais, higiene e segurança alimentar até técnicas...',
+    link: 'https://ufbra.com.br/cursos/gastronomia',
+    vetor: [5.4, 1.7, 5.7, 1.7, 6.9, 3.1, 2.8, 1.9, 5.9]
+  },
+  {
+    nome: 'Redes de Computadores',
+    area: 'Informação e comunicação',
+    descricao: 'Este curso capacita profissionais a projetar, implementar e gerenciar redes de computadores, desenvolvendo habilidades técnicas em infraestrutura, protocolos avançados, segurança e monitoramento de redes.',
+    link: 'https://ufbra.com.br/cursos/redes-de-computadores',
+    vetor: [1.6, 1.5, 9.6, 1.5, 5.2, 1.5, 5.7, 1.5, 5.3]
+  },
+  {
+    nome: 'Gestão da Qualidade',
+    area: 'Gestão e Negócios',
+    descricao: 'Este curso prepara profissionais para atuar na gestão da qualidade integrando conhecimentos em administração, controle estatístico, auditoria e normas ISO.',
+    link: 'https://ufbra.com.br/cursos/gestao-da-qualidade',
+    vetor: [1.6, 1.7, 7.3, 1.6, 6.8, 1.5, 5.7, 1.9, 1.8]
+  },
+  {
+    nome: 'Automação Industrial',
+    area: 'Controle e processos industriais',
+    descricao: 'O curso de Automação Industrial desenvolve competências técnicas essenciais para projetar, implementar e gerenciar sistemas automatizados em ambientes industriais.',
+    link: 'https://ufbra.com.br/cursos/automacao-industrial',
+    vetor: [1.6, 1.5, 8.4, 1.5, 5.5, 1.5, 2.3, 1.5, 6.9]
+  },
+  {
+    nome: 'Gestão de Tecnologia da Informação',
+    area: 'Ciências exatas e da terra',
+    descricao: 'O curso de Gestão de Tecnologia da Informação desenvolve competências essenciais para planejar, implementar e gerenciar soluções tecnológicas alinhadas às estratégias organizacionais.',
+    link: 'https://ufbra.com.br/cursos/gestao-de-tecnologia-da-informacao',
+    vetor: [1.6, 1.6, 8.3, 1.5, 6.2, 1.5, 7.2, 1.7, 2.3]
+  },
+  {
+    nome: 'Agronomia',
+    area: 'Ciências biológicas',
+    descricao: 'O curso desenvolve competências sólidas em ciências agrárias, integrando conhecimentos sobre solo, plantas e animais para habilitar o aluno a atuar de forma prática e eficiente na agropecuária moderna.',
+    link: 'https://ufbra.com.br/cursos/agronomia',
+    vetor: [9.8, 1.5, 7.2, 2.1, 6.5, 2.5, 5.4, 3.2, 4.8]
+  },
+  {
+    nome: 'Criminologia',
+    area: 'Ciências humanas',
+    descricao: 'O curso de Criminologia oferece uma formação sólida para compreender os fenômenos criminais a partir de múltiplas perspectivas, incluindo aspectos jurídicos, sociais e comportamentais.',
+    link: 'https://ufbra.com.br/cursos/criminologia',
+    vetor: [1.7, 1.6, 6.8, 3.5, 8.4, 2.8, 7.6, 7.2, 3.1]
+  },
+  {
+    nome: 'Energias Renováveis',
+    area: 'Ambiente e saúde',
+    descricao: 'O curso desenvolve competências técnicas e gerenciais essenciais para atuar no setor de energias renováveis, integrando conhecimentos em gestão ambiental, inovação tecnológica e sistemas elétricos aplicados.',
+    link: 'https://ufbra.com.br/cursos/energias-renovaveis',
+    vetor: [7.3, 1.5, 8.5, 2.2, 6.2, 1.8, 4.9, 4.1, 7.9]
+  },
+  {
+    nome: 'Engenharia de Software',
+    area: 'Engenharias',
+    descricao: 'O curso de Engenharia de Software desenvolve competências técnicas essenciais para projetar, implementar e gerenciar sistemas complexos, com foco em aplicações web, mobile e soluções integradas.',
+    link: 'https://ufbra.com.br/cursos/engenharia-de-software',
+    vetor: [1.6, 1.6, 9.8, 1.5, 5.4, 1.5, 7.3, 2.1, 3.2]
+  },
+  {
+    nome: 'Gestão de Recursos Humanos',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso de Gestão de Recursos Humanos desenvolve habilidades essenciais para atuar estrategicamente na administração de pessoas, combinando conhecimentos em economia, administração e tecnologia aplicada à gestão.',
+    link: 'https://ufbra.com.br/cursos/gestao-de-recursos-humanos',
+    vetor: [1.7, 1.7, 6.4, 3.2, 9.6, 1.6, 6.8, 6.9, 1.9]
+  },
+  {
+    nome: 'Gestão Hospitalar',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso de Gestão Hospitalar capacita profissionais para atuar na administração eficiente de instituições de saúde, integrando conhecimentos em finanças, marketing, planejamento estratégico, políticas públicas e tecnologia da informação.',
+    link: 'https://ufbra.com.br/cursos/gestao-hospitalar',
+    vetor: [3.8, 1.6, 7.1, 4.5, 8.7, 2.4, 6.5, 5.8, 2.6]
+  },
+  {
+    nome: 'Investigação Forense e Perícia Criminal',
+    area: 'Ciências humanas',
+    descricao: 'O curso de Investigação Forense e Perícia Criminal desenvolve competências para atuar em análises técnicas e jurídicas voltadas à elucidação de crimes.',
+    link: 'https://ufbra.com.br/cursos/investigacao-forense-e-pericia-criminal',
+    vetor: [2.1, 1.5, 8.2, 3.8, 7.4, 3.5, 7.9, 6.7, 5.4]
+  },
+  {
+    nome: 'Produção Audiovisual',
+    area: 'Ciências sociais aplicadas',
+    descricao: 'O curso de Produção Audiovisual capacita profissionais a planejar, criar e gerenciar conteúdos multimídia, desenvolvendo competências técnicas em fotografia, edição, animação e captação sonora, além de habilidades em roteirização e pós-produção.',
+    link: 'https://ufbra.com.br/cursos/producao-audiovisual',
+    vetor: [1.8, 6.8, 5.9, 2.4, 6.3, 2.2, 7.2, 4.1, 8.9]
+  },
+  {
+    nome: 'Segurança do Trabalho',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso de Segurança do Trabalho desenvolve competências práticas para a análise, prevenção e gestão de riscos no ambiente laboral, integrando conhecimentos em saúde ocupacional, ergonomia e legislação específica.',
+    link: 'https://ufbra.com.br/cursos/seguranca-do-trabalho',
+    vetor: [4.1, 1.6, 6.7, 3.1, 7.5, 5.8, 5.3, 4.9, 4.2]
+  },
+  {
+    nome: 'Segurança Pública',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso de Segurança Pública desenvolve competências essenciais para atuação integrada e eficaz no setor, abordando fundamentos jurídicos, direitos humanos, gestão de pessoas e aspectos sociais relacionados à segurança.',
+    link: 'https://ufbra.com.br/cursos/seguranca-publica',
+    vetor: [2.5, 1.7, 5.4, 4.2, 9.2, 6.4, 6.1, 5.6, 3.8]
+  },
+  {
+    nome: 'Terapia Ocupacional',
+    area: 'Ciências da saúde',
+    descricao: 'O curso de Terapia Ocupacional forma profissionais capacitados para atuar na promoção da saúde e inclusão social, integrando conhecimentos de ciências biológicas, saúde e psicologia do desenvolvimento.',
+    link: 'https://ufbra.com.br/cursos/terapia-ocupacional',
+    vetor: [5.6, 2.1, 4.8, 4.9, 8.9, 7.2, 6.4, 6.3, 4.7]
+  }
+],
 
 // ============== COMPONENTES ==============
 
@@ -310,17 +550,25 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
 };
 
 interface ResultadoProps {
-  resultado: { nome: string; aderencia: string }[];
+  // Atualizamos a interface para aceitar os novos campos opcionais
+  resultado: { 
+    nome: string; 
+    aderencia: string; 
+    area?: string; 
+    descricao?: string; 
+    link?: string; 
+  }[];
   respostas: Record<string, number[]>;
   onRestart: () => void;
 }
 
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
-  // Novo estado para controlar a exibição do resultado ("Gate")
   const [liberado, setLiberado] = useState(false);
+  
+  // ESTADO DO ACORDEÃO: Começa com 0 (o primeiro item aberto)
+  const [itemAberto, setItemAberto] = useState<number | null>(0);
 
-  // Calcula os dados do Radar (mantido igual)
   const radarData = CATEGORIAS.map(cat => {
     const catRespostas = respostas[cat] || [0, 0, 0, 0];
     const score = catRespostas.reduce((a, b) => a + (b || 0), 0);
@@ -333,42 +581,40 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // A validação "required" do HTML já garante que os campos estão preenchidos
-    
     toast.success('Cadastro realizado!', {
       description: 'Seu resultado foi liberado abaixo.'
     });
-    
-    // Libera o acesso ao gráfico e cursos
     setLiberado(true);
-    // Rola para o topo para mostrar o resultado
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // === TELA 1: BLOQUEIO (GATE) ===
-  // Se não estiver liberado, mostra APENAS o formulário
+  // Função para alternar o acordeão
+  const toggleAccordion = (index: number) => {
+    if (itemAberto === index) {
+      // Se clicar no que já está aberto, fecha (opcional, se quiser manter sempre um aberto, remova o null)
+      setItemAberto(null); 
+    } else {
+      setItemAberto(index);
+    }
+  };
+
   if (!liberado) {
     return (
       <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16 flex items-center justify-center">
         <div className="container mx-auto px-4 max-w-lg">
-          
           <div className="text-center mb-8">
             <div className="inline-block mb-4 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-              <span className="text-primary text-sm font-semibold">🔒 RESULTADO PRONTO</span>
+              <span className="text-primary text-sm font-semibold">🔒 Resultado Pronto</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-3">
               Análise Concluída!
             </h2>
             <p className="text-muted-foreground">
-              Para liberar seu ranking de cursos e o gráfico de competências, preencha seus dados de contato abaixo.
+              Para liberar seu ranking exclusivo e o gráfico de competências, preencha seus dados de contato abaixo.
             </p>
           </div>
-
-          {/* Card do Formulário (Sem alterações visuais internas, apenas layout) */}
           <Card className="bg-card/90 backdrop-blur border-primary/20 shadow-glow-lg">
             <CardContent className="p-8">
-              
-              {/* REMOVIDO: Título H3 e Parágrafo P que falavam do WhatsApp */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                   placeholder="Seu nome"
@@ -393,7 +639,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
-                  Liberar resultado agora 🔓
+                  Liberar Resultado Agora 🔓
                 </Button>
               </form>
             </CardContent>
@@ -403,17 +649,15 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     );
   }
 
-  // === TELA 2: RESULTADO LIBERADO ===
   return (
     <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
-        {/* Header */}
         <div className="text-center mb-12 animate-in fade-in duration-700">
           <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
             <span className="text-success text-sm font-semibold">✓ Acesso Liberado</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            SEU RESULTADO PERSONALIZADO
+            Seu Resultado Personalizado
           </h2>
           <p className="text-muted-foreground">
             Baseado nas suas respostas, identificamos os cursos mais compatíveis com seu perfil
@@ -422,10 +666,10 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
         <div className="grid lg:grid-cols-2 gap-8 animate-in slide-in-from-bottom duration-700">
           {/* Radar Chart */}
-          <Card className="bg-card/90 backdrop-blur border-border/50">
+          <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-4 text-center">
-                Perfil de inteligências
+                Seu Perfil de Inteligências
               </h3>
               <div className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -454,45 +698,93 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
             </CardContent>
           </Card>
 
-          {/* Top 6 Courses */}
-          <Card className="bg-card/90 backdrop-blur border-border/50">
+          {/* Top 6 Cursos - LISTA COM ACORDEÃO */}
+          <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                🏆 Top 6 cursos recomendados
+                🏆 Top 6 Cursos Recomendados
               </h3>
               <div className="space-y-3">
-                {resultado.map((curso, i) => (
-                  <div 
-                    key={i}
-                    className={`flex items-center justify-between p-4 rounded-xl transition-all
-                      ${i === 0 
-                        ? 'bg-gradient-to-r from-primary/15 to-success/15 border-2 border-primary/30' 
-                        : 'bg-muted/50 border border-border/50'
-                      }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm
+                {resultado.map((curso, i) => {
+                  const isOpen = itemAberto === i;
+                  
+                  return (
+                    <div 
+                      key={i}
+                      className={`rounded-xl transition-all duration-300 overflow-hidden border
                         ${i === 0 
-                          ? 'bg-primary text-primary-foreground' 
-                          : 'bg-muted-foreground/20 text-muted-foreground'
-                        }`}>
-                        {i + 1}
-                      </span>
-                      <span className={`font-medium ${i === 0 ? 'text-foreground' : 'text-foreground/80'}`}>
-                        {curso.nome}
-                      </span>
+                          ? 'bg-gradient-to-r from-primary/10 to-success/10 border-primary/30' 
+                          : 'bg-muted/30 border-border/50 hover:bg-muted/50'
+                        }`}
+                    >
+                      {/* HEADER DO CARD (Clicável) */}
+                      <div 
+                        onClick={() => toggleAccordion(i)}
+                        className="flex items-center justify-between p-4 cursor-pointer"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0
+                            ${i === 0 
+                              ? 'bg-primary text-primary-foreground' 
+                              : 'bg-muted-foreground/20 text-muted-foreground'
+                            }`}>
+                            {i + 1}
+                          </span>
+                          <div className="flex flex-col">
+                            <span className={`font-medium leading-tight ${i === 0 ? 'text-foreground' : 'text-foreground/80'}`}>
+                              {curso.nome}
+                            </span>
+                            {/* Área do curso em letra menor */}
+                            {curso.area && (
+                              <span className="text-xs text-muted-foreground font-normal mt-0.5">
+                                {curso.area}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-3">
+                          <div className={`font-bold ${i === 0 ? 'text-primary text-lg' : 'text-muted-foreground'}`}>
+                            {curso.aderencia}%
+                          </div>
+                          {/* Seta indicativa */}
+                          <span className={`text-muted-foreground transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                            ▼
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* CONTEÚDO EXPANSÍVEL (Descrição + Botão) */}
+                      {isOpen && (
+                        <div className="px-4 pb-4 pt-0 animate-in slide-in-from-top-2 fade-in duration-300">
+                          <div className="pl-[3rem]"> {/* Alinhado com o texto do título */}
+                            <p className="text-sm text-muted-foreground mb-4 leading-relaxed border-t border-border/50 pt-3">
+                              {curso.descricao || "Descrição do curso indisponível no momento."}
+                            </p>
+                            
+                            <a 
+                              href={curso.link || "#"} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                            >
+                              <Button 
+                                size="sm" 
+                                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white"
+                              >
+                                Quero saber mais →
+                              </Button>
+                            </a>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <div className={`font-bold ${i === 0 ? 'text-primary text-lg' : 'text-muted-foreground'}`}>
-                      {curso.aderencia}%
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Restart Button */}
         <div className="text-center mt-12 animate-in fade-in delay-300 duration-700">
           <Button variant="ghost" onClick={onRestart} className="text-muted-foreground hover:text-primary">
             ↻ Refazer o teste
@@ -564,7 +856,13 @@ const Footer = () => (
 const Index = () => {
   const [step, setStep] = useState(0); // 0 = hero, 1-8 = steps, 9 = resultado
   const [respostas, setRespostas] = useState<Record<string, number[]>>({});
-  const [resultado, setResultado] = useState<{ nome: string; aderencia: string }[]>([]);
+  const [resultado, setResultado] = useState<{ 
+    nome: string; 
+    aderencia: string;
+    area?: string;       // Novo
+    descricao?: string;  // Novo
+    link?: string;       // Novo
+  }[]>([]);
 
   // Lógica de Randomização: Seleciona 4 perguntas aleatórias ao carregar
   const [perguntasDoTeste] = useState(() => {
@@ -624,6 +922,11 @@ const Index = () => {
 
       return {
         nome: curso.nome,
+        // novos dados
+        area: curso.area,
+        descricao: curso.descricao,
+        link: curso.link,
+        // ----------------------
         aderencia: (similarity * 100).toFixed(1)
       };
     })
