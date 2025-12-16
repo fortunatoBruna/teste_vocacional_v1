@@ -4,6 +4,7 @@ import { Progress } from '@/components/ui/progress';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+import { X, Maximize2 } from 'lucide-react'; // Ícones para o Zoom
 import {
   Radar,
   RadarChart,
@@ -565,15 +566,16 @@ interface ResultadoProps {
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
   const [liberado, setLiberado] = useState(false);
-  
-  // ESTADO DO ACORDEÃO: Começa com 0 (o primeiro item aberto)
   const [itemAberto, setItemAberto] = useState<number | null>(0);
+  
+  // Novo estado para controlar o Zoom do gráfico
+  const [graficoExpandido, setGraficoExpandido] = useState(false);
 
   const radarData = CATEGORIAS.map(cat => {
     const catRespostas = respostas[cat] || [0, 0, 0, 0];
     const score = catRespostas.reduce((a, b) => a + (b || 0), 0);
     return {
-      categoria: cat.length > 10 ? cat.slice(0, 10) + '...' : cat,
+      categoria: cat, 
       fullCategoria: cat,
       score: score,
     };
@@ -581,22 +583,51 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Análise realizada!', {
-      description: 'Seu resultado foi liberado.'
+    toast.success('Cadastro realizado!', {
+      description: 'Seu resultado foi liberado abaixo.'
     });
     setLiberado(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Função para alternar o acordeão
   const toggleAccordion = (index: number) => {
     if (itemAberto === index) {
-      // Se clicar no que já está aberto, fecha (opcional, se quiser manter sempre um aberto, remova o null)
       setItemAberto(null); 
     } else {
       setItemAberto(index);
     }
   };
+
+  // Componente reutilizável do Gráfico para não duplicar código
+  const GraficoRadar = ({ expandido = false }) => (
+    <ResponsiveContainer width="100%" height="100%">
+      <RadarChart cx="50%" cy="50%" outerRadius={expandido ? "70%" : "60%"} data={radarData}>
+        <PolarGrid stroke="hsl(var(--border))" />
+        <PolarAngleAxis 
+          dataKey="categoria" 
+          tick={{ 
+            fill: 'hsl(var(--foreground))', 
+            fontSize: expandido ? 14 : 11,
+            fontWeight: 500
+          }}
+        />
+        <PolarRadiusAxis 
+          angle={30} 
+          domain={[0, 20]} 
+          tick={{ fill: 'transparent' }} 
+          axisLine={false}
+        />
+        <Radar
+          name="Seu Perfil"
+          dataKey="score"
+          stroke="hsl(204 76% 44%)"
+          fill="hsl(204 76% 44%)"
+          fillOpacity={0.5}
+          strokeWidth={3}
+        />
+      </RadarChart>
+    </ResponsiveContainer>
+  );
 
   if (!liberado) {
     return (
@@ -604,7 +635,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         <div className="container mx-auto px-4 max-w-lg">
           <div className="text-center mb-8">
             <div className="inline-block mb-4 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-              <span className="text-primary text-sm font-semibold">🔒 RESULTADO PRONTO</span>
+              <span className="text-primary text-sm font-semibold">🔒 Resultado Pronto</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-3">
               Análise Concluída!
@@ -639,7 +670,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
-                  Liberar resultado agora 🔓
+                  Liberar Resultado Agora 🔓
                 </Button>
               </form>
             </CardContent>
@@ -652,9 +683,37 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
   return (
     <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
+        
+        {/* MODAL DE ZOOM (OVERLAY) */}
+        {graficoExpandido && (
+          <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+            <div className="relative w-full max-w-3xl bg-card rounded-2xl shadow-2xl border border-border p-6 md:p-10 h-[80vh] flex flex-col">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-2xl font-bold text-foreground">Seu Mapa de Inteligências</h3>
+                <Button variant="ghost" size="icon" onClick={() => setGraficoExpandido(false)}>
+                  <X className="h-6 w-6" />
+                </Button>
+              </div>
+              
+              <div className="flex-1 w-full min-h-0">
+                <GraficoRadar expandido={true} />
+              </div>
+
+              <div className="mt-6 text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Para salvar: Tire um print desta tela (Captura de tela)
+                </p>
+                <Button onClick={() => setGraficoExpandido(false)} className="w-full sm:w-auto">
+                  Fechar Visualização
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="text-center mb-12 animate-in fade-in duration-700">
           <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
-            <span className="text-success text-sm font-semibold">✓ ACESSO LIBERADO</span>
+            <span className="text-success text-sm font-semibold">✓ Acesso Liberado</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Seu Resultado Personalizado
@@ -665,49 +724,50 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 animate-in slide-in-from-bottom duration-700">
-          {/* Radar Chart */}
-          <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
+          {/* Card do Gráfico */}
+          <Card className="bg-card/90 backdrop-blur border-border/50 h-fit relative">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-foreground mb-4 text-center">
-                Perfil de Inteligências
-              </h3>
-              <div className="h-[350px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart data={radarData}>
-                    <PolarGrid stroke="hsl(var(--border))" />
-                    <PolarAngleAxis 
-                      dataKey="categoria" 
-                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }}
-                    />
-                    <PolarRadiusAxis 
-                      angle={30} 
-                      domain={[0, 20]} 
-                      tick={{ fill: 'hsl(var(--muted-foreground))' }}
-                    />
-                    <Radar
-                      name="Seu Perfil"
-                      dataKey="score"
-                      stroke="hsl(204 76% 44%)"
-                      fill="hsl(204 76% 44%)"
-                      fillOpacity={0.4}
-                      strokeWidth={2}
-                    />
-                  </RadarChart>
-                </ResponsiveContainer>
+              <div className="flex items-center justify-center mb-4 relative">
+                <h3 className="text-xl font-bold text-foreground text-center w-full">
+                  Seu Perfil de Inteligências
+                </h3>
+                {/* Botão de Expandir no canto */}
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute right-0 top-[-8px] text-muted-foreground hover:text-primary"
+                  onClick={() => setGraficoExpandido(true)}
+                  title="Expandir Gráfico"
+                >
+                  <Maximize2 className="h-5 w-5" />
+                </Button>
+              </div>
+              
+              <div className="h-[350px] relative">
+                <GraficoRadar expandido={false} />
+                
+                {/* Overlay sutil para incentivar o clique */}
+                <div 
+                  className="absolute inset-0 cursor-pointer flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-background/10 backdrop-blur-[1px]"
+                  onClick={() => setGraficoExpandido(true)}
+                >
+                  <span className="bg-background/80 px-3 py-1 rounded-full text-xs font-medium shadow-sm border">
+                    Clique para ampliar
+                  </span>
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Top 6 Cursos - LISTA COM ACORDEÃO */}
+          {/* Top 6 Cursos */}
           <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                🏆 Top 6 cursos recomendados
+                🏆 Top 6 Cursos Recomendados
               </h3>
               <div className="space-y-3">
                 {resultado.map((curso, i) => {
                   const isOpen = itemAberto === i;
-                  
                   return (
                     <div 
                       key={i}
@@ -717,7 +777,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                           : 'bg-muted/30 border-border/50 hover:bg-muted/50'
                         }`}
                     >
-                      {/* HEADER DO CARD (Clicável) */}
                       <div 
                         onClick={() => toggleAccordion(i)}
                         className="flex items-center justify-between p-4 cursor-pointer"
@@ -734,7 +793,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                             <span className={`font-medium leading-tight ${i === 0 ? 'text-foreground' : 'text-foreground/80'}`}>
                               {curso.nome}
                             </span>
-                            {/* Área do curso em letra menor */}
                             {curso.area && (
                               <span className="text-xs text-muted-foreground font-normal mt-0.5">
                                 {curso.area}
@@ -742,35 +800,23 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                             )}
                           </div>
                         </div>
-                        
                         <div className="flex items-center gap-3">
                           <div className={`font-bold ${i === 0 ? 'text-primary text-lg' : 'text-muted-foreground'}`}>
                             {curso.aderencia}%
                           </div>
-                          {/* Seta indicativa */}
                           <span className={`text-muted-foreground transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                             ▼
                           </span>
                         </div>
                       </div>
-
-                      {/* CONTEÚDO EXPANSÍVEL (Descrição + Botão) */}
                       {isOpen && (
                         <div className="px-4 pb-4 pt-0 animate-in slide-in-from-top-2 fade-in duration-300">
-                          <div className="pl-[3rem]"> {/* Alinhado com o texto do título */}
+                          <div className="pl-[3rem]">
                             <p className="text-sm text-muted-foreground mb-4 leading-relaxed border-t border-border/50 pt-3">
                               {curso.descricao || "Descrição do curso indisponível no momento."}
                             </p>
-                            
-                            <a 
-                              href={curso.link || "#"} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                            >
-                              <Button 
-                                size="sm" 
-                                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white"
-                              >
+                            <a href={curso.link || "#"} target="_blank" rel="noopener noreferrer">
+                              <Button size="sm" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white">
                                 Quero saber mais →
                               </Button>
                             </a>
