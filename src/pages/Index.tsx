@@ -229,9 +229,11 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
   </section>
 );
 
+// ... (Mantenha as interfaces e importações anteriores)
+
 interface StepProps {
   step: number;
-  categoria: string;
+  categoria: string; // Mantemos a prop para controle interno, mas não exibimos
   perguntas: string[];
   respostas: Record<string, number[]>;
   onSelect: (categoria: string, index: number, valor: number) => void;
@@ -240,10 +242,11 @@ interface StepProps {
 }
 
 const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, onPrev }: StepProps) => {
+  // Ajuste do progresso para refletir os 8 passos
   const progress = (step / 8) * 100;
   const currentRespostas = respostas[categoria] || [];
-  const allAnswered =   perguntas.every((_, index) => currentRespostas[index] !== undefined);
-   /* O botão Proxima e Voltar funciona quando todas as perguntas do step atual foram respondidas */
+  // Verifica se todas as 4 perguntas foram respondidas
+  const allAnswered = perguntas.every((_, index) => currentRespostas[index] !== undefined);
   
   return (
     <section className="min-h-screen bg-muted/30 py-12 pt-24 pb-16">
@@ -254,19 +257,16 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             <span className="text-sm font-medium text-muted-foreground">
               Passo {step} de 8
             </span>
-            <span className="text-sm font-semibold text-primary">
-              {categoria}
-            </span>
+            {/* REMOVIDO: O nome da categoria que ficava aqui */}
           </div>
           <Progress value={progress} className="h-3" />
         </div>
 
-        {/* Category Title */}
+        {/* Category Title Area */}
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Inteligência {categoria}
-          </h2>
-          <p className="text-muted-foreground">
+          {/* REMOVIDO: Título <h2> com o nome da inteligência */}
+          
+          <p className="text-muted-foreground text-lg">
             Avalie de 1 a 5 o quanto cada afirmação descreve você
           </p>
         </div>
@@ -277,7 +277,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             <Card key={i} className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card">
               <CardContent className="p-6">
                 <p className="text-foreground mb-4 font-medium">
-                  {i + 1}. {texto}
+                  {texto} {/* Removemos a numeração fixa "1." para ficar mais limpo, ou pode manter {i+1}. */}
                 </p>
                 <div className="flex justify-center gap-2 md:gap-4">
                   {[1, 2, 3, 4, 5].map((v) => (
@@ -304,7 +304,6 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
         </div>
         
         {/* Navigation */}
-        {/* FORA do <form> */}
         <div className="flex justify-between mt-10 gap-4">
           <Button
             variant="outline"
@@ -555,10 +554,28 @@ const Footer = () => (
 
 // ============== PÁGINA PRINCIPAL ==============
 
+// ... (Aqui implementamos a lógica de seleção aleatória de 4 perguntas ao iniciar o teste.)
+
 const Index = () => {
   const [step, setStep] = useState(0); // 0 = hero, 1-8 = steps, 9 = resultado
   const [respostas, setRespostas] = useState<Record<string, number[]>>({});
   const [resultado, setResultado] = useState<{ nome: string; aderencia: string }[]>([]);
+
+  // ESTADO NOVO: Armazena as 4 perguntas sorteadas para cada categoria
+  // Usamos uma função de inicialização (lazy state) para garantir que rode apenas uma vez
+  const [perguntasDoTeste] = useState(() => {
+    const selecionadas: Record<string, string[]> = {};
+    
+    CATEGORIAS_TESTE.forEach(cat => {
+      const todasAsPerguntas = PERGUNTAS[cat];
+      // Algoritmo de Shuffle (embaralhamento) simples
+      const embaralhadas = [...todasAsPerguntas].sort(() => 0.5 - Math.random());
+      // Pega as 4 primeiras
+      selecionadas[cat] = embaralhadas.slice(0, 4);
+    });
+    
+    return selecionadas;
+  });
 
   const handleStart = () => {
     setStep(1);
@@ -604,6 +621,7 @@ const Index = () => {
     const categoria = CATEGORIAS_TESTE[step - 1];
     const currentRespostas = respostas[categoria] || [];
     
+    // Verifica se respondeu as 4 perguntas sorteadas
     if (currentRespostas.filter(r => r !== undefined).length < 4) {
       toast.error('Responda todas as perguntas antes de avançar.');
       return;
@@ -628,15 +646,17 @@ const Index = () => {
   };
 
   const handleRestart = () => {
-    setStep(0);
-    setRespostas({});
-    setResultado([]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Recarrega a página para sortear novas perguntas e zerar tudo
+    window.location.reload();
   };
 
   useEffect(() => {
     document.title = 'Teste Vocacional UFBRA - Descubra seu curso ideal';
   }, []);
+
+  // Define as perguntas da etapa atual com base no sorteio
+  const categoriaAtual = CATEGORIAS_TESTE[step - 1];
+  const perguntasAtuais = perguntasDoTeste[categoriaAtual] || [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -647,8 +667,8 @@ const Index = () => {
       {step >= 1 && step <= 8 && (
         <StepSection
           step={step}
-          categoria={CATEGORIAS_TESTE[step - 1]}
-          perguntas={PERGUNTAS[CATEGORIAS_TESTE[step - 1]]}
+          categoria={categoriaAtual}
+          perguntas={perguntasAtuais} // Passa as perguntas sorteadas
           respostas={respostas}
           onSelect={handleSelect}
           onNext={handleNext}
