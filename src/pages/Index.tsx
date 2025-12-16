@@ -581,8 +581,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Cadastro realizado!', {
-      description: 'Seu resultado foi liberado abaixo.'
+    toast.success('Análise realizada!', {
+      description: 'Seu resultado foi liberado.'
     });
     setLiberado(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
