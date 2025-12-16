@@ -321,8 +321,10 @@ interface ResultadoProps {
 
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
+  // Novo estado para controlar a exibição do resultado ("Gate")
+  const [liberado, setLiberado] = useState(false);
 
-  // Radar chart data calculation
+  // Calcula os dados do Radar (mantido igual)
   const radarData = CATEGORIAS.map(cat => {
     const catRespostas = respostas[cat] || [0, 0, 0, 0];
     const score = catRespostas.reduce((a, b) => a + (b || 0), 0);
@@ -335,19 +337,89 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Resultado enviado para seu WhatsApp!', {
-      description: 'Em breve você receberá os detalhes completos.'
+    // A validação "required" do HTML já garante que os campos estão preenchidos
+    
+    toast.success('Cadastro realizado!', {
+      description: 'Seu resultado foi liberado abaixo.'
     });
-    setFormData({ nome: '', email: '', whatsapp: '' });
+    
+    // Libera o acesso ao gráfico e cursos
+    setLiberado(true);
+    // Rola para o topo para mostrar o resultado
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // === TELA 1: BLOQUEIO (GATE) ===
+  // Se não estiver liberado, mostra APENAS o formulário
+  if (!liberado) {
+    return (
+      <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16 flex items-center justify-center">
+        <div className="container mx-auto px-4 max-w-lg">
+          
+          <div className="text-center mb-8">
+            <div className="inline-block mb-4 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
+              <span className="text-primary text-sm font-semibold">🔒 Resultado Pronto</span>
+            </div>
+            <h2 className="text-3xl font-bold text-foreground mb-3">
+              Análise Concluída!
+            </h2>
+            <p className="text-muted-foreground">
+              Para liberar seu ranking exclusivo e o gráfico de competências, preencha seus dados de contato abaixo.
+            </p>
+          </div>
+
+          {/* Card do Formulário (Sem alterações visuais internas, apenas layout) */}
+          <Card className="bg-card/90 backdrop-blur border-primary/20 shadow-glow-lg">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
+                📱 Receba os detalhes no seu WhatsApp
+              </h3>
+              <p className="text-muted-foreground text-center mb-6">
+                Enviaremos informações completas sobre os cursos recomendados
+              </p>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  placeholder="Seu nome"
+                  value={formData.nome}
+                  onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
+                  required
+                  className="h-12"
+                />
+                <Input
+                  type="email"
+                  placeholder="Seu e-mail"
+                  value={formData.email}
+                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                  required
+                  className="h-12"
+                />
+                <Input
+                  placeholder="WhatsApp (com DDD)"
+                  value={formData.whatsapp}
+                  onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: e.target.value }))}
+                  required
+                  className="h-12"
+                />
+                <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
+                  Liberar Resultado Agora 🔓
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
+  }
+
+  // === TELA 2: RESULTADO LIBERADO ===
   return (
     <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-in fade-in duration-700">
           <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
-            <span className="text-success text-sm font-semibold">✓ Teste Concluído</span>
+            <span className="text-success text-sm font-semibold">✓ Acesso Liberado</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Seu Resultado Personalizado
@@ -357,7 +429,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 animate-in slide-in-from-bottom duration-700">
           {/* Radar Chart */}
           <Card className="bg-card/90 backdrop-blur border-border/50">
             <CardContent className="p-6">
@@ -429,48 +501,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           </Card>
         </div>
 
-        {/* Lead Form */}
-        <Card className="mt-8 bg-gradient-to-br from-primary/5 to-success/5 border-primary/20">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
-              📱 Receba os detalhes no seu WhatsApp
-            </h3>
-            <p className="text-muted-foreground text-center mb-6">
-              Enviaremos informações completas sobre os cursos recomendados
-            </p>
-            
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
-              <Input
-                placeholder="Seu nome"
-                value={formData.nome}
-                onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
-                required
-                className="h-12"
-              />
-              <Input
-                type="email"
-                placeholder="Seu e-mail"
-                value={formData.email}
-                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                required
-                className="h-12"
-              />
-              <Input
-                placeholder="WhatsApp (com DDD)"
-                value={formData.whatsapp}
-                onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: e.target.value }))}
-                required
-                className="h-12"
-              />
-              <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90">
-                Enviar Resultado →
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-
         {/* Restart Button */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-12 animate-in fade-in delay-300 duration-700">
           <Button variant="ghost" onClick={onRestart} className="text-muted-foreground hover:text-primary">
             ↻ Refazer o teste
           </Button>
