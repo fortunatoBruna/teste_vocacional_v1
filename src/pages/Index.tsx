@@ -111,7 +111,6 @@ const CURSOS = [
   { nome: 'Criminologia', vetor: [1.7,1.6,6.8,3.5,8.4,2.8,7.6,7.2,3.1] },
   { nome: 'Energias Renováveis', vetor: [7.3,1.5,8.5,2.2,6.2,1.8,4.9,4.1,7.9] },
   { nome: 'Engenharia de Software', vetor: [1.6,1.6,9.8,1.5,5.4,1.5,7.3,2.1,3.2] },
-  { nome: 'Estética e Cosmética', vetor: [4.2,1.7,5.6,2.1,7.1,7.8,5.2,3.4,6.5] },
   { nome: 'Gestão de Recursos Humanos', vetor: [1.7,1.7,6.4,3.2,9.6,1.6,6.8,6.9,1.9] },
   { nome: 'Gestão Hospitalar', vetor: [3.8,1.6,7.1,4.5,8.7,2.4,6.5,5.8,2.6] },
   { nome: 'Investigação Forense e Perícia Criminal', vetor: [2.1,1.5,8.2,3.8,7.4,3.5,7.9,6.7,5.4] },
@@ -121,7 +120,6 @@ const CURSOS = [
   { nome: 'Terapia Ocupacional', vetor: [5.6,2.1,4.8,4.9,8.9,7.2,6.4,6.3,4.7] },
   { nome: 'Logística', vetor: [1.6,1.7,4.3,1.6,4.5,1.5,6.5,1.9,3.3] },
   { nome: 'Fisioterapia', vetor: [7.3,1.7,3.2,1.5,4.2,7.3,6.4,2.6,4.4] },
-  { nome: 'Serviço Social', vetor: [1.7,1.7,1.9,5.4,7.6,1.6,6.5,2.6,2.2] },
   { nome: 'Psicologia', vetor: [6.2,1.7,1.7,6.6,9.8,1.7,6.6,6.5,1.9] },
   { nome: 'Nutrição', vetor: [8.8,1.7,4.7,1.5,7.2,2.1,6.4,4.8,2.1] },
   { nome: 'Análise e Desenvolvimento de Sistemas', vetor: [1.6,1.5,8.4,1.5,2.2,1.5,7.2,1.5,2.3] },
@@ -134,7 +132,6 @@ const CURSOS = [
   { nome: 'Sistemas de Informação', vetor: [1.6,1.6,7.5,1.5,2.4,1.5,6.4,1.7,2.3] },
   { nome: 'Gestão Comercial', vetor: [1.6,1.7,6.5,1.6,8.3,1.5,6.5,1.9,1.8] },
   { nome: 'Engenharia Mecânica', vetor: [1.8,1.5,9.3,1.5,5.5,1.5,5.4,1.5,8.0] },
-  { nome: 'Publicidade e Propaganda', vetor: [1.8,5.5,5.5,2.2,9.3,1.5,6.6,2.1,1.9] },
   { nome: 'Ciência da Computação', vetor: [1.6,1.6,9.3,1.5,5.4,1.5,7.2,1.7,2.3] },
   { nome: 'Gestão Ambiental', vetor: [7.3,1.6,6.3,1.6,6.7,1.6,5.6,1.7,6.2] },
   { nome: 'Engenharia Elétrica', vetor: [1.8,1.5,10.3,1.5,5.5,1.5,5.4,1.5,5.8] },
@@ -143,7 +140,6 @@ const CURSOS = [
   { nome: 'Redes de Computadores', vetor: [1.6,1.5,9.6,1.5,5.2,1.5,5.7,1.5,5.3] },
   { nome: 'Gestão da Qualidade', vetor: [1.6,1.7,7.3,1.6,6.8,1.5,5.7,1.9,1.8] },
   { nome: 'Automação Industrial', vetor: [1.6,1.5,8.4,1.5,5.5,1.5,2.3,1.5,6.9] },
-  { nome: 'Letras - Português e Inglês', vetor: [1.6,1.6,5.6,1.6,7.6,1.5,9.1,1.7,1.8] },
   { nome: 'Gestão de Tecnologia da Informação', vetor: [1.6,1.6,8.3,1.5,6.2,1.5,7.2,1.7,2.3] }
 ];
 
