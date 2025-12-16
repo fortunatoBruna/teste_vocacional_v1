@@ -590,31 +590,49 @@ const Index = () => {
     });
   };
 
-  const calcularResultado = () => {
-    const scores = CATEGORIAS.map(cat => {
-      const catRespostas = respostas[cat] || [0, 0, 0, 0];
+const calcularResultado = () => {
+    // 1. Gera o vetor do usuário (Soma das respostas por categoria)
+    // Importante: Usamos a constante CATEGORIAS (9 itens) para alinhar com os vetores dos CURSOS
+    const userVector = CATEGORIAS.map(cat => {
+      const catRespostas = respostas[cat] || []; 
       return catRespostas.reduce((a, b) => a + (b || 0), 0);
     });
 
-    const norma = Math.sqrt(scores.reduce((a, b) => a + b * b, 0));
-    const vetorUsuario = scores.map(s => (s * 100) / norma);
+    // 2. Calcula a "Magnitude" (força total) do perfil do usuário
+    const userMag = Math.sqrt(userVector.reduce((sum, val) => sum + (val * val), 0));
+
+    // Proteção: Se o usuário não respondeu nada, retorna vazio para não quebrar
+    if (userMag === 0) return [];
 
     const rankings = CURSOS.map(curso => {
-      const erro = Math.sqrt(
-        vetorUsuario.reduce(
-          (soma, val, i) => soma + Math.pow(val - curso.vetor[i], 2),
-          0
-        )
-      );
+      // 3. Produto Escalar: Multiplica as qualidades do usuário pelas do curso
+      const dotProduct = userVector.reduce((sum, val, i) => {
+        return sum + (val * (curso.vetor[i] || 0));
+      }, 0);
+
+      // 4. Magnitude do Curso
+      const courseMag = Math.sqrt(curso.vetor.reduce((sum, val) => sum + (val * val), 0));
+
+      // 5. Cálculo da Similaridade de Cosseno: (A . B) / (||A|| * ||B||)
+      // Isso gera um número entre 0 e 1 indicando o "Match" absoluto
+      let similarity = 0;
+      if (courseMag > 0) {
+        similarity = dotProduct / (userMag * courseMag);
+      }
+
       return {
         nome: curso.nome,
-        aderencia: (100 - erro).toFixed(1)
+        // Multiplica por 100 para virar porcentagem real (ex: 85.5%)
+        aderencia: (similarity * 100).toFixed(1)
       };
     })
+    // Ordena do maior para o menor
     .sort((a, b) => parseFloat(b.aderencia) - parseFloat(a.aderencia))
+    // Pega os top 6, mas mantendo a porcentagem original deles
     .slice(0, 6);
 
     return rankings;
+  };
   };
 
   const handleNext = () => {
