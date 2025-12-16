@@ -381,7 +381,7 @@ const CURSOS = [
     link: 'https://ufbra.com.br/cursos/terapia-ocupacional',
     vetor: [5.6, 2.1, 4.8, 4.9, 8.9, 7.2, 6.4, 6.3, 4.7]
   }
-],
+];
 
 // ============== COMPONENTES ==============
 
