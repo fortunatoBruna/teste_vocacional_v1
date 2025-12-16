@@ -397,7 +397,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
-                  Liberar Resultado Agora 🔓
+                  Liberar resultado agora 🔓
                 </Button>
               </form>
             </CardContent>
