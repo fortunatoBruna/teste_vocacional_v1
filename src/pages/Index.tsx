@@ -604,7 +604,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         <div className="container mx-auto px-4 max-w-lg">
           <div className="text-center mb-8">
             <div className="inline-block mb-4 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-              <span className="text-primary text-sm font-semibold">🔒 Resultado Pronto</span>
+              <span className="text-primary text-sm font-semibold">🔒 RESULTADO PRONTO</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-3">
               Análise Concluída!
@@ -639,7 +639,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
-                  Liberar Resultado Agora 🔓
+                  Liberar resultado agora 🔓
                 </Button>
               </form>
             </CardContent>
@@ -654,7 +654,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12 animate-in fade-in duration-700">
           <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
-            <span className="text-success text-sm font-semibold">✓ Acesso Liberado</span>
+            <span className="text-success text-sm font-semibold">✓ ACESSO LIBERADO</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Seu Resultado Personalizado
@@ -669,7 +669,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-4 text-center">
-                Seu Perfil de Inteligências
+                Perfil de Inteligências
               </h3>
               <div className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -702,7 +702,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                🏆 Top 6 Cursos Recomendados
+                🏆 Top 6 cursos recomendados
               </h3>
               <div className="space-y-3">
                 {resultado.map((curso, i) => {
