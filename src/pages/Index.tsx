@@ -158,13 +158,9 @@ const Header = () => (
           <img
             src="http://cdn.mcauto-images-production.sendgrid.net/1f39d6e45c56e7d9/df9f1508-d98e-4e5e-840d-baff32ba42bd/4558x1200.png"
             alt="Logo UF"
-            // 'h-full' força a altura do container, 'w-auto' ajusta a largura proporcionalmente
             className="h-full w-auto object-contain"
           />
         </div>
-        
-        {/* Texto "TESTE VOCACIONAL" removido daqui */}
-        
       </div>
       <div className="flex items-center gap-2 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
         <span className="relative flex h-2 w-2">
@@ -180,10 +176,7 @@ const Header = () => (
 
 const Hero = ({ onStart }: { onStart: () => void }) => (
   <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-24 pb-16">
-    {/* Background gradient */}
     <div className="absolute inset-0 bg-gradient-hero"></div>
-    
-    {/* Floating shapes - UFBRA colors */}
     <div className="absolute top-32 left-10 w-72 h-72 bg-primary/15 rounded-full blur-3xl animate-float"></div>
     <div className="absolute bottom-20 right-10 w-96 h-96 bg-success/10 rounded-full blur-3xl animate-float-delayed"></div>
     <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-accent/15 rounded-full blur-3xl animate-float"></div>
@@ -229,11 +222,9 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
   </section>
 );
 
-// ... (Mantenha as interfaces e importações anteriores)
-
 interface StepProps {
   step: number;
-  categoria: string; // Mantemos a prop para controle interno, mas não exibimos
+  categoria: string;
   perguntas: string[];
   respostas: Record<string, number[]>;
   onSelect: (categoria: string, index: number, valor: number) => void;
@@ -242,10 +233,8 @@ interface StepProps {
 }
 
 const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, onPrev }: StepProps) => {
-  // Ajuste do progresso para refletir os 8 passos
   const progress = (step / 8) * 100;
   const currentRespostas = respostas[categoria] || [];
-  // Verifica se todas as 4 perguntas foram respondidas
   const allAnswered = perguntas.every((_, index) => currentRespostas[index] !== undefined);
   
   return (
@@ -257,15 +246,13 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             <span className="text-sm font-medium text-muted-foreground">
               Passo {step} de 8
             </span>
-            {/* REMOVIDO: O nome da categoria que ficava aqui */}
+            {/* Título da categoria removido para evitar viés */}
           </div>
           <Progress value={progress} className="h-3" />
         </div>
 
-        {/* Category Title Area */}
+        {/* Category Title Removed, Instruction Maintained */}
         <div className="text-center mb-10">
-          {/* REMOVIDO: Título <h2> com o nome da inteligência */}
-          
           <p className="text-muted-foreground text-lg">
             Avalie de 1 a 5 o quanto cada afirmação descreve você
           </p>
@@ -277,7 +264,7 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             <Card key={i} className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card">
               <CardContent className="p-6">
                 <p className="text-foreground mb-4 font-medium">
-                  {texto} {/* Removemos a numeração fixa "1." para ficar mais limpo, ou pode manter {i+1}. */}
+                  {texto}
                 </p>
                 <div className="flex justify-center gap-2 md:gap-4">
                   {[1, 2, 3, 4, 5].map((v) => (
@@ -335,7 +322,7 @@ interface ResultadoProps {
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
 
-  // Calculate radar data
+  // Radar chart data calculation
   const radarData = CATEGORIAS.map(cat => {
     const catRespostas = respostas[cat] || [0, 0, 0, 0];
     const score = catRespostas.reduce((a, b) => a + (b || 0), 0);
@@ -497,9 +484,8 @@ const Footer = () => (
   <footer className="bg-foreground text-background py-12">
     <div className="container mx-auto px-4 text-center">
       
-      {/* Seção das Redes Sociais (Substituindo o Logo/Texto UFBRA) */}
+      {/* Seção das Redes Sociais */}
       <div className="flex items-center justify-center gap-6 mb-6">
-        {/* Facebook */}
         <a 
           href="https://www.facebook.com/ufbra.oficial" 
           target="_blank" 
@@ -513,7 +499,6 @@ const Footer = () => (
           />
         </a>
 
-        {/* Instagram */}
         <a 
           href="https://www.instagram.com/ufbra.oficial/" 
           target="_blank" 
@@ -527,7 +512,6 @@ const Footer = () => (
           />
         </a>
 
-        {/* YouTube */}
         <a 
           href="https://www.youtube.com/channel/UCRhEKT5tvrJxM8PgT54vyPQ" 
           target="_blank" 
@@ -546,7 +530,7 @@ const Footer = () => (
         UFBRA • R. Dolzani Ricardo, 335 • São José dos Campos • SP
       </p>
       <p className="text-background/40 text-xs mt-4">
-        © {new Date().getFullYear()} — Este teste é uma ferramenta de orientação inicial gratuita. Para decisões definitivas sobre sua carreira, consulte também um orientador vocacional profissional.
+        © {new Date().getFullYear()} — Este teste é uma ferramenta de orientação inicial gratuita.
       </p>
     </div>
   </footer>
@@ -554,26 +538,19 @@ const Footer = () => (
 
 // ============== PÁGINA PRINCIPAL ==============
 
-// ... (Aqui implementamos a lógica de seleção aleatória de 4 perguntas ao iniciar o teste.)
-
 const Index = () => {
   const [step, setStep] = useState(0); // 0 = hero, 1-8 = steps, 9 = resultado
   const [respostas, setRespostas] = useState<Record<string, number[]>>({});
   const [resultado, setResultado] = useState<{ nome: string; aderencia: string }[]>([]);
 
-  // ESTADO NOVO: Armazena as 4 perguntas sorteadas para cada categoria
-  // Usamos uma função de inicialização (lazy state) para garantir que rode apenas uma vez
+  // Lógica de Randomização: Seleciona 4 perguntas aleatórias ao carregar
   const [perguntasDoTeste] = useState(() => {
     const selecionadas: Record<string, string[]> = {};
-    
     CATEGORIAS_TESTE.forEach(cat => {
       const todasAsPerguntas = PERGUNTAS[cat];
-      // Algoritmo de Shuffle (embaralhamento) simples
       const embaralhadas = [...todasAsPerguntas].sort(() => 0.5 - Math.random());
-      // Pega as 4 primeiras
       selecionadas[cat] = embaralhadas.slice(0, 4);
     });
-    
     return selecionadas;
   });
 
@@ -590,22 +567,21 @@ const Index = () => {
     });
   };
 
-const calcularResultado = () => {
+  // NOVA LÓGICA DE CÁLCULO: SIMILARIDADE DE COSSENO
+  const calcularResultado = () => {
     // 1. Gera o vetor do usuário (Soma das respostas por categoria)
-    // Importante: Usamos a constante CATEGORIAS (9 itens) para alinhar com os vetores dos CURSOS
     const userVector = CATEGORIAS.map(cat => {
       const catRespostas = respostas[cat] || []; 
       return catRespostas.reduce((a, b) => a + (b || 0), 0);
     });
 
-    // 2. Calcula a "Magnitude" (força total) do perfil do usuário
+    // 2. Calcula a "Magnitude" do perfil do usuário
     const userMag = Math.sqrt(userVector.reduce((sum, val) => sum + (val * val), 0));
 
-    // Proteção: Se o usuário não respondeu nada, retorna vazio para não quebrar
     if (userMag === 0) return [];
 
     const rankings = CURSOS.map(curso => {
-      // 3. Produto Escalar: Multiplica as qualidades do usuário pelas do curso
+      // 3. Produto Escalar
       const dotProduct = userVector.reduce((sum, val, i) => {
         return sum + (val * (curso.vetor[i] || 0));
       }, 0);
@@ -613,8 +589,7 @@ const calcularResultado = () => {
       // 4. Magnitude do Curso
       const courseMag = Math.sqrt(curso.vetor.reduce((sum, val) => sum + (val * val), 0));
 
-      // 5. Cálculo da Similaridade de Cosseno: (A . B) / (||A|| * ||B||)
-      // Isso gera um número entre 0 e 1 indicando o "Match" absoluto
+      // 5. Similaridade de Cosseno (0 a 1)
       let similarity = 0;
       if (courseMag > 0) {
         similarity = dotProduct / (userMag * courseMag);
@@ -622,24 +597,19 @@ const calcularResultado = () => {
 
       return {
         nome: curso.nome,
-        // Multiplica por 100 para virar porcentagem real (ex: 85.5%)
         aderencia: (similarity * 100).toFixed(1)
       };
     })
-    // Ordena do maior para o menor
     .sort((a, b) => parseFloat(b.aderencia) - parseFloat(a.aderencia))
-    // Pega os top 6, mas mantendo a porcentagem original deles
     .slice(0, 6);
 
     return rankings;
-  };
   };
 
   const handleNext = () => {
     const categoria = CATEGORIAS_TESTE[step - 1];
     const currentRespostas = respostas[categoria] || [];
     
-    // Verifica se respondeu as 4 perguntas sorteadas
     if (currentRespostas.filter(r => r !== undefined).length < 4) {
       toast.error('Responda todas as perguntas antes de avançar.');
       return;
@@ -664,7 +634,6 @@ const calcularResultado = () => {
   };
 
   const handleRestart = () => {
-    // Recarrega a página para sortear novas perguntas e zerar tudo
     window.location.reload();
   };
 
@@ -672,7 +641,6 @@ const calcularResultado = () => {
     document.title = 'Teste Vocacional UFBRA - Descubra seu curso ideal';
   }, []);
 
-  // Define as perguntas da etapa atual com base no sorteio
   const categoriaAtual = CATEGORIAS_TESTE[step - 1];
   const perguntasAtuais = perguntasDoTeste[categoriaAtual] || [];
 
@@ -686,7 +654,7 @@ const calcularResultado = () => {
         <StepSection
           step={step}
           categoria={categoriaAtual}
-          perguntas={perguntasAtuais} // Passa as perguntas sorteadas
+          perguntas={perguntasAtuais}
           respostas={respostas}
           onSelect={handleSelect}
           onNext={handleNext}
