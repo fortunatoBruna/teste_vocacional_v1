@@ -734,7 +734,10 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     </ResponsiveContainer>
   );
 
-  if (!liberado) {
+if (!liberado) {
+    // Pega o nome do primeiro curso (Top 1) ou string vazia se der erro
+    const topCurso = resultado[0]?.nome || "";
+
     return (
       <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16 flex items-center justify-center">
         <div className="container mx-auto px-4 max-w-lg">
@@ -752,6 +755,11 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           <Card className="bg-card/90 backdrop-blur border-primary/20 shadow-glow-lg">
             <CardContent className="p-8">
               <form id="lead-collector-teste-vocacional" onSubmit={handleSubmit} className="space-y-4">
+                
+                {/* === NOVO: CAMPO OCULTO COM O TOP 1 CURSO === */}
+                {/* O Montilla vai ler o 'name="curso_match"' e salvar o valor preenchido */}
+                <input type="hidden" name="curso_match" value={topCurso} />
+                
                 <Input
                   name="name"
                   placeholder="Seu nome"
