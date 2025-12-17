@@ -693,21 +693,26 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
               Para liberar seu ranking exclusivo e o gráfico de competências, preencha seus dados de contato abaixo.
             </p>
           </div>
+
           <Card className="bg-card/90 backdrop-blur border-primary/20 shadow-glow-lg">
             <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-4">
+              {/* 1. Adicionado ID ao form para identificar no Montilla */}
+              <form id="lead-collector-teste-vocacional" onSubmit={handleSubmit} className="space-y-4">
+                
                 <Input
+                  name="name" // <-- NECESSÁRIO para gerar "data_name"
                   placeholder="Seu nome"
                   value={formData.nome}
                   onChange={(e) => {
-                    // Regex que substitui tudo que NÃO for letra (a-z, A-Z, acentos) ou espaço por vazio
                     const apenasLetras = e.target.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, '');
                     setFormData(prev => ({ ...prev, nome: apenasLetras }));
                   }}
                   required
                   className="h-12"
                 />
+                
                 <Input
+                  name="email" // <-- NECESSÁRIO para gerar "data_email"
                   type="email"
                   placeholder="Seu e-mail"
                   value={formData.email}
@@ -716,15 +721,15 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 
-                {/* NOVO: Input com a máscara aplicada no onChange */}
                 <Input
+                  name="phone" // <-- NECESSÁRIO para gerar "data_phone"
                   placeholder="WhatsApp (com DDD)"
                   value={formData.whatsapp}
                   onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: formatarTelefone(e.target.value) }))}
                   required
                   className="h-12"
-                  maxLength={15} // Limita o tamanho visual da máscara: (11) 99999-9999
-                  inputMode="numeric" // Abre teclado numérico no celular
+                  maxLength={15}
+                  inputMode="numeric"
                 />
                 
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
