@@ -508,7 +508,7 @@ const TheorySection = () => (
               <ul className="space-y-4">
                 <li className="flex items-start gap-3 text-gray-700">
                   <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
-                  <span><strong>Faça o teste:</strong> Descubra suas inclinações naturais e profissões compatíveis.</span>
+                  <span><strong>Faça o teste:</strong> Descubra os cursos mais compatíveis com você.</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-700">
                   <span className="text-[#009444] text-xl mt-[-2px]">•</span>
