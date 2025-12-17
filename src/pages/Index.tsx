@@ -469,12 +469,8 @@ const TheorySection = () => (
 
     <div className="container mx-auto px-4">
       <div className="max-w-6xl mx-auto">
-        {/* ALTERAÇÃO 1: 'items-start' em vez de center para melhor alinhamento do texto no topo */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           
-          {/* BLOCO 1: Título e Intro (Texto Superior) */}
-          {/* Mobile: Ordem 1 (Primeiro) */}
-          {/* Desktop: Coluna 2, Linha 1 */}
           <div className="space-y-4 order-1 md:col-start-2 md:row-start-1 animate-in slide-in-from-right duration-700 delay-200">
             <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full mb-2">
               <span className="text-[#1880c4] text-sm font-bold uppercase tracking-wide">Metodologia Científica</span>
@@ -493,23 +489,29 @@ const TheorySection = () => (
             </p>
           </div>
 
-          {/* BLOCO 2: Imagem */}
-          {/* Mobile: Ordem 2 (Meio - Sanduíche) */}
-          {/* Desktop: Coluna 1, Spana 2 linhas (Ocupa toda a esquerda) */}
-          <div className="flex justify-center order-2 md:col-start-1 md:row-start-1 md:row-span-2 self-center animate-in slide-in-from-left duration-700 delay-200">
+          <div className="flex justify-center order-2 md:col-start-1 md:row-start-1 md:row-span-2 self-center">
             <div className="relative">
               <div className="absolute inset-0 bg-success/5 rounded-full blur-3xl transform scale-110"></div>
+              
+              {/* === ANIMAÇÃO APLICADA AQUI === */}
               <img 
                 src="/teste-vocacional-gratis-ufbra.png" 
                 alt="Mandala das Inteligências Múltiplas de Howard Gardner"
-                className="relative w-full max-w-md hover:scale-105 transition-transform duration-500 drop-shadow-xl"
+                className="relative w-full max-w-md drop-shadow-xl 
+                           animate-in zoom-in-50 fade-in duration-1000 delay-300 
+                           hover:scale-105 transition-transform duration-500"
               />
+              {/* Explicação das classes novas:
+                  - animate-in: Ativa a animação de entrada.
+                  - zoom-in-50: Começa com 50% do tamanho e cresce até 100%.
+                  - fade-in: Começa transparente e fica visível.
+                  - duration-1000: A entrada dura 1 segundo (bem suave).
+                  - delay-300: Espera um pouquinho para começar (fica elegante).
+              */}
+
             </div>
           </div>
 
-          {/* BLOCO 3: Lista de Passos (Texto Inferior) */}
-          {/* Mobile: Ordem 3 (Último) */}
-          {/* Desktop: Coluna 2, Linha 2 (Logo abaixo do título) */}
           <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm order-3 md:col-start-2 md:row-start-2 animate-in slide-in-from-right duration-700 delay-200">
             <h3 className="mb-4 text-[#1880c4] font-semibold text-lg">
               Passos para uma escolha de carreira segura:
