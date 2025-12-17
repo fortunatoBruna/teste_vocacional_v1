@@ -469,9 +469,34 @@ const TheorySection = () => (
 
     <div className="container mx-auto px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* ALTERAÇÃO 1: 'items-start' em vez de center para melhor alinhamento do texto no topo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           
-          <div className="flex justify-center order-2 md:order-1 animate-in slide-in-from-left duration-700 delay-200">
+          {/* BLOCO 1: Título e Intro (Texto Superior) */}
+          {/* Mobile: Ordem 1 (Primeiro) */}
+          {/* Desktop: Coluna 2, Linha 1 */}
+          <div className="space-y-4 order-1 md:col-start-2 md:row-start-1 animate-in slide-in-from-right duration-700 delay-200">
+            <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full mb-2">
+              <span className="text-[#1880c4] text-sm font-bold uppercase tracking-wide">Metodologia Científica</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+              Entenda a teoria por trás do seu resultado
+            </h2>
+
+            <p className="text-gray-600 text-lg leading-relaxed text-justify">
+              Inspirado na teoria do psicólogo <strong>Howard Gardner</strong>, este teste ajuda você a identificar suas principais habilidades entre nove tipos de inteligência: lógico-matemática, linguística, musical, espacial, corporal, interpessoal, intrapessoal, naturalista e existencial.
+            </p>
+            
+            <p className="text-gray-600 text-lg leading-relaxed text-justify">
+              Com apenas <strong>32 perguntas estratégicas</strong>, nosso algoritmo gera um mapa personalizado que conecta seu perfil cognitivo aos cursos da UFBRA com maior afinidade.
+            </p>
+          </div>
+
+          {/* BLOCO 2: Imagem */}
+          {/* Mobile: Ordem 2 (Meio - Sanduíche) */}
+          {/* Desktop: Coluna 1, Spana 2 linhas (Ocupa toda a esquerda) */}
+          <div className="flex justify-center order-2 md:col-start-1 md:row-start-1 md:row-span-2 self-center animate-in slide-in-from-left duration-700 delay-200">
             <div className="relative">
               <div className="absolute inset-0 bg-success/5 rounded-full blur-3xl transform scale-110"></div>
               <img 
@@ -482,49 +507,33 @@ const TheorySection = () => (
             </div>
           </div>
 
-          <div className="space-y-8 order-1 md:order-2 animate-in slide-in-from-right duration-700 delay-200">
-            <div className="space-y-4">
-              <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full mb-2">
-                <span className="text-[#1880c4] text-sm font-bold uppercase tracking-wide">Metodologia Científica</span>
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                Entenda a teoria por trás do seu resultado
-              </h2>
-
-              <p className="text-gray-600 text-lg leading-relaxed text-justify">
-                Inspirado na teoria do psicólogo <strong>Howard Gardner</strong>, este teste ajuda você a identificar suas principais habilidades entre nove tipos de inteligência: lógico-matemática, linguística, musical, espacial, corporal, interpessoal, intrapessoal, naturalista e existencial.
-              </p>
-              
-              <p className="text-gray-600 text-lg leading-relaxed text-justify">
-                Com apenas <strong>32 perguntas estratégicas</strong>, nosso algoritmo gera um mapa personalizado que conecta seu perfil cognitivo aos cursos da UFBRA com maior afinidade.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm">
-              <h3 className="mb-4 text-[#1880c4] font-semibold text-lg">
-                Passos para uma escolha de carreira segura:
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
-                  <span><strong>Faça o teste:</strong> Descubra os cursos mais compatíveis com você.</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#009444] text-xl mt-[-2px]">•</span>
-                  <span><strong>Autoconhecimento:</strong> Entenda seus valores, interesses e personalidade.</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#fab71b] text-xl mt-[-2px]">•</span>
-                  <span><strong>Mercado:</strong> Explore as áreas de atuação e habilidades valorizadas.</span>
-                </li>
-                <li className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
-                  <span><strong>Conexão:</strong> Converse com profissionais da área para validar sua escolha.</span>
-                </li>
-              </ul>
-            </div>
+          {/* BLOCO 3: Lista de Passos (Texto Inferior) */}
+          {/* Mobile: Ordem 3 (Último) */}
+          {/* Desktop: Coluna 2, Linha 2 (Logo abaixo do título) */}
+          <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm order-3 md:col-start-2 md:row-start-2 animate-in slide-in-from-right duration-700 delay-200">
+            <h3 className="mb-4 text-[#1880c4] font-semibold text-lg">
+              Passos para uma escolha de carreira segura:
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-gray-700">
+                <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
+                <span><strong>Faça o teste:</strong> Descubra suas inclinações naturais e profissões compatíveis.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-700">
+                <span className="text-[#009444] text-xl mt-[-2px]">•</span>
+                <span><strong>Autoconhecimento:</strong> Entenda seus valores, interesses e personalidade.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-700">
+                <span className="text-[#fab71b] text-xl mt-[-2px]">•</span>
+                <span><strong>Mercado:</strong> Explore as áreas de atuação e habilidades valorizadas.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-700">
+                <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
+                <span><strong>Conexão:</strong> Converse com profissionais da área para validar sua escolha.</span>
+              </li>
+            </ul>
           </div>
+
         </div>
       </div>
     </div>
