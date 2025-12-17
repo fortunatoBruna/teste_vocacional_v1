@@ -584,11 +584,27 @@ interface ResultadoProps {
   onRestart: () => void;
 }
 
+// ... (Interfaces e imports anteriores mantidos)
+
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
   const [liberado, setLiberado] = useState(false);
   const [itemAberto, setItemAberto] = useState<number | null>(0);
   const [graficoExpandido, setGraficoExpandido] = useState(false);
+
+  // NOVO: Função auxiliar para aplicar a máscara de telefone (DDD + Número)
+  const formatarTelefone = (valor: string) => {
+    // Remove tudo que não for dígito
+    const apenasNumeros = valor.replace(/\D/g, '');
+    
+    // Limita a 11 dígitos (DDD + 9 dígitos)
+    const limitado = apenasNumeros.slice(0, 11);
+
+    // Aplica a máscara progressivamente
+    if (limitado.length <= 2) return limitado;
+    if (limitado.length <= 7) return `(${limitado.slice(0, 2)}) ${limitado.slice(2)}`;
+    return `(${limitado.slice(0, 2)}) ${limitado.slice(2, 7)}-${limitado.slice(7)}`;
+  };
 
   const radarData = CATEGORIAS.map(cat => {
     const catRespostas = respostas[cat] || [0, 0, 0, 0];
@@ -602,6 +618,21 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // NOVO: Validação estrita do WhatsApp
+    // Remove a formatação para contar apenas os números
+    const numerosLimpos = formData.whatsapp.replace(/\D/g, '');
+
+    // Verifica se tem menos de 10 dígitos (DDD + 8 números no mínimo)
+    // Isso atende seu requisito de "mínimo de 9", garantindo um número real com DDD
+    if (numerosLimpos.length < 10) {
+      toast.error('Número de WhatsApp inválido', {
+        description: 'Por favor, insira o DDD e o número completo (ex: 11 99999-9999).'
+      });
+      return; // Interrompe o envio se estiver inválido
+    }
+
+    // Se passou na validação:
     toast.success('Análise realizada!', {
       description: 'Seu resultado foi liberado.'
     });
@@ -680,13 +711,18 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   required
                   className="h-12"
                 />
+                
+                {/* NOVO: Input com a máscara aplicada no onChange */}
                 <Input
                   placeholder="WhatsApp (com DDD)"
                   value={formData.whatsapp}
-                  onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: e.target.value }))}
+                  onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: formatarTelefone(e.target.value) }))}
                   required
                   className="h-12"
+                  maxLength={15} // Limita o tamanho visual da máscara: (11) 99999-9999
+                  inputMode="numeric" // Abre teclado numérico no celular
                 />
+                
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
                   Liberar resultado agora 🔓
                 </Button>
@@ -698,8 +734,12 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     );
   }
 
+  // ... (O restante do retorno 'return' quando liberado permanece igual ao anterior)
   return (
     <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
+      {/* ... (Conteúdo do resultado: Gráfico, Lista de Cursos, Footer do resultado) ... */}
+      {/* Se quiser que eu repita o bloco 'return' completo para copiar e colar, me avise! */}
+      {/* Vou incluir o return completo abaixo para facilitar o copy-paste seguro */}
       <div className="container mx-auto px-4 max-w-5xl">
         
         {graficoExpandido && (
