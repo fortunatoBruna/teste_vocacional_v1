@@ -4,7 +4,7 @@ import { Progress } from '@/components/ui/progress';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
-import { X, Maximize2 } from 'lucide-react'; // Ícones para o Zoom
+import { X, Maximize2 } from 'lucide-react';
 import {
   Radar,
   RadarChart,
@@ -20,7 +20,7 @@ const CATEGORIAS = [
   'Interpessoal', 'Corporal-Cinestésica', 'Linguística', 'Intrapessoal', 'Espacial'
 ];
 
-// Apenas as 8 categorias usadas no teste (nao tem a existencial)
+// Apenas as 8 categorias usadas no teste (não tem a existencial)
 const CATEGORIAS_TESTE = [
   'Naturalista', 'Musical', 'Lógico-matemático', 'Interpessoal', 'Corporal-Cinestésica', 'Linguística', 'Intrapessoal', 'Espacial'
 ];
@@ -52,7 +52,6 @@ const PERGUNTAS: Record<string, string[]> = {
     "A música é muito importante para mim na vida diária",
     "Tenho amplos e variados interesses musicais, incluindo clássicos e contemporâneos",
     "Eu tenho um bom senso de afinação, tempo e ritmo"
-    
   ],
   'Interpessoal': [
     "Eu sinto que as pessoas de todas as idades gostam de mim",
@@ -459,20 +458,30 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
   </section>
 );
 
+// Tipo para controlar cada pergunta individualmente
+type Pergunta = {
+  categoria: string;
+  texto: string;
+  index: number; // Índice original (0-3) dentro da categoria
+};
+
 interface StepProps {
   step: number;
-  categoria: string;
-  perguntas: string[];
+  perguntas: Pergunta[];
   respostas: Record<string, number[]>;
   onSelect: (categoria: string, index: number, valor: number) => void;
   onNext: () => void;
   onPrev: () => void;
 }
 
-const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, onPrev }: StepProps) => {
+const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: StepProps) => {
   const progress = (step / 8) * 100;
-  const currentRespostas = respostas[categoria] || [];
-  const allAnswered = perguntas.every((_, index) => currentRespostas[index] !== undefined);
+  
+  // Verifica se TODAS as 4 perguntas aleatórias da tela atual têm resposta
+  const allAnswered = perguntas.every((q) => {
+    const respCat = respostas[q.categoria];
+    return respCat && respCat[q.index] !== undefined;
+  });
   
   return (
     <section className="min-h-screen bg-muted/30 py-12 pt-24 pb-16">
@@ -483,48 +492,52 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
             <span className="text-sm font-medium text-muted-foreground">
               Passo {step} de 8
             </span>
-            {/* Título da categoria removido para evitar viés */}
           </div>
           <Progress value={progress} className="h-3" />
         </div>
 
-        {/* Category Title Removed, Instruction Maintained */}
+        {/* Instructions */}
         <div className="text-center mb-10">
           <p className="text-muted-foreground text-lg">
             Avalie de 1 a 5 o quanto cada afirmação descreve você
           </p>
         </div>
 
-        {/* Questions */}
+        {/* Questions - Agora renderiza perguntas mistas */}
         <div className="space-y-4">
-          {perguntas.map((texto, i) => (
-            <Card key={i} className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card">
-              <CardContent className="p-6">
-                <p className="text-foreground mb-4 font-medium">
-                  {texto}
-                </p>
-                <div className="flex justify-center gap-2 md:gap-4">
-                  {[1, 2, 3, 4, 5].map((v) => (
-                    <button
-                      key={v}
-                      onClick={() => onSelect(categoria, i, v)}
-                      className={`w-12 h-12 md:w-14 md:h-14 rounded-xl font-bold text-lg transition-all duration-200 
-                        ${currentRespostas[i] === v 
-                          ? 'bg-primary text-primary-foreground shadow-glow scale-110' 
-                          : 'bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary'
-                        }`}
-                    >
-                      {v}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex justify-between mt-3 text-xs text-muted-foreground">
-                  <span>Discordo</span>
-                  <span>Concordo</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {perguntas.map((p, i) => {
+            // Recupera o valor respondido para esta pergunta específica
+            const valorRespondido = respostas[p.categoria]?.[p.index];
+
+            return (
+              <Card key={i} className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card">
+                <CardContent className="p-6">
+                  <p className="text-foreground mb-4 font-medium">
+                    {p.texto}
+                  </p>
+                  <div className="flex justify-center gap-2 md:gap-4">
+                    {[1, 2, 3, 4, 5].map((v) => (
+                      <button
+                        key={v}
+                        onClick={() => onSelect(p.categoria, p.index, v)}
+                        className={`w-12 h-12 md:w-14 md:h-14 rounded-xl font-bold text-lg transition-all duration-200 
+                          ${valorRespondido === v 
+                            ? 'bg-primary text-primary-foreground shadow-glow scale-110' 
+                            : 'bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary'
+                          }`}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex justify-between mt-3 text-xs text-muted-foreground">
+                    <span>Discordo</span>
+                    <span>Concordo</span>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
         
         {/* Navigation */}
@@ -551,7 +564,6 @@ const StepSection = ({ step, categoria, perguntas, respostas, onSelect, onNext, 
 };
 
 interface ResultadoProps {
-  // Atualizamos a interface para aceitar os novos campos opcionais
   resultado: { 
     nome: string; 
     aderencia: string; 
@@ -567,8 +579,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
   const [liberado, setLiberado] = useState(false);
   const [itemAberto, setItemAberto] = useState<number | null>(0);
-  
-  // Novo estado para controlar o Zoom do gráfico
   const [graficoExpandido, setGraficoExpandido] = useState(false);
 
   const radarData = CATEGORIAS.map(cat => {
@@ -583,8 +593,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Análise realizada!', {
-      description: 'Seu resultado foi liberado.'
+    toast.success('Cadastro realizado!', {
+      description: 'Seu resultado foi liberado abaixo.'
     });
     setLiberado(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -598,7 +608,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     }
   };
 
-  // Componente reutilizável do Gráfico para não duplicar código
   const GraficoRadar = ({ expandido = false }) => (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart cx="50%" cy="50%" outerRadius={expandido ? "70%" : "60%"} data={radarData}>
@@ -635,7 +644,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         <div className="container mx-auto px-4 max-w-lg">
           <div className="text-center mb-8">
             <div className="inline-block mb-4 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-              <span className="text-primary text-sm font-semibold">🔒 RESULTADO PRONTO</span>
+              <span className="text-primary text-sm font-semibold">🔒 Resultado Pronto</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-3">
               Análise Concluída!
@@ -670,7 +679,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
-                  Liberar resultado agora 🔓
+                  Liberar Resultado Agora 🔓
                 </Button>
               </form>
             </CardContent>
@@ -684,7 +693,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-5xl">
         
-        {/* MODAL DE ZOOM (OVERLAY) */}
         {graficoExpandido && (
           <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
             <div className="relative w-full max-w-3xl bg-card rounded-2xl shadow-2xl border border-border p-6 md:p-10 h-[80vh] flex flex-col">
@@ -694,17 +702,15 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   <X className="h-6 w-6" />
                 </Button>
               </div>
-              
               <div className="flex-1 w-full min-h-0">
                 <GraficoRadar expandido={true} />
               </div>
-
               <div className="mt-6 text-center">
                 <p className="text-sm text-muted-foreground mb-3">
                   Para salvar: Tire um print desta tela (Captura de tela)
                 </p>
                 <Button onClick={() => setGraficoExpandido(false)} className="w-full sm:w-auto">
-                  Fechar visualização
+                  Fechar Visualização
                 </Button>
               </div>
             </div>
@@ -713,10 +719,10 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
         <div className="text-center mb-12 animate-in fade-in duration-700">
           <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
-            <span className="text-success text-sm font-semibold">✓ ACESSO LIBERADO</span>
+            <span className="text-success text-sm font-semibold">✓ Acesso Liberado</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Seu resultado personalizado
+            Seu Resultado Personalizado
           </h2>
           <p className="text-muted-foreground">
             Baseado nas suas respostas, identificamos os cursos mais compatíveis com seu perfil
@@ -724,14 +730,12 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 animate-in slide-in-from-bottom duration-700">
-          {/* Card do Gráfico */}
           <Card className="bg-card/90 backdrop-blur border-border/50 h-fit relative">
             <CardContent className="p-6">
               <div className="flex items-center justify-center mb-4 relative">
                 <h3 className="text-xl font-bold text-foreground text-center w-full">
-                  Mapa de Inteligências
+                  Seu Perfil de Inteligências
                 </h3>
-                {/* Botão de Expandir no canto */}
                 <Button 
                   variant="ghost" 
                   size="icon" 
@@ -742,11 +746,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   <Maximize2 className="h-5 w-5" />
                 </Button>
               </div>
-              
               <div className="h-[350px] relative">
                 <GraficoRadar expandido={false} />
-                
-                {/* Overlay sutil para incentivar o clique */}
                 <div 
                   className="absolute inset-0 cursor-pointer flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-background/10 backdrop-blur-[1px]"
                   onClick={() => setGraficoExpandido(true)}
@@ -759,11 +760,10 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
             </CardContent>
           </Card>
 
-          {/* Top 6 Cursos */}
           <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                🏆 Top 6 cursos recomendados
+                🏆 Top 6 Cursos Recomendados
               </h3>
               <div className="space-y-3">
                 {resultado.map((curso, i) => {
@@ -844,8 +844,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 const Footer = () => (
   <footer className="bg-foreground text-background py-12">
     <div className="container mx-auto px-4 text-center">
-      
-      {/* Seção das Redes Sociais */}
       <div className="flex items-center justify-center gap-6 mb-6">
         <a 
           href="https://www.facebook.com/ufbra.oficial" 
@@ -905,20 +903,33 @@ const Index = () => {
   const [resultado, setResultado] = useState<{ 
     nome: string; 
     aderencia: string;
-    area?: string;       // Novo
-    descricao?: string;  // Novo
-    link?: string;       // Novo
+    area?: string;
+    descricao?: string;
+    link?: string;
   }[]>([]);
 
-  // Lógica de Randomização: Seleciona 4 perguntas aleatórias ao carregar
-  const [perguntasDoTeste] = useState(() => {
-    const selecionadas: Record<string, string[]> = {};
+  // 1. Gera um array único com 32 perguntas embaralhadas (4 de cada categoria)
+  const [perguntasDoTeste] = useState<Pergunta[]>(() => {
+    const todasAsPerguntas: Pergunta[] = [];
+    
     CATEGORIAS_TESTE.forEach(cat => {
-      const todasAsPerguntas = PERGUNTAS[cat];
-      const embaralhadas = [...todasAsPerguntas].sort(() => 0.5 - Math.random());
-      selecionadas[cat] = embaralhadas.slice(0, 4);
+      // Pega 4 perguntas aleatórias desta categoria
+      const perguntasDaCategoria = [...PERGUNTAS[cat]]
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 4);
+        
+      // Cria o objeto Pergunta preservando o índice original (0, 1, 2, 3)
+      perguntasDaCategoria.forEach((texto, index) => {
+        todasAsPerguntas.push({
+          categoria: cat,
+          texto: texto,
+          index: index // Importante para salvar no slot correto do array de respostas
+        });
+      });
     });
-    return selecionadas;
+
+    // Embaralha TODAS as perguntas para misturar as categorias nos passos
+    return todasAsPerguntas.sort(() => 0.5 - Math.random());
   });
 
   // Scroll automático sempre que mudar de etapa
@@ -938,29 +949,23 @@ const Index = () => {
     });
   };
 
-  // NOVA LÓGICA DE CÁLCULO: SIMILARIDADE DE COSSENO
   const calcularResultado = () => {
-    // 1. Gera o vetor do usuário (Soma das respostas por categoria)
     const userVector = CATEGORIAS.map(cat => {
       const catRespostas = respostas[cat] || []; 
       return catRespostas.reduce((a, b) => a + (b || 0), 0);
     });
 
-    // 2. Calcula a "Magnitude" do perfil do usuário
     const userMag = Math.sqrt(userVector.reduce((sum, val) => sum + (val * val), 0));
 
     if (userMag === 0) return [];
 
     const rankings = CURSOS.map(curso => {
-      // 3. Produto Escalar
       const dotProduct = userVector.reduce((sum, val, i) => {
         return sum + (val * (curso.vetor[i] || 0));
       }, 0);
 
-      // 4. Magnitude do Curso
       const courseMag = Math.sqrt(curso.vetor.reduce((sum, val) => sum + (val * val), 0));
 
-      // 5. Similaridade de Cosseno (0 a 1)
       let similarity = 0;
       if (courseMag > 0) {
         similarity = dotProduct / (userMag * courseMag);
@@ -968,11 +973,9 @@ const Index = () => {
 
       return {
         nome: curso.nome,
-        // novos dados
         area: curso.area,
         descricao: curso.descricao,
         link: curso.link,
-        // ----------------------
         aderencia: (similarity * 100).toFixed(1)
       };
     })
@@ -983,10 +986,16 @@ const Index = () => {
   };
 
   const handleNext = () => {
-    const categoria = CATEGORIAS_TESTE[step - 1];
-    const currentRespostas = respostas[categoria] || [];
+    // Pega as 4 perguntas da tela atual
+    const perguntasAtuais = perguntasDoTeste.slice((step - 1) * 4, step * 4);
     
-    if (currentRespostas.filter(r => r !== undefined).length < 4) {
+    // Verifica se TODAS elas foram respondidas
+    const tudoRespondido = perguntasAtuais.every(q => {
+       const resp = respostas[q.categoria];
+       return resp && resp[q.index] !== undefined;
+    });
+
+    if (!tudoRespondido) {
       toast.error('Responda todas as perguntas antes de avançar.');
       return;
     }
@@ -1014,8 +1023,8 @@ const Index = () => {
     document.title = 'Teste Vocacional UFBRA - Descubra seu curso ideal';
   }, []);
 
-  const categoriaAtual = CATEGORIAS_TESTE[step - 1];
-  const perguntasAtuais = perguntasDoTeste[categoriaAtual] || [];
+  // Seleciona o "lote" de 4 perguntas para o passo atual
+  const perguntasAtuais = perguntasDoTeste.slice((step - 1) * 4, step * 4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -1026,7 +1035,6 @@ const Index = () => {
       {step >= 1 && step <= 8 && (
         <StepSection
           step={step}
-          categoria={categoriaAtual}
           perguntas={perguntasAtuais}
           respostas={respostas}
           onSelect={handleSelect}
