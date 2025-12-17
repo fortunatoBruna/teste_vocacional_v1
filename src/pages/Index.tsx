@@ -699,7 +699,11 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                 <Input
                   placeholder="Seu nome"
                   value={formData.nome}
-                  onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
+                  onChange={(e) => {
+                    // Regex que substitui tudo que NÃO for letra (a-z, A-Z, acentos) ou espaço por vazio
+                    const apenasLetras = e.target.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, '');
+                    setFormData(prev => ({ ...prev, nome: apenasLetras }));
+                  }}
                   required
                   className="h-12"
                 />
