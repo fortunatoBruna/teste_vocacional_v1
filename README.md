@@ -41,9 +41,8 @@ Abaixo estão os detalhes das soluções desenvolvidas para atender aos requisit
 
 Melhorias planejadas para as próximas versões (v2):
 
-### Validações e Segurança
-- [ ] Implementar validação de input no campo "Nome" (impedir números).
-- [ ] Implementar máscara e validação estrita no campo "Celular" (mínimo de 9 dígitos).
+- [x] Implementar validação de input no campo "Nome" (impedir números).
+- [x] Implementar máscara e validação estrita no campo "Celular" (mínimo de 9 dígitos).
 
 ### Integrações e Features
 - [ ] **Integração com CRM/WhatsApp:** Conectar o formulário final a uma API real para envio dos dados, substituindo o feedback visual atual.
