@@ -389,8 +389,6 @@ const Header = () => (
   <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
     <div className="container mx-auto px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-2">
-        
-        {/* === LINK ADICIONADO AQUI === */}
         <a 
           href="https://ufbra.com.br/" 
           target="_blank" 
@@ -404,8 +402,6 @@ const Header = () => (
             className="h-full w-auto object-contain"
           />
         </a>
-        {/* =========================== */}
-
       </div>
       <div className="flex items-center gap-2 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
         <span className="relative flex h-2 w-2">
@@ -467,6 +463,74 @@ const Hero = ({ onStart }: { onStart: () => void }) => (
   </section>
 );
 
+const TheorySection = () => (
+  <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-background to-transparent opacity-50"></div>
+
+    <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          
+          <div className="flex justify-center order-2 md:order-1 animate-in slide-in-from-left duration-700 delay-200">
+            <div className="relative">
+              <div className="absolute inset-0 bg-success/5 rounded-full blur-3xl transform scale-110"></div>
+              <img 
+                src="/teste-vocacional-gratis-ufbra.png" 
+                alt="Mandala das Inteligências Múltiplas de Howard Gardner"
+                className="relative w-full max-w-md hover:scale-105 transition-transform duration-500 drop-shadow-xl"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-8 order-1 md:order-2 animate-in slide-in-from-right duration-700 delay-200">
+            <div className="space-y-4">
+              <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full mb-2">
+                <span className="text-[#1880c4] text-sm font-bold uppercase tracking-wide">Metodologia Científica</span>
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                Entenda a teoria por trás do seu resultado
+              </h2>
+
+              <p className="text-gray-600 text-lg leading-relaxed text-justify">
+                Inspirado na teoria do psicólogo <strong>Howard Gardner</strong>, este teste ajuda você a identificar suas principais habilidades entre nove tipos de inteligência: lógico-matemática, linguística, musical, espacial, corporal, interpessoal, intrapessoal, naturalista e existencial.
+              </p>
+              
+              <p className="text-gray-600 text-lg leading-relaxed text-justify">
+                Com apenas <strong>32 perguntas estratégicas</strong>, nosso algoritmo gera um mapa personalizado que conecta seu perfil cognitivo aos cursos da UFBRA com maior afinidade.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm">
+              <h3 className="mb-4 text-[#1880c4] font-semibold text-lg">
+                Passos para uma escolha de carreira segura:
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-gray-700">
+                  <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
+                  <span><strong>Faça o teste:</strong> Descubra suas inclinações naturais e profissões compatíveis.</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700">
+                  <span className="text-[#009444] text-xl mt-[-2px]">•</span>
+                  <span><strong>Autoconhecimento:</strong> Entenda seus valores, interesses e personalidade.</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700">
+                  <span className="text-[#fab71b] text-xl mt-[-2px]">•</span>
+                  <span><strong>Mercado:</strong> Explore as áreas de atuação e habilidades valorizadas.</span>
+                </li>
+                <li className="flex items-start gap-3 text-gray-700">
+                  <span className="text-[#1880c4] text-xl mt-[-2px]">•</span>
+                  <span><strong>Conexão:</strong> Converse com profissionais da área para validar sua escolha.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 // Tipo para controlar cada pergunta individualmente
 type Pergunta = {
   categoria: string;
@@ -495,7 +559,6 @@ const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: S
   return (
     <section className="min-h-screen bg-muted/30 py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-3xl">
-        {/* Progress Header */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-medium text-muted-foreground">
@@ -505,17 +568,14 @@ const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: S
           <Progress value={progress} className="h-3" />
         </div>
 
-        {/* Instructions */}
         <div className="text-center mb-10">
           <p className="text-muted-foreground text-lg">
             Avalie de 1 a 5 o quanto cada afirmação descreve você
           </p>
         </div>
 
-        {/* Questions - Agora renderiza perguntas mistas */}
         <div className="space-y-4">
           {perguntas.map((p, i) => {
-            // Recupera o valor respondido para esta pergunta específica
             const valorRespondido = respostas[p.categoria]?.[p.index];
 
             return (
@@ -549,7 +609,6 @@ const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: S
           })}
         </div>
         
-        {/* Navigation */}
         <div className="flex justify-between mt-10 gap-4">
           <Button
             variant="outline"
@@ -584,23 +643,15 @@ interface ResultadoProps {
   onRestart: () => void;
 }
 
-// ... (Interfaces e imports anteriores mantidos)
-
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
   const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
   const [liberado, setLiberado] = useState(false);
   const [itemAberto, setItemAberto] = useState<number | null>(0);
   const [graficoExpandido, setGraficoExpandido] = useState(false);
 
-  // NOVO: Função auxiliar para aplicar a máscara de telefone (DDD + Número)
   const formatarTelefone = (valor: string) => {
-    // Remove tudo que não for dígito
     const apenasNumeros = valor.replace(/\D/g, '');
-    
-    // Limita a 11 dígitos (DDD + 9 dígitos)
     const limitado = apenasNumeros.slice(0, 11);
-
-    // Aplica a máscara progressivamente
     if (limitado.length <= 2) return limitado;
     if (limitado.length <= 7) return `(${limitado.slice(0, 2)}) ${limitado.slice(2)}`;
     return `(${limitado.slice(0, 2)}) ${limitado.slice(2, 7)}-${limitado.slice(7)}`;
@@ -619,20 +670,15 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // NOVO: Validação estrita do WhatsApp
-    // Remove a formatação para contar apenas os números
     const numerosLimpos = formData.whatsapp.replace(/\D/g, '');
 
-    // Verifica se tem menos de 10 dígitos (DDD + 8 números no mínimo)
-    // Isso atende seu requisito de "mínimo de 9", garantindo um número real com DDD
     if (numerosLimpos.length < 10) {
       toast.error('Número de WhatsApp inválido', {
         description: 'Por favor, insira o DDD e o número completo (ex: 11 99999-9999).'
       });
-      return; // Interrompe o envio se estiver inválido
+      return; 
     }
 
-    // Se passou na validação:
     toast.success('Análise realizada!', {
       description: 'Seu resultado foi liberado.'
     });
@@ -693,14 +739,11 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
               Para liberar seu ranking exclusivo e o gráfico de competências, preencha seus dados de contato abaixo.
             </p>
           </div>
-
           <Card className="bg-card/90 backdrop-blur border-primary/20 shadow-glow-lg">
             <CardContent className="p-8">
-              {/* 1. Adicionado ID ao form para identificar no Montilla */}
               <form id="lead-collector-teste-vocacional" onSubmit={handleSubmit} className="space-y-4">
-                
                 <Input
-                  name="name" // <-- NECESSÁRIO para gerar "data_name"
+                  name="name"
                   placeholder="Seu nome"
                   value={formData.nome}
                   onChange={(e) => {
@@ -710,9 +753,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   required
                   className="h-12"
                 />
-                
                 <Input
-                  name="email" // <-- NECESSÁRIO para gerar "data_email"
+                  name="email"
                   type="email"
                   placeholder="Seu e-mail"
                   value={formData.email}
@@ -720,9 +762,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   required
                   className="h-12"
                 />
-                
                 <Input
-                  name="phone" // <-- NECESSÁRIO para gerar "data_phone"
+                  name="phone"
                   placeholder="WhatsApp (com DDD)"
                   value={formData.whatsapp}
                   onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: formatarTelefone(e.target.value) }))}
@@ -731,7 +772,6 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   maxLength={15}
                   inputMode="numeric"
                 />
-                
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
                   Liberar resultado agora 🔓
                 </Button>
@@ -743,12 +783,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     );
   }
 
-  // ... (O restante do retorno 'return' quando liberado permanece igual ao anterior)
   return (
     <section className="min-h-screen bg-gradient-result py-12 pt-24 pb-16">
-      {/* ... (Conteúdo do resultado: Gráfico, Lista de Cursos, Footer do resultado) ... */}
-      {/* Se quiser que eu repita o bloco 'return' completo para copiar e colar, me avise! */}
-      {/* Vou incluir o return completo abaixo para facilitar o copy-paste seguro */}
       <div className="container mx-auto px-4 max-w-5xl">
         
         {graficoExpandido && (
@@ -1088,7 +1124,12 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {step === 0 && <Hero onStart={handleStart} />}
+      {step === 0 && (
+        <>
+          <Hero onStart={handleStart} />
+          <TheorySection />
+        </>
+      )}
       
       {step >= 1 && step <= 8 && (
         <StepSection
