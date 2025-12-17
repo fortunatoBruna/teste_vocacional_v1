@@ -6,6 +6,21 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N653C7JC');</script>
+    <script>
+      !function(){"use strict";const e=["load","log","error","resolveLocation","track","trackForm","trackLink","trackElement","trackSubmit","page","identify","ready","isBot","getMetas"];function t(e,t,o){return"getMetas"===t||"ready"===t?(...n)=>e.length>=o?Promise.resolve("getMetas"===t?null:void 0):new Promise((o,r)=>{e.push({method:t,args:n,deferred:{resolve:o,reject:r}})}):(...n)=>{e.length<o&&(console.log(`Queuing montilla.${t} call with args:`,n),e.push({method:t,args:n}))}}function o(e){return Boolean(e)&&"function"==typeof e.then}if(!window.montilla){const n=[],r={__q:n};for(const o of e)r[o]=t(n,o,100);window.montilla=r;const l=document.createElement("script");l.src="https://montilla-sdk.quero.space/v1/montilla.iife.js",l.async=!0,l.addEventListener("load",()=>{window.montilla&&window.montilla.__q&&function(e){const t=e.__q;for(const{method:r,args:l,deferred:i}of t){const t=e[r];if("function"==typeof t)try{const e=t(...l);i&&(o(e)?e.then(i.resolve,i.reject):i.resolve(e))}catch(n){i?.reject(n)}else i&&i.reject(new Error(`Montilla method "${r}" is not available.`))}delete e.__q}(window.montilla)}),l.addEventListener("error",()=>{window.montilla&&window.montilla.__q&&function(e,t){const o=e.__q;if(o){for(const e of o)e.deferred?.reject(t);delete e.__q}}(window.montilla,new Error("Failed to load Montilla SDK from CDN"))}),document.head.appendChild(l)}}();
+    </script>
+
+    <script>
+      montilla.load({
+        app: {
+          namespace: 'ufbra',
+          name: 'Teste Vocacional',
+          version: '1.0.0',
+          environment: 'production'
+        },
+        autoTrack: true
+      })
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teste Vocacional UFBRA</title>
