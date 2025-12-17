@@ -559,6 +559,7 @@ const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: S
   return (
     <section className="min-h-screen bg-muted/30 py-12 pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-3xl">
+        {/* Progress Header */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-3">
             <span className="text-sm font-medium text-muted-foreground">
@@ -568,18 +569,26 @@ const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: S
           <Progress value={progress} className="h-3" />
         </div>
 
+        {/* Instructions */}
         <div className="text-center mb-10">
           <p className="text-muted-foreground text-lg">
             Avalie de 1 a 5 o quanto cada afirmação descreve você
           </p>
         </div>
 
+        {/* Questions - Agora renderiza perguntas mistas */}
         <div className="space-y-4">
           {perguntas.map((p, i) => {
+            // Recupera o valor respondido para esta pergunta específica
             const valorRespondido = respostas[p.categoria]?.[p.index];
 
             return (
-              <Card key={i} className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card">
+              // CORREÇÃO AQUI: Mudamos 'key={i}' para uma chave única composta.
+              // Isso força o React a recriar o componente do zero, evitando o "glitch" de texto no iPhone.
+              <Card 
+                key={`${p.categoria}-${p.index}`} 
+                className="border-border/50 bg-card/90 backdrop-blur transition-all duration-300 hover:shadow-card"
+              >
                 <CardContent className="p-6">
                   <p className="text-foreground mb-4 font-medium">
                     {p.texto}
@@ -609,6 +618,7 @@ const StepSection = ({ step, perguntas, respostas, onSelect, onNext, onPrev }: S
           })}
         </div>
         
+        {/* Navigation */}
         <div className="flex justify-between mt-10 gap-4">
           <Button
             variant="outline"
