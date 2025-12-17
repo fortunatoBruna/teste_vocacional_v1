@@ -679,9 +679,18 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
   const radarData = CATEGORIAS.map(cat => {
     const catRespostas = respostas[cat] || [0, 0, 0, 0];
     const score = catRespostas.reduce((a, b) => a + (b || 0), 0);
+    
+    // CORREÇÃO DE TEXTO CORTADO:
+    // Cria um label abreviado apenas para exibição no gráfico
+    let labelDisplay = cat;
+    if (cat === 'Lógico-matemático') labelDisplay = 'Lóg. Matem.';
+    if (cat === 'Corporal-Cinestésica') labelDisplay = 'Corp. Cinest.';
+    if (cat === 'Interpessoal') labelDisplay = 'Interpess.';
+    if (cat === 'Intrapessoal') labelDisplay = 'Intrapess.';
+
     return {
-      categoria: cat, 
-      fullCategoria: cat,
+      categoria: labelDisplay, // Usa o nome abreviado
+      fullCategoria: cat,      // Mantém o nome original se precisar
       score: score,
     };
   });
@@ -715,13 +724,17 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const GraficoRadar = ({ expandido = false }) => (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart cx="50%" cy="50%" outerRadius={expandido ? "70%" : "60%"} data={radarData}>
+      {/* CORREÇÃO DE RAIO:
+         Reduzimos de 60% para 50% no mobile (normal) e 70% para 60% no expandido.
+         Isso cria a margem necessária para os textos caberem.
+      */}
+      <RadarChart cx="50%" cy="50%" outerRadius={expandido ? "60%" : "50%"} data={radarData}>
         <PolarGrid stroke="hsl(var(--border))" />
         <PolarAngleAxis 
           dataKey="categoria" 
           tick={{ 
             fill: 'hsl(var(--foreground))', 
-            fontSize: expandido ? 14 : 11,
+            fontSize: expandido ? 12 : 10, // Fonte levemente reduzida para segurança
             fontWeight: 500
           }}
         />
@@ -743,7 +756,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
     </ResponsiveContainer>
   );
 
-if (!liberado) {
+  if (!liberado) {
     // Pega o nome do primeiro curso (Top 1) ou string vazia se der erro
     const topCurso = resultado[0]?.nome || "";
 
@@ -765,8 +778,7 @@ if (!liberado) {
             <CardContent className="p-8">
               <form id="lead-collector-teste-vocacional" onSubmit={handleSubmit} className="space-y-4">
                 
-                {/* === NOVO: CAMPO OCULTO COM O TOP 1 CURSO === */}
-                {/* O Montilla vai ler o 'name="curso_match"' e salvar o valor preenchido */}
+                {/* CAMPO OCULTO COM O TOP 1 CURSO */}
                 <input type="hidden" name="curso_match" value={topCurso} />
                 
                 <Input
