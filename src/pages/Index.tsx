@@ -593,8 +593,8 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Cadastro realizado!', {
-      description: 'Seu resultado foi liberado abaixo.'
+    toast.success('Análise realizada!', {
+      description: 'Seu resultado foi liberado.'
     });
     setLiberado(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -644,7 +644,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
         <div className="container mx-auto px-4 max-w-lg">
           <div className="text-center mb-8">
             <div className="inline-block mb-4 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full">
-              <span className="text-primary text-sm font-semibold">🔒 Resultado Pronto</span>
+              <span className="text-primary text-sm font-semibold">🔒 RESULTADO PRONTO</span>
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-3">
               Análise Concluída!
@@ -679,7 +679,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   className="h-12"
                 />
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
-                  Liberar Resultado Agora 🔓
+                  Liberar resultado agora 🔓
                 </Button>
               </form>
             </CardContent>
@@ -697,7 +697,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
             <div className="relative w-full max-w-3xl bg-card rounded-2xl shadow-2xl border border-border p-6 md:p-10 h-[80vh] flex flex-col">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-2xl font-bold text-foreground">Seu Mapa de Inteligências</h3>
+                <h3 className="text-2xl font-bold text-foreground">Seu mapa de Inteligências</h3>
                 <Button variant="ghost" size="icon" onClick={() => setGraficoExpandido(false)}>
                   <X className="h-6 w-6" />
                 </Button>
@@ -719,10 +719,10 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
 
         <div className="text-center mb-12 animate-in fade-in duration-700">
           <div className="inline-block mb-4 px-5 py-2.5 bg-success/10 border border-success/20 rounded-full">
-            <span className="text-success text-sm font-semibold">✓ Acesso Liberado</span>
+            <span className="text-success text-sm font-semibold">✓ ACESSO LIBERADO</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Seu Resultado Personalizado
+            Seu resultado personalizado
           </h2>
           <p className="text-muted-foreground">
             Baseado nas suas respostas, identificamos os cursos mais compatíveis com seu perfil
@@ -734,7 +734,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
             <CardContent className="p-6">
               <div className="flex items-center justify-center mb-4 relative">
                 <h3 className="text-xl font-bold text-foreground text-center w-full">
-                  Seu Perfil de Inteligências
+                  Mapa de Inteligências
                 </h3>
                 <Button 
                   variant="ghost" 
@@ -763,7 +763,7 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
           <Card className="bg-card/90 backdrop-blur border-border/50 h-fit">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                🏆 Top 6 Cursos Recomendados
+                🏆 Top 6 cursos recomendados
               </h3>
               <div className="space-y-3">
                 {resultado.map((curso, i) => {
