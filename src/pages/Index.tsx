@@ -380,6 +380,28 @@ const CURSOS = [
     descricao: 'O curso de Terapia Ocupacional forma profissionais capacitados para atuar na promoção da saúde e inclusão social, integrando conhecimentos de ciências biológicas, saúde e psicologia do desenvolvimento.',
     link: 'https://ufbra.com.br/cursos/terapia-ocupacional',
     vetor: [5.6, 2.1, 4.8, 4.9, 8.9, 7.2, 6.4, 6.3, 4.7]
+  },
+  
+  {
+    nome: 'Marketing Digital',
+    area: 'Gestão e Negócios',
+    descricao: 'O curso desenvolve habilidades práticas em estratégias digitais que abrangem desde o entendimento do comportamento do consumidor até a gestão de ferramentas avançadas de marketing em ambientes online e móveis.',
+    link: 'https://ufbra.com.br/cursos/tecnologo-graduacao/marketing-digital?uuid=21c4665e-eda6-4913-a17c-fec56e4c0bc1',
+    vetor: [1.5, 2.5, 7.5, 1.5, 8.5, 1.5, 7.8, 4.5, 5.5]
+  },
+  {
+    nome: 'Mecatrônica Industrial',
+    area: 'Engenharias',
+    descricao: 'O curso de Mecatrônica Industrial prepara profissionais para atuar na integração de sistemas mecânicos, eletrônicos e computacionais, desenvolvendo habilidades em automação, controle de processos e manutenção de equipamentos industriais.',
+    link: 'https://ufbra.com.br/cursos/tecnologo-graduacao/mecatronica-industrial?uuid=1e0431e4-d6f2-469e-9532-eada584f2a97',
+    vetor: [1.5, 1.5, 9.5, 1.5, 5.5, 4.0, 3.0, 2.0, 7.5]
+  },
+  {
+    nome: 'Engenharia da Computação',
+    area: 'Engenharias',
+    descricao: 'O curso de Engenharia da Computação desenvolve competências em matemática avançada, física aplicada e programação, essenciais para projetar e implementar soluções tecnológicas inovadoras.',
+    link: 'https://ufbra.com.br/cursos/bacharelado-graduacao/engenharia-da-computacao?uuid=9955ffe7-465f-4dcc-85f0-7457e135151d',
+    vetor: [1.5, 1.5, 10.0, 1.5, 5.0, 2.5, 6.5, 3.5, 5.5]
   }
 ];
 
