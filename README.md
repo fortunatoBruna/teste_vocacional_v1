@@ -17,6 +17,8 @@ Abaixo estão os detalhes das soluções desenvolvidas para atender aos requisit
 - [x] **Sistema Anti-Viés (Randomização):** Implementação de um `Lazy State` que embaralha as questões de cada inteligência e seleciona aleatoriamente 4 perguntas (de um pool de 7) a cada novo acesso.
 - [x] **Ocultação de Categorias:** Remoção dos rótulos explícitos (ex: "Inteligência Musical") durante a etapa de perguntas para evitar que o usuário enviesasse suas respostas.
 - [x] **Reset Real:** Configuração do reinício do teste via `window.location.reload()` para garantir que um novo conjunto de perguntas aleatórias seja gerado.
+- [x] Validação de input no campo "Nome" (impedir números).
+- [x] Máscara e validação estrita no campo "Celular" (mínimo de 9 dígitos).
 
 ### 📱 Experiência do Usuário (UX/UI)
 - [x] **Auto-Scroll Mobile:** Implementação de um `useEffect` monitorando a mudança de etapas (`step`), forçando a rolagem para o topo da página automaticamente. Isso corrige o problema de usabilidade em celulares onde o usuário precisava rolar para cima manualmente.
@@ -38,11 +40,6 @@ Abaixo estão os detalhes das soluções desenvolvidas para atender aos requisit
 ---
 
 ## 🚧 Próximos Passos (Roadmap)
-
-Melhorias planejadas para as próximas versões (v2):
-
-- [x] Implementar validação de input no campo "Nome" (impedir números).
-- [x] Implementar máscara e validação estrita no campo "Celular" (mínimo de 9 dígitos).
 
 ### Integrações e Features
 - [ ] **Integração com CRM/WhatsApp:** Conectar o formulário final a uma API real para envio dos dados, substituindo o feedback visual atual.
