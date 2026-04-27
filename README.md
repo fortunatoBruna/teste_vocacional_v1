@@ -4,7 +4,7 @@ Projeto de orientação vocacional baseado na Teoria das Inteligências Múltipl
 
 ## 📋 Especificações de Alto Nível
 
-O objetivo desta versão foi refatorar a lógica de cálculo para garantir precisão matemática, eliminar vieses de resposta através de randomização e otimizar a experiência do usuário (UX) em dispositivos móveis, além de implementar barreiras de entrada para visualização de resultados focadas em conversão.
+Utilizamos o modelo do teste vocacional do Quero Bolsa como referência para replicação no site das Marcas. O objetivo desta versão foi refatorar a lógica de cálculo para garantir precisão matemática, eliminar vieses de resposta através de randomização e otimizar a experiência do usuário (UX) em dispositivos móveis, além de implementar barreiras de entrada para visualização de resultados focadas em conversão.
 
 ---
 
