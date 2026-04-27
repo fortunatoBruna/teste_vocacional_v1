@@ -22,7 +22,6 @@ Permite replicação rápida para outras Marcas (Unirios, Unialpha, Uniasp etc.)
 -- identidade visual
 -- regras de recomendação
 
----
 
 ## 🎯 Objetivo de negócio
 - Aumentar geração de leads qualificados
@@ -30,7 +29,7 @@ Permite replicação rápida para outras Marcas (Unirios, Unialpha, Uniasp etc.)
 - Elevar taxa de conversão no funil
 - Criar uma solução padronizada para todas as Marcas
 
----
+
 ## ⚙️ Como funciona
 1. O usuário responde a um conjunto de perguntas comportamentais
 2. Cada resposta contribui para a construção de um vetor de perfil
@@ -63,22 +62,6 @@ O teste vocacional está integrado ao Montilla, garantindo a captura dos dados d
 - Possibilidade de ações comerciais direcionadas
 - Conexão direta entre experiência do usuário e funil de conversão
 
----
-
-## 🔗 Acesso ao protótipo
-👉 https://preview--teste-vocacional-v1.lovable.app/
-
----
-
-## 🚧 Próximos Passos (Roadmap)
-
-### Integrações e Features
-- [ ] **Integração com CRM/WhatsApp:** Conectar o formulário final a uma API real para envio dos dados, substituindo o feedback visual atual.
-- [ ] **Conteúdo Educativo:** Adicionar modais explicativos (Tooltips) em palavras complexas nas perguntas.
-- [ ] **Explicação das Inteligências:** Seção detalhando o que significa cada pontuação no gráfico de radar.
-
----
-
 ## 🛠️ Tecnologias Utilizadas
 
 - **React** (Vite)
@@ -89,4 +72,18 @@ O teste vocacional está integrado ao Montilla, garantindo a captura dos dados d
 - **Shadcn/ui** (Componentes de Interface)
 - **Montilla SDK** (Coleta de dados)
 
-O projeto foi desenvolvido utilizando React com TypeScript e Vite, com estilização em Tailwind CSS. A lógica de recomendação utiliza um algoritmo de similaridade vetorial (cosine similarity), permitindo sugestões de cursos baseadas em dados. Atualmente, a aplicação funciona como um front-end independente, sem necessidade de backend.
+---
+
+## 🔗 Acesso ao protótipo
+👉 https://preview--teste-vocacional-v1.lovable.app/
+
+
+## 🚧 Próximos Passos 
+
+### Integrações e Features
+- [ ] **Integração com CRM/WhatsApp:** Conectar o formulário final a uma API real para envio dos dados, substituindo o feedback visual atual.
+- [ ] **Conteúdo Educativo:** Adicionar modais explicativos (Tooltips) em palavras complexas nas perguntas.
+- [ ] **Explicação das Inteligências:** Seção detalhando o que significa cada pontuação no gráfico de radar.
+
+
+
