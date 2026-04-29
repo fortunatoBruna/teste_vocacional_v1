@@ -687,7 +687,7 @@ interface ResultadoProps {
 }
 
 const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) => {
-  const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '' });
+  const [formData, setFormData] = useState({ nome: '', email: '', whatsapp: '', situacao: '' }); // campo de situação do lead
   const [liberado, setLiberado] = useState(false);
   const [itemAberto, setItemAberto] = useState<number | null>(0);
   const [graficoExpandido, setGraficoExpandido] = useState(false);
@@ -835,6 +835,18 @@ const ResultadoSection = ({ resultado, respostas, onRestart }: ResultadoProps) =
                   maxLength={15}
                   inputMode="numeric"
                 />
+                <select
+                  name="situacao"
+                  value={formData.situacao}
+                  onChange={(e) => setFormData(prev => ({ ...prev, situacao: e.target.value }))}
+                  required
+                  className="h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                >
+                  <option value="">Selecione sua situação atual</option>
+                  <option value="inicio_de_carreira">Início de carreira</option>
+                  <option value="transicao_de_carreira">Transição de carreira</option>
+                </select>
+                
                 <Button type="submit" className="w-full h-12 text-lg bg-gradient-blue hover:opacity-90 font-bold shadow-md">
                   Liberar resultado agora 🔓
                 </Button>
