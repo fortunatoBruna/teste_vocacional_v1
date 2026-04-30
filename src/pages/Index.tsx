@@ -115,259 +115,259 @@ const CURSOS = [
     area: 'Ciências sociais aplicadas',
     descricao: 'Este curso desenvolve competências essenciais para a gestão eficiente de organizações, integrando conhecimentos em finanças, estratégia, liderança, processos e sustentabilidade.',
     link: 'https://ufbra.com.br/cursos/administracao',
-    vetor: [1.7, 1.7, 7.9, 4.5, 8.9, 1.6, 7.3, 6.4, 2.2]
+    vetor: [2.0, 2.0, 7.8, 4.5, 8.8, 2.5, 7.5, 6.5, 3.0]
   },
   {
     nome: 'Pedagogia',
     area: 'Ciências humanas',
     descricao: 'O curso de Pedagogia prepara profissionais para atuar na gestão, planejamento e desenvolvimento de práticas educativas eficazes, contemplando desde fundamentos históricos e sociais até o uso de tecnologias e metodologias inclusivas.',
     link: 'https://ufbra.com.br/cursos/pedagogia',
-    vetor: [6.3, 1.7, 6.3, 8.5, 10.0, 1.5, 8.9, 7.4, 5.7]
+    vetor: [5.5, 2.0, 5.5, 8.8, 10.0, 3.0, 9.0, 7.8, 5.5]
   },
   {
     nome: 'Ciências Contábeis',
     area: 'Ciências sociais aplicadas',
     descricao: 'O curso de Ciências Contábeis capacita o profissional a atuar com domínio em contabilidade, finanças e gestão estratégica, integrando conhecimentos em sustentabilidade, tecnologia da informação e legislação empresarial.',
     link: 'https://ufbra.com.br/cursos/ciencias-contabeis',
-    vetor: [1.7, 1.7, 8.7, 3.5, 7.1, 1.6, 6.5, 2.6, 2.2]
+    vetor: [1.8, 1.5, 9.0, 3.2, 6.5, 1.8, 6.5, 4.5, 2.5]
   },
   {
     nome: 'Educação Física',
     area: 'Ciências da saúde',
     descricao: 'O curso de Educação Física prepara profissionais capacitados a atuar na promoção da saúde, desenvolvimento motor e inclusão social por meio do movimento corporal.',
     link: 'https://ufbra.com.br/cursos/educacao-fisica',
-    vetor: [2.8, 5.4, 5.2, 4.0, 6.5, 8.8, 6.4, 2.6, 8.1]
+    vetor: [3.0, 3.5, 4.8, 4.5, 7.5, 9.5, 5.5, 4.0, 5.5]
   },
   {
     nome: 'Enfermagem',
     area: 'Ciências da saúde',
     descricao: 'Este curso de Enfermagem desenvolve habilidades essenciais para a prática avançada, abrangendo desde o cuidado direto ao paciente até a gestão de serviços de saúde.',
     link: 'https://ufbra.com.br/cursos/enfermagem',
-    vetor: [9.6, 1.7, 4.0, 7.5, 6.5, 2.1, 4.9, 2.6, 2.1]
+    vetor: [8.2, 1.5, 4.5, 7.8, 8.5, 5.5, 5.8, 5.5, 3.0]
   },
   {
     nome: 'Engenharia Civil',
     area: 'Engenharias',
     descricao: 'Este curso de Engenharia Civil desenvolve competências técnicas essenciais, combinando fundamentos matemáticos, físicos e tecnológicos com práticas projetuais multidisciplinares.',
     link: 'https://ufbra.com.br/cursos/engenharia-civil',
-    vetor: [1.8, 1.5, 8.1, 3.0, 4.0, 1.5, 2.4, 1.5, 9.5]
+    vetor: [2.5, 1.5, 8.8, 3.0, 5.0, 3.0, 4.0, 3.5, 9.5]
   },
   {
     nome: 'Logística',
     area: 'Gestão e Negócios',
     descricao: 'Este curso de Logística capacita profissionais a planejar, implementar e otimizar operações de cadeias de suprimentos com foco em eficiência, sustentabilidade e inovação tecnológica.',
     link: 'https://ufbra.com.br/cursos/logistica',
-    vetor: [1.6, 1.7, 4.3, 3.0, 4.5, 1.5, 6.5, 1.9, 3.3]
+    vetor: [2.0, 1.5, 7.0, 3.0, 6.5, 3.0, 6.0, 4.0, 5.0]
   },
   {
     nome: 'Fisioterapia',
     area: 'Ciências da saúde',
     descricao: 'O curso de Fisioterapia proporciona uma formação sólida em ciências biológicas e de saúde, integrando conhecimentos de anatomia, fisiologia, patologia e técnicas de avaliação funcional.',
     link: 'https://ufbra.com.br/cursos/fisioterapia',
-    vetor: [7.3, 1.7, 3.2, 7.0, 4.2, 7.3, 6.4, 2.6, 4.4]
+    vetor: [7.5, 1.5, 4.2, 7.5, 8.2, 8.5, 5.5, 5.5, 4.5]
   },
   {
     nome: 'Psicologia',
     area: 'Ciências humanas',
     descricao: 'O curso de Psicologia oferece uma formação sólida que integra teoria e prática, capacitando o aluno a aplicar conhecimentos científicos na compreensão e intervenção sobre o comportamento humano.',
     link: 'https://ufbra.com.br/cursos/psicologia',
-    vetor: [6.2, 1.7, 1.7, 9.5, 9.8, 1.7, 6.6, 6.5, 1.9]
+    vetor: [4.5, 1.8, 3.5, 9.8, 10.0, 2.5, 8.5, 9.0, 3.0]
   },
   {
     nome: 'Nutrição',
     area: 'Ciências da saúde',
     descricao: 'Este curso proporciona uma formação sólida em nutrição, integrando conhecimentos de biociências, saúde pública e técnicas alimentares aplicadas. O aluno desenvolve competências para avaliar, planejar e orientar práticas nutricionais individuais e...',
     link: 'https://ufbra.com.br/cursos/nutricao',
-    vetor: [8.8, 1.7, 4.7, 6.5, 7.2, 2.1, 6.4, 4.8, 2.1]
+    vetor: [8.8, 1.5, 5.5, 7.0, 8.0, 3.5, 6.2, 6.0, 3.0]
   },
   {
     nome: 'Análise e Desenvolvimento de Sistemas',
     area: 'Informação e Comunicação',
     descricao: 'O curso de Análise e Desenvolvimento de Sistemas prepara profissionais capacitados a projetar, implementar e gerenciar soluções tecnológicas que atendem às demandas do mercado digital.',
     link: 'https://ufbra.com.br/cursos/analise-e-desenvolvimento-de-sistemas',
-    vetor: [1.6, 1.5, 8.4, 2.5, 2.2, 1.5, 7.2, 1.5, 2.3]
+    vetor: [1.5, 1.5, 9.2, 2.5, 3.5, 1.8, 5.5, 4.5, 3.5]
   },
   {
     nome: 'Marketing',
     area: 'Gestão e Negócios',
     descricao: 'Este curso de Marketing capacita o aluno a desenvolver estratégias eficazes que abrangem desde o comportamento do consumidor e marketing digital até o gerenciamento de marcas e comércio eletrônico.',
     link: 'https://ufbra.com.br/cursos/marketing',
-    vetor: [1.6, 3.9, 6.5, 4.0, 9.8, 1.5, 6.5, 4.9, 1.8]
+    vetor: [1.8, 3.5, 6.5, 4.5, 9.5, 2.0, 8.0, 5.5, 5.5]
   },
   {
     nome: 'Farmácia',
     area: 'Ciências da saúde',
     descricao: 'O curso de Farmácia proporciona uma formação sólida que integra conhecimentos em ciências biológicas, químicas e farmacológicas, capacitando o aluno a compreender e atuar em diferentes etapas do desenvolvimento, produção e controle de medicamentos.',
     link: 'https://ufbra.com.br/cursos/farmacia',
-    vetor: [8.8, 1.7, 7.0, 6.5, 5.7, 2.1, 6.4, 3.3, 2.1]
+    vetor: [8.5, 1.5, 7.5, 6.5, 6.8, 3.0, 5.8, 5.0, 3.0]
   },
   {
     nome: 'Gestão Financeira',
     area: 'Gestão e Negócios',
     descricao: 'O curso em Gestão Financeira desenvolve competências essenciais para a análise, planejamento e controle dos recursos financeiros em organizações de diversos setores.',
     link: 'https://ufbra.com.br/cursos/gestao-financeira',
-    vetor: [1.6, 1.7, 6.5, 3.0, 6.8, 1.5, 6.5, 4.9, 1.8]
+    vetor: [1.5, 1.5, 8.5, 3.0, 6.5, 1.8, 6.0, 6.0, 2.5]
   },
   {
     nome: 'Processos Gerenciais',
     area: 'Gestão e Negócios',
     descricao: 'O curso de Processos Gerenciais capacita o aluno a aplicar conhecimentos em economia, gestão, finanças e tecnologia para otimizar operações empresariais.',
     link: 'https://ufbra.com.br/cursos/processos-gerenciais',
-    vetor: [1.6, 1.7, 7.3, 3.5, 8.3, 1.5, 6.5, 1.9, 1.8]
+    vetor: [1.8, 1.5, 7.5, 3.5, 8.0, 2.5, 6.8, 5.0, 3.0]
   },
   {
     nome: 'Biomedicina',
     area: 'Ciências biológicas',
     descricao: 'O curso de Biomedicina oferece uma formação sólida nas ciências biológicas e da saúde, integrando fundamentos teóricos e práticas laboratoriais essenciais para a atuação profissional.',
     link: 'https://ufbra.com.br/cursos/biomedicina',
-    vetor: [8.4, 1.6, 7.1, 6.0, 6.5, 1.7, 5.6, 1.6, 1.8]
+    vetor: [8.8, 1.5, 7.8, 6.2, 6.5, 3.0, 5.5, 4.5, 3.0]
   },
   {
     nome: 'Engenharia de Produção',
     area: 'Engenharias',
     descricao: 'O curso de Engenharia de Produção desenvolve competências técnicas e analíticas essenciais para otimizar processos produtivos, integrar tecnologias e gerir projetos multidisciplinares.',
     link: 'https://ufbra.com.br/cursos/engenharia-de-producao',
-    vetor: [1.8, 1.5, 8.3, 3.5, 7.7, 1.5, 5.4, 1.5, 6.5]
+    vetor: [2.0, 1.5, 8.8, 3.5, 7.5, 3.0, 5.8, 4.0, 6.8]
   },
   {
     nome: 'Sistemas de Informação',
     area: 'Ciências exatas e da terra',
     descricao: 'Este curso desenvolve competências técnicas e analíticas essenciais para atuar na área de Sistemas de Informação, capacitando o aluno a planejar, desenvolver e gerenciar soluções de tecnologia que atendam às demandas organizacionais.',
     link: 'https://ufbra.com.br/cursos/sistemas-de-informacao',
-    vetor: [1.6, 1.6, 7.5, 2.5, 2.4, 1.5, 6.4, 1.7, 2.3]
+    vetor: [1.5, 1.5, 8.8, 2.5, 4.0, 1.8, 5.8, 4.5, 3.5]
   },
   {
     nome: 'Gestão Comercial',
     area: 'Gestão e Negócios',
     descricao: 'O curso em Gestão Comercial prepara profissionais para atuar de forma estratégica na condução de processos comerciais, integrando conhecimentos em economia, administração e marketing com ferramentas tecnológicas atuais.',
     link: 'https://ufbra.com.br/cursos/gestao-comercial',
-    vetor: [1.6, 1.7, 6.5, 3.5, 8.3, 1.5, 6.5, 1.9, 1.8]
+    vetor: [1.8, 2.0, 6.8, 3.8, 9.0, 2.0, 7.5, 5.0, 3.5]
   },
   {
     nome: 'Engenharia Mecânica',
     area: 'Engenharias',
     descricao: 'O curso de Engenharia Mecânica oferece uma formação sólida que integra fundamentos matemáticos, físicos e tecnológicos aplicados ao desenvolvimento e gestão de projetos complexos.',
     link: 'https://ufbra.com.br/cursos/engenharia-mecanica',
-    vetor: [1.8, 1.5, 9.3, 2.5, 5.5, 1.5, 5.4, 1.5, 8.0]
+    vetor: [2.0, 1.5, 9.5, 2.5, 5.0, 4.0, 4.5, 3.5, 8.5]
   },
   {
     nome: 'Ciência da Computação',
     area: 'Ciências Exatas e da Terra',
     descricao: 'Este curso de Ciência da Computação desenvolve habilidades técnicas essenciais, desde lógica matemática e programação até o domínio de sistemas operacionais, redes e bancos de dados.',
     link: 'https://ufbra.com.br/cursos/ciencia-da-computacao',
-    vetor: [1.6, 1.6, 9.3, 2.5, 5.4, 1.5, 7.2, 1.7, 2.3]
+    vetor: [1.5, 1.5, 9.8, 2.5, 4.0, 1.8, 6.0, 4.8, 3.5]
   },
   {
     nome: 'Gestão Ambiental',
     area: 'Ambiente e saúde',
     descricao: 'Este curso prepara profissionais para atuar na gestão sustentável de recursos naturais e na implementação de práticas ambientais eficientes. Desenvolve habilidades em planejamento e controle ambiental, análise de impactos, recuperação de áreas...',
     link: 'https://ufbra.com.br/cursos/gestao-ambiental',
-    vetor: [7.3, 1.6, 6.3, 7.5, 6.7, 1.6, 5.6, 1.7, 6.2]
+    vetor: [9.2, 1.5, 6.5, 8.0, 7.0, 3.0, 6.0, 5.0, 6.5]
   },
   {
     nome: 'Engenharia Elétrica',
     area: 'Engenharias',
     descricao: 'Este curso de Engenharia Elétrica desenvolve competências técnicas fundamentais em matemática, física aplicada, programação e materiais, preparando o aluno para atuar em projetos complexos no setor elétrico e tecnológico.',
     link: 'https://ufbra.com.br/cursos/engenharia-eletrica',
-    vetor: [1.8, 1.5, 10.3, 2.5, 5.5, 1.5, 5.4, 1.5, 5.8]
+    vetor: [2.0, 1.5, 10.0, 2.5, 5.0, 3.0, 4.5, 3.5, 6.8]
   },
   {
     nome: 'Design Gráfico',
     area: 'Ciências sociais aplicadas',
     descricao: 'O curso de Design Gráfico desenvolve competências técnicas e criativas essenciais para atuação profissional em ambientes físicos e digitais. O aluno aprimora sua capacidade de criação visual, desde fundamentos filosóficos e culturais até a...',
     link: 'https://ufbra.com.br/cursos/design-grafico',
-    vetor: [1.7, 1.7, 6.4, 4.5, 6.1, 1.6, 5.8, 1.9, 8.2]
+    vetor: [2.0, 3.0, 5.5, 4.5, 6.5, 2.5, 7.0, 4.5, 9.5]
   },
   {
     nome: 'Gastronomia',
     area: 'Ciências sociais aplicadas',
     descricao: 'O curso de Gastronomia proporciona uma formação ampla que desenvolve competências técnicas e gerenciais essenciais para o mercado gastronômico. O aluno aprende desde fundamentos históricos e culturais, higiene e segurança alimentar até técnicas...',
     link: 'https://ufbra.com.br/cursos/gastronomia',
-    vetor: [5.4, 1.7, 5.7, 4.0, 6.9, 3.1, 2.8, 1.9, 5.9]
+    vetor: [5.5, 2.5, 5.0, 4.5, 7.0, 7.0, 4.5, 4.0, 6.5]
   },
   {
     nome: 'Redes de Computadores',
     area: 'Informação e comunicação',
     descricao: 'Este curso capacita profissionais a projetar, implementar e gerenciar redes de computadores, desenvolvendo habilidades técnicas em infraestrutura, protocolos avançados, segurança e monitoramento de redes.',
     link: 'https://ufbra.com.br/cursos/redes-de-computadores',
-    vetor: [1.6, 1.5, 9.6, 2.0, 5.2, 1.5, 5.7, 1.5, 5.3]
+    vetor: [1.5, 1.5, 9.0, 2.0, 4.5, 2.5, 5.0, 4.0, 6.0]
   },
   {
     nome: 'Gestão da Qualidade',
     area: 'Gestão e Negócios',
     descricao: 'Este curso prepara profissionais para atuar na gestão da qualidade integrando conhecimentos em administração, controle estatístico, auditoria e normas ISO.',
     link: 'https://ufbra.com.br/cursos/gestao-da-qualidade',
-    vetor: [1.6, 1.7, 7.3, 3.5, 6.8, 1.5, 5.7, 1.9, 1.8]
+    vetor: [2.0, 1.5, 8.0, 3.5, 6.8, 2.5, 5.8, 5.0, 4.0]
   },
   {
     nome: 'Automação Industrial',
     area: 'Controle e processos industriais',
     descricao: 'O curso de Automação Industrial desenvolve competências técnicas essenciais para projetar, implementar e gerenciar sistemas automatizados em ambientes industriais.',
     link: 'https://ufbra.com.br/cursos/automacao-industrial',
-    vetor: [1.6, 1.5, 8.4, 2.0, 5.5, 1.5, 2.3, 1.5, 6.9]
+    vetor: [1.8, 1.5, 9.0, 2.0, 4.5, 4.0, 3.5, 3.5, 7.5]
   },
   {
     nome: 'Gestão de Tecnologia da Informação',
     area: 'Ciências exatas e da terra',
     descricao: 'O curso de Gestão de Tecnologia da Informação desenvolve competências essenciais para planejar, implementar e gerenciar soluções tecnológicas alinhadas às estratégias organizacionais.',
     link: 'https://ufbra.com.br/cursos/gestao-de-tecnologia-da-informacao',
-    vetor: [1.6, 1.6, 8.3, 3.0, 6.2, 1.5, 7.2, 1.7, 2.3]
+    vetor: [1.5, 1.5, 8.5, 3.0, 6.5, 2.0, 6.5, 5.0, 3.5]
   },
   {
     nome: 'Agronomia',
     area: 'Ciências biológicas',
     descricao: 'O curso desenvolve competências sólidas em ciências agrárias, integrando conhecimentos sobre solo, plantas e animais para habilitar o aluno a atuar de forma prática e eficiente na agropecuária moderna.',
     link: 'https://ufbra.com.br/cursos/agronomia',
-    vetor: [9.8, 1.5, 7.2, 6.5, 6.5, 2.5, 5.4, 3.2, 4.8]
+    vetor: [10.0, 1.5, 7.0, 7.0, 6.5, 4.0, 5.5, 5.0, 5.5]
   },
   {
     nome: 'Criminologia',
     area: 'Ciências humanas',
     descricao: 'O curso de Criminologia oferece uma formação sólida para compreender os fenômenos criminais a partir de múltiplas perspectivas, incluindo aspectos jurídicos, sociais e comportamentais.',
     link: 'https://ufbra.com.br/cursos/criminologia',
-    vetor: [1.7, 1.6, 6.8, 8.5, 8.4, 2.8, 7.6, 7.2, 3.1]
+    vetor: [2.0, 1.5, 6.8, 8.8, 8.5, 3.0, 8.0, 8.0, 4.0]
   },
   {
     nome: 'Energias Renováveis',
     area: 'Ambiente e saúde',
     descricao: 'O curso desenvolve competências técnicas e gerenciais essenciais para atuar no setor de energias renováveis, integrando conhecimentos em gestão ambiental, inovação tecnológica e sistemas elétricos aplicados.',
     link: 'https://ufbra.com.br/cursos/energias-renovaveis',
-    vetor: [7.3, 1.5, 8.5, 7.5, 6.2, 1.8, 4.9, 4.1, 7.9]
+    vetor: [8.0, 1.5, 8.8, 8.0, 6.5, 3.0, 5.0, 5.0, 8.0]
   },
   {
     nome: 'Engenharia de Software',
     area: 'Engenharias',
     descricao: 'O curso de Engenharia de Software desenvolve competências técnicas essenciais para projetar, implementar e gerenciar sistemas complexos, com foco em aplicações web, mobile e soluções integradas.',
     link: 'https://ufbra.com.br/cursos/engenharia-de-software',
-    vetor: [1.6, 1.6, 9.8, 2.5, 5.4, 1.5, 7.3, 2.1, 3.2]
+    vetor: [1.5, 1.5, 9.8, 2.8, 5.0, 1.8, 6.5, 5.0, 4.5]
   },
   {
     nome: 'Gestão de Recursos Humanos',
     area: 'Gestão e Negócios',
     descricao: 'O curso de Gestão de Recursos Humanos desenvolve habilidades essenciais para atuar estrategicamente na administração de pessoas, combinando conhecimentos em economia, administração e tecnologia aplicada à gestão.',
     link: 'https://ufbra.com.br/cursos/gestao-de-recursos-humanos',
-    vetor: [1.7, 1.7, 6.4, 7.5, 9.6, 1.6, 6.8, 6.9, 1.9]
+    vetor: [2.0, 1.8, 5.8, 7.8, 10.0, 2.0, 7.5, 8.0, 2.5]
   },
   {
     nome: 'Gestão Hospitalar',
     area: 'Gestão e Negócios',
     descricao: 'O curso de Gestão Hospitalar capacita profissionais para atuar na administração eficiente de instituições de saúde, integrando conhecimentos em finanças, marketing, planejamento estratégico, políticas públicas e tecnologia da informação.',
     link: 'https://ufbra.com.br/cursos/gestao-hospitalar',
-    vetor: [3.8, 1.6, 7.1, 7.0, 8.7, 2.4, 6.5, 5.8, 2.6]
+    vetor: [5.5, 1.5, 7.0, 7.5, 8.8, 3.0, 6.5, 6.0, 3.5]
   },
   {
     nome: 'Investigação Forense e Perícia Criminal',
     area: 'Ciências humanas',
     descricao: 'O curso de Investigação Forense e Perícia Criminal desenvolve competências para atuar em análises técnicas e jurídicas voltadas à elucidação de crimes.',
     link: 'https://ufbra.com.br/cursos/investigacao-forense-e-pericia-criminal',
-    vetor: [2.1, 1.5, 8.2, 8.0, 7.4, 3.5, 7.9, 6.7, 5.4]
+    vetor: [3.0, 1.5, 8.5, 8.5, 7.8, 4.0, 8.0, 7.5, 6.5]
   },
   {
     nome: 'Produção Audiovisual',
     area: 'Ciências sociais aplicadas',
     descricao: 'O curso de Produção Audiovisual capacita profissionais a planejar, criar e gerenciar conteúdos multimídia, desenvolvendo competências técnicas em fotografia, edição, animação e captação sonora, além de habilidades em roteirização e pós-produção.',
     link: 'https://ufbra.com.br/cursos/producao-audiovisual',
-    vetor: [1.8, 6.8, 5.9, 5.5, 6.3, 2.2, 7.2, 4.1, 8.9]
+    vetor: [2.0, 7.5, 5.5, 5.5, 6.8, 3.5, 8.0, 5.0, 9.5]
   },
   {
     nome: 'Segurança do Trabalho',
@@ -381,14 +381,14 @@ const CURSOS = [
     area: 'Gestão e Negócios',
     descricao: 'O curso de Segurança Pública desenvolve competências essenciais para atuação integrada e eficaz no setor, abordando fundamentos jurídicos, direitos humanos, gestão de pessoas e aspectos sociais relacionados à segurança.',
     link: 'https://ufbra.com.br/cursos/seguranca-publica',
-    vetor: [2.5, 1.7, 5.4, 8.0, 9.2, 6.4, 6.1, 5.6, 3.8]
+    vetor: [3.0, 1.5, 5.8, 8.5, 9.0, 7.0, 6.5, 6.5, 4.5]
   },
   {
     nome: 'Terapia Ocupacional',
     area: 'Ciências da saúde',
     descricao: 'O curso de Terapia Ocupacional forma profissionais capacitados para atuar na promoção da saúde e inclusão social, integrando conhecimentos de ciências biológicas, saúde e psicologia do desenvolvimento.',
     link: 'https://ufbra.com.br/cursos/terapia-ocupacional',
-    vetor: [5.6, 2.1, 4.8, 8.5, 8.9, 7.2, 6.4, 6.3, 4.7]
+    vetor: [6.0, 2.0, 4.8, 8.8, 9.0, 8.5, 6.5, 7.0, 5.0]
   },
   
   {
@@ -396,21 +396,21 @@ const CURSOS = [
     area: 'Gestão e Negócios',
     descricao: 'O curso desenvolve habilidades práticas em estratégias digitais que abrangem desde o entendimento do comportamento do consumidor até a gestão de ferramentas avançadas de marketing em ambientes online e móveis.',
     link: 'https://ufbra.com.br/cursos/tecnologo-graduacao/marketing-digital?uuid=21c4665e-eda6-4913-a17c-fec56e4c0bc1',
-    vetor: [1.5, 2.5, 7.5, 3.5, 8.5, 1.5, 7.8, 4.5, 5.5]
+    vetor: [1.5, 3.0, 7.5, 4.0, 8.5, 1.8, 8.5, 5.0, 6.0]
   },
   {
     nome: 'Mecatrônica Industrial',
     area: 'Engenharias',
     descricao: 'O curso de Mecatrônica Industrial prepara profissionais para atuar na integração de sistemas mecânicos, eletrônicos e computacionais, desenvolvendo habilidades em automação, controle de processos e manutenção de equipamentos industriais.',
     link: 'https://ufbra.com.br/cursos/tecnologo-graduacao/mecatronica-industrial?uuid=1e0431e4-d6f2-469e-9532-eada584f2a97',
-    vetor: [1.5, 1.5, 9.5, 2.0, 5.5, 4.0, 3.0, 2.0, 7.5]
+    vetor: [1.8, 1.5, 9.5, 2.0, 4.5, 5.0, 3.5, 3.5, 8.0]
   },
   {
     nome: 'Engenharia da Computação',
     area: 'Engenharias',
     descricao: 'O curso de Engenharia da Computação desenvolve competências em matemática avançada, física aplicada e programação, essenciais para projetar e implementar soluções tecnológicas inovadoras.',
     link: 'https://ufbra.com.br/cursos/bacharelado-graduacao/engenharia-da-computacao?uuid=9955ffe7-465f-4dcc-85f0-7457e135151d',
-    vetor: [1.5, 1.5, 10.0, 2.5, 5.0, 2.5, 6.5, 3.5, 5.5]
+    vetor: [1.5, 1.5, 10.0, 2.5, 4.5, 2.5, 6.0, 4.5, 5.5]
   }
 ];
 
