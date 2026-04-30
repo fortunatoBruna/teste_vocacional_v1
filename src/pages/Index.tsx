@@ -27,76 +27,76 @@ const CATEGORIAS_TESTE = [
 
 const PERGUNTAS: Record<string, string[]> = {
   'Lógico-matemático': [
-    "Tenho facilidade para lidar com números, cálculos e raciocínio lógico",
-    "Gosto de transformar problemas em fórmulas, padrões ou soluções lógicas",
-    "Costumo perceber padrões, relações ou lógica nas situações do dia a dia",
-    "Matemática sempre foi uma das minhas aulas favoritas",
-    "Eu gosto de pensar sobre questões numéricas e examinar as estatísticas",
-    "Eu costumo entender as coisas ao meu redor através de um sentido matemático",
-    "Gosto de solucionar quebra-cabeças"
+    "Tenho facilidade para lidar com números, cálculos e raciocínio lógico.",
+    "Gosto de transformar problemas em fórmulas, padrões ou soluções lógicas.",
+    "Costumo perceber padrões, relações ou lógica nas situações do dia a dia.",
+    "Matemática sempre foi uma das minhas aulas favoritas.",
+    "Eu gosto de pensar sobre questões numéricas e examinar as estatísticas.",
+    "Eu costumo entender as coisas ao meu redor através de um sentido matemático.",
+    "Gosto de solucionar quebra-cabeças."
   ],
   'Naturalista': [
-    "O mundo de plantas e animais é importante para mim",
-    "Tenho interesse por temas ligados a animais, plantas, meio ambiente ou saúde",
-    "Eu gosto de aprender sobre a natureza",
-    "Gosto de cuidar das minhas plantas em casa",
-    "Tenho interesse por temas ligados à preservação ambiental e sustentabilidade",
-    "Gosto de caminhar em lugares naturais",
-    "Tenho curiosidade em observar animais, plantas e ambientes naturais"
+    "O mundo de plantas e animais é importante para mim.",
+    "Tenho interesse por temas ligados a animais, plantas, meio ambiente ou saúde.",
+    "Eu gosto de aprender sobre a natureza.",
+    "Gosto de cuidar das minhas plantas em casa.",
+    "Tenho interesse por temas ligados à preservação ambiental e sustentabilidade.",
+    "Gosto de caminhar em lugares naturais.",
+    "Tenho curiosidade em observar animais, plantas e ambientes naturais."
   ],
   'Musical': [
-    "A música, os sons ou o ritmo fazem parte importante da minha rotina",
-    "Tenho facilidade para perceber ritmo, harmonia, sons ou padrões sonoros",
-    "Lembro-me a melodia de uma canção quando perguntado",
-    "Gosto de atividades que envolvem música, áudio, produção sonora ou expressão criativa",
-    "A música é muito importante para mim na vida diária",
-    "Tenho amplos e variados interesses musicais, incluindo clássicos e contemporâneos",
-    "Eu tenho um bom senso de afinação, tempo e ritmo"
+    "A música, os sons ou o ritmo fazem parte importante da minha rotina.",
+    "Tenho facilidade para perceber ritmo, harmonia, sons ou padrões sonoros.",
+    "Lembro-me a melodia de uma canção quando perguntado.",
+    "Gosto de atividades que envolvem música, áudio, produção sonora ou expressão criativa.",
+    "A música é muito importante para mim na vida diária.",
+    "Tenho amplos e variados interesses musicais, incluindo clássicos e contemporâneos.",
+    "Eu tenho um bom senso de afinação, tempo e ritmo."
   ],
   'Interpessoal': [
-    "Tenho facilidade para me relacionar com pessoas de diferentes perfis",
-    "Eu gosto de estar com todos os diferentes tipos de pessoas",
-    "Procuro ouvir e compreender pessoas com opiniões ou realidades diferentes da minha",
-    "Gosto de situações sociais novas ou únicas",
-    "Gosto de elogiar os outros quando eles fizeram bem",
-    "Tenho facilidade para perceber intenções, emoções ou necessidades das pessoas",
-    "Sinto-me seguro quando estou com estranhos"
+    "Tenho facilidade para me relacionar com pessoas de diferentes perfis.",
+    "Eu gosto de estar com todos os diferentes tipos de pessoas.",
+    "Procuro ouvir e compreender pessoas com opiniões ou realidades diferentes da minha.",
+    "Gosto de situações sociais novas ou únicas.",
+    "Gosto de elogiar os outros quando eles fizeram bem.",
+    "Tenho facilidade para perceber intenções, emoções ou necessidades das pessoas.",
+    "Sinto-me seguro quando estou com estranhos."
   ],
   'Linguística': [
-    "Gosto de ouvir discursos",
-    "Eu gosto de manter um diário de minhas experiências",
-    "Gosto de ler, escrever ou criar textos para expressar ideias",
-    "Tenho facilidade para explicar ideias, contar histórias ou me comunicar verbalmente",
-    "Tenho facilidade para encontrar as palavras certas ao me comunicar",
-    "Eu gosto de aprender novas palavras e faço isso facilmente",
-    "Gosto de ler e leio diariamente"
+    "Gosto de ouvir discursos.",
+    "Eu gosto de manter um diário de minhas experiências.",
+    "Gosto de ler, escrever ou criar textos para expressar ideias.",
+    "Tenho facilidade para explicar ideias, contar histórias ou me comunicar verbalmente.",
+    "Tenho facilidade para encontrar as palavras certas ao me comunicar.",
+    "Eu gosto de aprender novas palavras e faço isso facilmente.",
+    "Gosto de ler e leio diariamente."
   ],
   'Intrapessoal': [
-    "Costumo refletir sobre minhas escolhas, prioridades e objetivos",
-    "Costumo refletir sobre problemas da sociedade e sobre como posso contribuir para melhorá-los",
-    "Procuro reconhecer meus pontos fortes e meus pontos de melhoria",
-    "Eu gosto de estar sozinho e pensar sobre a minha vida",
-    "Tenho interesse em entender melhor meu comportamento e minhas emoções",
-    "Muitas vezes penso sobre a influência que tenho sobre os outros",
-    "Eu acredito que eu sou responsável por meus atos e quem eu sou"
+    "Costumo refletir sobre minhas escolhas, prioridades e objetivos.",
+    "Costumo refletir sobre problemas da sociedade e sobre como posso contribuir para melhorá-los.",
+    "Procuro reconhecer meus pontos fortes e meus pontos de melhoria.",
+    "Eu gosto de estar sozinho e pensar sobre a minha vida.",
+    "Tenho interesse em entender melhor meu comportamento e minhas emoções.",
+    "Muitas vezes penso sobre a influência que tenho sobre os outros.",
+    "Eu acredito que eu sou responsável por meus atos e quem eu sou."
   ],
   'Corporal-Cinestésica': [
-    "Tenho facilidade em atividades práticas, manuais ou que envolvem movimento",
-    "Eu gosto de estar fisicamente apto",
-    "Eu tenho um bom equilíbrio e coordenação olho-mão e me sinto confortável em esportes que usam uma bola",
-    "Minha coordenação me destaca em atividades de alta velocidade",
-    "Gosto de aprender fazendo, colocando a mão na massa ou experimentando na prática",
-    "Sinto-me motivado em atividades que envolvem ação, prática ou trabalho em equipe",
-    "Eu gosto de me movimentar muito"
+    "Tenho facilidade em atividades práticas, manuais ou que envolvem movimento.",
+    "Eu gosto de estar fisicamente apto.",
+    "Eu tenho um bom equilíbrio e coordenação olho-mão e me sinto confortável em esportes que usam uma bola.",
+    "Minha coordenação me destaca em atividades de alta velocidade.",
+    "Gosto de aprender fazendo, colocando a mão na massa ou experimentando na prática.",
+    "Sinto-me motivado em atividades que envolvem ação, prática ou trabalho em equipe.",
+    "Eu gosto de me movimentar muito."
   ],
   'Espacial': [
-    "Tenho facilidade para me orientar em espaços, mapas ou ambientes novos",
-    "Eu não me perco facilmente e posso me orientar tanto com mapas ou marcos",
-    "Sei direções com facilidade",
-    "Eu tenho a capacidade de representar o que eu vejo pelo desenho ou pintura",
-    "Tenho facilidade para imaginar formas, imagens, layouts ou objetos visualmente",
-    "Percebo detalhes visuais como cor, forma, proporção, espaço ou composição",
-    "Ver as coisas em três dimensões é fácil para mim, e eu gosto de fazer as coisas em três dimensões"
+    "Tenho facilidade para me orientar em espaços, mapas ou ambientes novos.",
+    "Eu não me perco facilmente e posso me orientar tanto com mapas ou marcos.",
+    "Sei direções com facilidade.",
+    "Eu tenho a capacidade de representar o que eu vejo pelo desenho ou pintura.",
+    "Tenho facilidade para imaginar formas, imagens, layouts ou objetos visualmente.",
+    "Percebo detalhes visuais como cor, forma, proporção, espaço ou composição.",
+    "Ver as coisas em três dimensões é fácil para mim, e eu gosto de fazer as coisas em três dimensões."
   ],
   'Existencial': [
   "Gosto de refletir sobre o propósito das minhas escolhas e da minha carreira.",
@@ -115,14 +115,14 @@ const CURSOS = [
     area: 'Ciências sociais aplicadas',
     descricao: 'Este curso desenvolve competências essenciais para a gestão eficiente de organizações, integrando conhecimentos em finanças, estratégia, liderança, processos e sustentabilidade.',
     link: 'https://ufbra.com.br/cursos/administracao',
-    vetor: [2.0, 2.0, 7.8, 4.5, 8.8, 2.5, 7.5, 6.5, 3.0]
+    vetor: [2.0, 2.0, 8.5, 4.5, 9.2, 2.5, 7.5, 6.5, 3.0]
   },
   {
     nome: 'Pedagogia',
     area: 'Ciências humanas',
     descricao: 'O curso de Pedagogia prepara profissionais para atuar na gestão, planejamento e desenvolvimento de práticas educativas eficazes, contemplando desde fundamentos históricos e sociais até o uso de tecnologias e metodologias inclusivas.',
     link: 'https://ufbra.com.br/cursos/pedagogia',
-    vetor: [5.5, 2.0, 5.5, 8.8, 10.0, 3.0, 9.0, 7.8, 5.5]
+    vetor: [5.5, 2.0, 5.5, 8.8, 9.0, 3.0, 9.0, 7.8, 5.5]
   },
   {
     nome: 'Ciências Contábeis',
@@ -143,7 +143,7 @@ const CURSOS = [
     area: 'Ciências da saúde',
     descricao: 'Este curso de Enfermagem desenvolve habilidades essenciais para a prática avançada, abrangendo desde o cuidado direto ao paciente até a gestão de serviços de saúde.',
     link: 'https://ufbra.com.br/cursos/enfermagem',
-    vetor: [8.2, 1.5, 4.5, 7.8, 8.5, 5.5, 5.8, 5.5, 3.0]
+    vetor: [6.5, 1.5, 4.5, 7.8, 8.5, 5.5, 5.8, 5.5, 3.0]
   },
   {
     nome: 'Engenharia Civil',
@@ -171,14 +171,14 @@ const CURSOS = [
     area: 'Ciências humanas',
     descricao: 'O curso de Psicologia oferece uma formação sólida que integra teoria e prática, capacitando o aluno a aplicar conhecimentos científicos na compreensão e intervenção sobre o comportamento humano.',
     link: 'https://ufbra.com.br/cursos/psicologia',
-    vetor: [4.5, 1.8, 3.5, 9.8, 10.0, 2.5, 8.5, 9.0, 3.0]
+    vetor: [4.5, 1.8, 3.5, 9.0, 9.0, 2.5, 8.5, 9.0, 3.0]
   },
   {
     nome: 'Nutrição',
     area: 'Ciências da saúde',
     descricao: 'Este curso proporciona uma formação sólida em nutrição, integrando conhecimentos de biociências, saúde pública e técnicas alimentares aplicadas. O aluno desenvolve competências para avaliar, planejar e orientar práticas nutricionais individuais e...',
     link: 'https://ufbra.com.br/cursos/nutricao',
-    vetor: [8.8, 1.5, 5.5, 7.0, 8.0, 3.5, 6.2, 6.0, 3.0]
+    vetor: [7.0, 1.5, 5.5, 7.0, 8.0, 3.5, 6.2, 6.0, 3.0]
   },
   {
     nome: 'Análise e Desenvolvimento de Sistemas',
@@ -192,7 +192,7 @@ const CURSOS = [
     area: 'Gestão e Negócios',
     descricao: 'Este curso de Marketing capacita o aluno a desenvolver estratégias eficazes que abrangem desde o comportamento do consumidor e marketing digital até o gerenciamento de marcas e comércio eletrônico.',
     link: 'https://ufbra.com.br/cursos/marketing',
-    vetor: [1.8, 3.5, 6.5, 4.5, 9.5, 2.0, 8.0, 5.5, 5.5]
+    vetor: [1.8, 3.5, 6.5, 4.5, 10.0, 2.0, 9.0, 5.5, 5.5]
   },
   {
     nome: 'Farmácia',
@@ -220,21 +220,21 @@ const CURSOS = [
     area: 'Ciências biológicas',
     descricao: 'O curso de Biomedicina oferece uma formação sólida nas ciências biológicas e da saúde, integrando fundamentos teóricos e práticas laboratoriais essenciais para a atuação profissional.',
     link: 'https://ufbra.com.br/cursos/biomedicina',
-    vetor: [8.8, 1.5, 7.8, 6.2, 6.5, 3.0, 5.5, 4.5, 3.0]
+    vetor: [7.0, 1.5, 7.8, 6.2, 6.5, 3.0, 5.5, 4.5, 3.0]
   },
   {
     nome: 'Engenharia de Produção',
     area: 'Engenharias',
     descricao: 'O curso de Engenharia de Produção desenvolve competências técnicas e analíticas essenciais para otimizar processos produtivos, integrar tecnologias e gerir projetos multidisciplinares.',
     link: 'https://ufbra.com.br/cursos/engenharia-de-producao',
-    vetor: [2.0, 1.5, 8.8, 3.5, 7.5, 3.0, 5.8, 4.0, 6.8]
+    vetor: [2.0, 1.5, 8.8, 3.5, 8.5, 3.0, 5.8, 4.0, 6.8]
   },
   {
     nome: 'Sistemas de Informação',
     area: 'Ciências exatas e da terra',
     descricao: 'Este curso desenvolve competências técnicas e analíticas essenciais para atuar na área de Sistemas de Informação, capacitando o aluno a planejar, desenvolver e gerenciar soluções de tecnologia que atendam às demandas organizacionais.',
     link: 'https://ufbra.com.br/cursos/sistemas-de-informacao',
-    vetor: [1.5, 1.5, 8.8, 2.5, 4.0, 1.8, 5.8, 4.5, 3.5]
+    vetor: [1.5, 1.5, 8.8, 2.5, 6.0, 1.8, 5.8, 4.5, 3.5]
   },
   {
     nome: 'Gestão Comercial',
@@ -262,7 +262,7 @@ const CURSOS = [
     area: 'Ambiente e saúde',
     descricao: 'Este curso prepara profissionais para atuar na gestão sustentável de recursos naturais e na implementação de práticas ambientais eficientes. Desenvolve habilidades em planejamento e controle ambiental, análise de impactos, recuperação de áreas...',
     link: 'https://ufbra.com.br/cursos/gestao-ambiental',
-    vetor: [9.2, 1.5, 6.5, 8.0, 7.0, 3.0, 6.0, 5.0, 6.5]
+    vetor: [10.0, 1.5, 6.5, 8.0, 7.0, 3.0, 6.0, 5.0, 6.5]
   },
   {
     nome: 'Engenharia Elétrica',
@@ -276,7 +276,7 @@ const CURSOS = [
     area: 'Ciências sociais aplicadas',
     descricao: 'O curso de Design Gráfico desenvolve competências técnicas e criativas essenciais para atuação profissional em ambientes físicos e digitais. O aluno aprimora sua capacidade de criação visual, desde fundamentos filosóficos e culturais até a...',
     link: 'https://ufbra.com.br/cursos/design-grafico',
-    vetor: [2.0, 3.0, 5.5, 4.5, 6.5, 2.5, 7.0, 4.5, 9.5]
+    vetor: [2.0, 3.0, 5.5, 4.5, 5.0, 2.5, 8.0, 4.5, 10.0]
   },
   {
     nome: 'Gastronomia',
@@ -311,28 +311,28 @@ const CURSOS = [
     area: 'Ciências exatas e da terra',
     descricao: 'O curso de Gestão de Tecnologia da Informação desenvolve competências essenciais para planejar, implementar e gerenciar soluções tecnológicas alinhadas às estratégias organizacionais.',
     link: 'https://ufbra.com.br/cursos/gestao-de-tecnologia-da-informacao',
-    vetor: [1.5, 1.5, 8.5, 3.0, 6.5, 2.0, 6.5, 5.0, 3.5]
+    vetor: [1.5, 1.5, 8.5, 3.0, 7.5, 2.0, 7.5, 5.0, 3.5]
   },
   {
     nome: 'Agronomia',
     area: 'Ciências biológicas',
     descricao: 'O curso desenvolve competências sólidas em ciências agrárias, integrando conhecimentos sobre solo, plantas e animais para habilitar o aluno a atuar de forma prática e eficiente na agropecuária moderna.',
     link: 'https://ufbra.com.br/cursos/agronomia',
-    vetor: [10.0, 1.5, 7.0, 7.0, 6.5, 4.0, 5.5, 5.0, 5.5]
+    vetor: [10.0, 1.5, 7.0, 8.0, 6.5, 4.0, 5.5, 5.0, 5.5]
   },
   {
     nome: 'Criminologia',
     area: 'Ciências humanas',
     descricao: 'O curso de Criminologia oferece uma formação sólida para compreender os fenômenos criminais a partir de múltiplas perspectivas, incluindo aspectos jurídicos, sociais e comportamentais.',
     link: 'https://ufbra.com.br/cursos/criminologia',
-    vetor: [2.0, 1.5, 6.8, 8.8, 8.5, 3.0, 8.0, 8.0, 4.0]
+    vetor: [2.0, 1.5, 6.8, 9.5, 8.5, 3.0, 9.0, 8.0, 4.0]
   },
   {
     nome: 'Energias Renováveis',
     area: 'Ambiente e saúde',
     descricao: 'O curso desenvolve competências técnicas e gerenciais essenciais para atuar no setor de energias renováveis, integrando conhecimentos em gestão ambiental, inovação tecnológica e sistemas elétricos aplicados.',
     link: 'https://ufbra.com.br/cursos/energias-renovaveis',
-    vetor: [8.0, 1.5, 8.8, 8.0, 6.5, 3.0, 5.0, 5.0, 8.0]
+    vetor: [9.0, 1.5, 8.8, 8.0, 6.5, 3.0, 5.0, 5.0, 8.0]
   },
   {
     nome: 'Engenharia de Software',
@@ -360,14 +360,14 @@ const CURSOS = [
     area: 'Ciências humanas',
     descricao: 'O curso de Investigação Forense e Perícia Criminal desenvolve competências para atuar em análises técnicas e jurídicas voltadas à elucidação de crimes.',
     link: 'https://ufbra.com.br/cursos/investigacao-forense-e-pericia-criminal',
-    vetor: [3.0, 1.5, 8.5, 8.5, 7.8, 4.0, 8.0, 7.5, 6.5]
+    vetor: [3.0, 1.5, 9.0, 8.5, 7.8, 4.0, 8.0, 7.5, 7.5]
   },
   {
     nome: 'Produção Audiovisual',
     area: 'Ciências sociais aplicadas',
     descricao: 'O curso de Produção Audiovisual capacita profissionais a planejar, criar e gerenciar conteúdos multimídia, desenvolvendo competências técnicas em fotografia, edição, animação e captação sonora, além de habilidades em roteirização e pós-produção.',
     link: 'https://ufbra.com.br/cursos/producao-audiovisual',
-    vetor: [2.0, 7.5, 5.5, 5.5, 6.8, 3.5, 8.0, 5.0, 9.5]
+    vetor: [2.0, 8.5, 5.5, 5.5, 6.8, 3.5, 9.0, 5.0, 10.0]
   },
   {
     nome: 'Segurança do Trabalho',
@@ -381,7 +381,7 @@ const CURSOS = [
     area: 'Gestão e Negócios',
     descricao: 'O curso de Segurança Pública desenvolve competências essenciais para atuação integrada e eficaz no setor, abordando fundamentos jurídicos, direitos humanos, gestão de pessoas e aspectos sociais relacionados à segurança.',
     link: 'https://ufbra.com.br/cursos/seguranca-publica',
-    vetor: [3.0, 1.5, 5.8, 8.5, 9.0, 7.0, 6.5, 6.5, 4.5]
+    vetor: [3.0, 1.5, 5.8, 8.5, 9.5, 8.0, 6.5, 6.5, 4.5]
   },
   {
     nome: 'Terapia Ocupacional',
