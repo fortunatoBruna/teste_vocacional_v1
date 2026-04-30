@@ -40,7 +40,7 @@ const PERGUNTAS: Record<string, string[]> = {
     "Tenho interesse por temas ligados a animais, plantas, meio ambiente ou saúde",
     "Eu gosto de aprender sobre a natureza",
     "Gosto de cuidar das minhas plantas em casa",
-    "Gosto de caça e pesca",
+    "Tenho interesse por temas ligados à preservação ambiental e sustentabilidade",
     "Gosto de caminhar em lugares naturais",
     "Tenho curiosidade em observar animais, plantas e ambientes naturais"
   ],
@@ -73,7 +73,7 @@ const PERGUNTAS: Record<string, string[]> = {
   ],
   'Intrapessoal': [
     "Costumo refletir sobre minhas escolhas, prioridades e objetivos",
-    "Muitas vezes penso sobre os problemas em minha comunidade, estado e / ou mundo e que eu posso fazer para ajudar a corrigir qualquer um deles",
+    "Costumo refletir sobre problemas da sociedade e sobre como posso contribuir para melhorá-los",
     "Procuro reconhecer meus pontos fortes e meus pontos de melhoria",
     "Eu gosto de estar sozinho e pensar sobre a minha vida",
     "Tenho interesse em entender melhor meu comportamento e minhas emoções",
@@ -577,7 +577,7 @@ const TheorySection = () => (
 type Pergunta = {
   categoria: string;
   texto: string;
-  index: number; // Índice original (0-3) dentro da categoria
+  index: number; // Índice usado para armazenar a resposta da pergunta sorteada
 };
 
 interface StepProps {
@@ -1096,7 +1096,7 @@ const Index = () => {
         .sort(() => 0.5 - Math.random())
         .slice(0, 4);
         
-      // Cria o objeto Pergunta preservando o índice original (0, 1, 2, 3)
+      // Cria o objeto Pergunta com índice usado para armazenar a resposta da pergunta sorteada
       perguntasDaCategoria.forEach((texto, index) => {
         todasAsPerguntas.push({
           categoria: cat,
